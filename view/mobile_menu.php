@@ -2,13 +2,13 @@
             
     <aside id="asideLeft">
         <div class="login">
-            <button id="loginDiv"><i class="far fa-user"></i> <a href="../login_page.php">My Account</a> <i class="fas fa-sign-in-alt"></i></button>
+            <button id="loginDiv"><i class="far fa-user"></i> <a href="login_page.php">My Account</a> <i class="fas fa-sign-in-alt"></i></button>
         </div>
         <nav id="index_nav">
             <ul>
                 <?php if(isset($_SESSION['user'])){
                     echo "";
-                    }else{       
+                    }else{    
                 ?>
                 <li><a href="../admin/index.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
                 <?php }?>
@@ -20,7 +20,7 @@
                         foreach($cats as $cat):
                     ?>
                     <li>
-                        <form action="categories.php" method="POST">
+                        <form action="view/categories.php" method="POST">
                             <input type="hidden" name="item_cat" value="<?php echo $cat->category_id?>">
                             <?php 
                                 if($cat->category == "Bag"){
@@ -29,14 +29,20 @@
                                     echo "<i class='fas fa-glasses'></i>";
                                 }elseif($cat->category == "Beddings"){
                                     echo "<i class='fas fa-bed'></i>";
-                                }elseif($cat->category == "Shoes"){
-                                    echo "<i class='fas fa-shopping-cart'></i>";
-                                }elseif($cat->category == "Mens Fashion"){
-                                    echo "<i class='fas fa-shirt'></i>";
-                                }elseif($cat->category == "Womens Fashion"){
-                                    echo "<i class='fas fa-person-dress'></i>";
+                                }elseif($cat->category == "Hairs And Wigs"){
+                                    echo "<img src='images/hair_wig.png'>";
+                                }elseif($cat->category == "Jewelries"){
+                                    echo "<img src='images/necklace.png'>";
                                 }elseif($cat->category == "Wrist Watches"){
-                                    echo "<i class='fa-solid fa-watch-smart'></i>";
+                                    echo "<img src='images/wrist-watch.png'>";
+                                }elseif($cat->category == "Shoes"){
+                                    echo "<img src='images/sport-shoe.png'>";
+                                }elseif($cat->category == "Mens Fashion"){
+                                    echo "<img src='images/hawaiian-shirt.png'>";
+                                }elseif($cat->category == "Womens Fashion"){
+                                    echo "<img src='images/woman-clothes.png'>";
+                                }elseif($cat->category == "Kids Fashion"){
+                                    echo "<img src='images/baby-clothes.png'>";
                                 }else{
                             ?>
                             <i class="fas fa-shopping-cart"></i>

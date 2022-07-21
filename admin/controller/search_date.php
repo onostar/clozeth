@@ -52,7 +52,7 @@
         <td><?php echo $row->quantity?></td>
         <td>₦ <?php echo $row->item_price?></td>
         <td><?php echo $row->address . "<br>" . $row->city;?></td>
-        <td><?php echo $row->delivery_date?></td>
+        <td><?php echo date("jS M, Y", strtotime($row->delivery_date))?></td>
         
     </tr>
     

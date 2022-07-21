@@ -804,12 +804,12 @@ main h2{
     font-size:2rem;
 }
 main hr{
-    width:50px;
-    height:5px;
+    /* width:50px; */
+    /* height:5px; */
     margin:10px auto;
-    background: var(--secondaryColor);
-    color:var(--otherColor);
-    border-radius: 10px;
+    background: rgba(230, 228, 228, .4);
+    color:rgba(230, 228, 228, .4);
+    /* border-radius: 10px; */
 }
 .reg_options{
     width:40%;
@@ -1328,7 +1328,7 @@ main hr{
     color:red;
 }
 .allResults table tbody tr:hover{
-    background:#c4c4c4;
+    background:#f1f1f1;
 }
 .allResults table tbody tr:hover a{
     color:#fff;
@@ -1780,7 +1780,7 @@ main hr{
     font-size:1.4rem;
     text-transform: capitalize;
     font-family:"Poppins";
-    color:var(--primaryColor);
+    color:var(--secondaryColor);
 }
 .management{
     display:none;
@@ -1994,6 +1994,7 @@ main hr{
 }
 .select_date{
     width:30%;
+    margin:0;
 }
 .select_date form{
     width:90%;
@@ -2013,10 +2014,15 @@ main hr{
 }
 .select_date form button{
     width:50%;
-    background:chocolate;
+    background:var(--secondaryColor);
     color:#fff;;
     font-size:1rem;
     text-transform:capitalize;
+    margin:0;
+}
+.new_data{
+    margin:0;
+    width:100%;
 }
 #booth_det{
     width:40%;
@@ -2520,6 +2526,10 @@ main hr{
     color:#fff;
     margin:0;
     
+}
+.allResults table tbody tr td:first-child{
+    color:red;
+    text-align:center;
 }
 .each_prices{
     color:#222!important;

@@ -54,7 +54,7 @@
             </p>
             <div class="order_history">
                 <?php
-                    $select_orders = $connectdb->prepare("SELECT orders.customer_email, orders.item_name, orders.quantity, orders.item_price, orders.company, orders.order_date, orders.order_number, orders.order_status, orders.delivery_date, menu.item_name, menu.item_foto FROM orders, menu WHERE orders.item_name = menu.item_name AND orders.customer_email = :customer_email ORDER BY orders.order_time DESC");
+                    $select_orders = $connectdb->prepare("SELECT orders.customer_email, orders.item_name, orders.quantity, orders.item_price, orders.company, orders.order_date, orders.order_number, orders.order_status, orders.delivery_date, orders.order_id, menu.item_name, menu.item_foto FROM orders, menu WHERE orders.item_name = menu.item_name AND orders.customer_email = :customer_email ORDER BY orders.order_time DESC");
                     $select_orders->bindvalue('customer_email', $user);
                     $select_orders->execute();
 
@@ -63,7 +63,7 @@
                 ?>
 
                 <figure>
-                    <img src="<?php echo '../items/'.$row->item_foto?>" alt="my order">
+                    <a href="javascript:void(0)" title="View Order details" onclick="viewOrder('<?php echo $row->order_id?>')"><img src="<?php echo '../items/'.$row->item_foto?>" alt="my order"></a>
                     <figcaption>
                         <div class="order_details">
                             <h4>Order#: <?php echo $row->order_number;?></h4>
@@ -75,21 +75,20 @@
                             $com = $get_company->fetch(); echo $com->company_name;?></p>
                             <p>Qty: <?php echo $row->quantity;?></p>
                             <p>Amount: ₦<?php echo number_format($row->item_price);?></p>
-                            <p>Date: <?php echo date("M jS, Y", strtotime($row->order_date));?></p>
+                            <!-- <p>Ordered: <?php echo date("M jS, Y", strtotime($row->order_date));?></p> -->
                         </div>
                         <div class="status_order"> 
                             <?php 
                                 $order_status = 
                                 $row->order_status;
                                 if($order_status == 1){
-                                    echo "<p style='background:green; padding:4px;
-                                    border-radius:5px;'>Delivered <i class='fas fa-truck'></i></p>";
+                                    echo "<p style='background:green;'>Delivered <i class='fas fa-truck'></i></p>";
                                 }elseif($order_status == -1){
-                                    echo "<p style='background:red; padding:4px;
-                                    border-radius:5px;'>Cancelled <i class='fas fa-plane-slash'></i></p>";
+                                    echo "<p style='background:red;'>Cancelled <i class='fas fa-plane-slash'></i></p>";
+                                }elseif($order_status == 2){
+                                    echo "<p style='background:hsl(180, 81%, 24%, .8);'>On transit <i class='fas fa-plane'></i></p>";
                                 }else{
-                                    echo "<p style='background:rgb(188, 201, 68); padding:4px;
-                                    border-radius:5px;'>Awaiting delivery <i class='fas fa-plane'></i></p>";
+                                    echo "<p style='background:hsla(202, 81%, 22%, .9);'>Order Processing <i class='fas fa-spinner'></i></p>";
                                 }
                             ?>
                         </div>

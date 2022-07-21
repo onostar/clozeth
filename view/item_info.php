@@ -49,7 +49,7 @@
                         $item_id = $_GET['item'];
                     
 
-                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
+                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, menu.payment_option, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
                         $view_item->bindvalue('item_id', $item_id);
                         $view_item->execute();
 
@@ -79,7 +79,7 @@
                                 <img src="<?php echo "../admin/logos/".$item->company_logo;?>" alt="company">
                                 <!-- view store  -->
                                 <?php
-                                    echo "<a href='view/exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-store'></i> Visit store</a>";
+                                    echo "<a href='exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-store'></i> Visit store</a>";
                                 ?>
                             </div>
                             <div class="clear"></div>
@@ -87,7 +87,7 @@
                             <p><span>Category:</span> <?php echo $category?></p>
                             <p><span>Amount:</span> ₦<?php echo number_format($item->item_prize)?></p>
                             <p><span>Company:</span> <?php echo $item->company_name?></p>
-                            <!-- <p><span>Company Location:</span> <?php echo $item->company_address?></p> -->
+                            <p><span>Payment Option:</span> <?php echo $item->payment_option?></p>
                             <input type="number" id="quantity" name="quantity" required placeholder="Select Quantity">
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
                             <p class="dm"><?php echo "<a target='_blank' href='https://wa.me/+234".$item->contact_phone."' title='Message Store owner'><i class='fab fa-whatsapp'></i> Send us a DM</a>";?></p>

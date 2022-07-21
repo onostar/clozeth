@@ -1,7 +1,9 @@
 <?php
-    require "controller/server.php";
+    require "../controller/server.php";
     session_start();
     $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+    if(isset($_SESSION['user'])){
+        $user = $_SESSION['user'];
     
 ?>
 <!DOCTYPE html>
@@ -19,24 +21,24 @@
                 $user_info->bindvalue('email', $user);
                 $user_info->execute();
                 $view = $user_info->fetch();
-                echo $view->first_name . " " . $view->last_name. " - Item info";
+                echo $view->first_name . " " . $view->last_name. " - Order details";
             }else{
-                echo "Clozeth | Item Info";
+                echo "Clozeth | Order details";
             }
          ?>
 
     </title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
-    <link rel="icon" type="image/png" href="images/logo.png" size="32X32">
-    <link rel="stylesheet" href="controller/style.css">
+    <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
+    <link rel="stylesheet" href="../controller/style.css">
     
 </head>
 <body>
     <?php include "header.php";?>
 
-    <?php include "view/mobile_menu.php";?>
+    <?php include "mobile_menu.php";?>
 
     
     <main>
@@ -44,12 +46,12 @@
             
             <div class="itemInfo">
                 <?php
-                    if(isset($_GET['item'])){
-                        $item_id = $_GET['item'];
+                    if(isset($_GET['order'])){
+                        $order_id = $_GET['order'];
                     
 
-                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, menu.payment_option, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
-                        $view_item->bindvalue('item_id', $item_id);
+                        $view_item = $connectdb->prepare("SELECT orders.customer_email, orders.item_name, orders.quantity, orders.item_price, orders.company, orders.order_date, orders.order_number, orders.order_status, orders.delivery_date, orders.order_id, orders.dispense_date, menu.item_name, menu.item_foto, menu.payment_option, exhibitors.company_name, exhibitors.reg_number, exhibitors.company_logo, exhibitors.contact_phone, menu.item_category FROM orders, menu, exhibitors WHERE orders.order_id = :order_id AND orders.item_name = menu.item_name AND menu.company = exhibitors.exhibitor_id ORDER BY orders.order_time DESC");
+                        $view_item->bindvalue('order_id', $order_id);
                         $view_item->execute();
 
                         $items = $view_item->fetchAll();
@@ -66,37 +68,51 @@
                 ?>
                 <figure class="item_details"> 
                     
-                    <img src="<?php echo 'items/'.$item->item_foto?>" alt="Item">
-                    <form action="controller/cart.php" method="POST">
-                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $item->item_name?>">
-                        <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $item->item_id?>">
-                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $item->item_prize?>">
-                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $item->company?>">
-                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                    <img src="<?php echo '../items/'.$item->item_foto?>" alt="Item">
+                    <form>
                         <figcaption>
                             <div class="menu_logo">
-                                <img src="<?php echo "admin/logos/".$item->company_logo;?>" alt="company">
+                                <img src="<?php echo "../admin/logos/".$item->company_logo;?>" alt="company">
                                 <!-- view store  -->
                                 <?php
-                                    echo "<a href='view/exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-store'></i> Visit store</a>";
+                                    echo "<a href='exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-store'></i> Visit store</a>";
                                 ?>
                             </div>
                             <div class="clear"></div>
+                            <p><span>Order#:</span> <?php echo $item->order_number?></p>
                             <p><span>Name:</span> <?php echo $item->item_name?></p>
-                            <p><span>Category:</span> <?php echo $category?></p>
-                            <p><span>Amount:</span> ₦<?php echo number_format($item->item_prize)?></p>
+                            <p><span>Amount:</span> ₦<?php echo number_format($item->item_price)?></p>
                             <p><span>Company:</span> <?php echo $item->company_name?></p>
                             <p><span>Payment Option:</span> <?php echo $item->payment_option?></p>
-                            <input type="number" id="quantity" name="quantity" required placeholder="Select Quantity">
-                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+                            <!-- <p><span>Order date:</span> <?php echo date("jS M, Y", strtotime($item->order_date))?></p> -->
+                            <a href="javascript:void(0)" id="track">Track item <i class="fas fa-cart-plus"></i></a>
                             <p class="dm"><?php echo "<a target='_blank' href='https://wa.me/+234".$item->contact_phone."' title='Message Store owner'><i class='fab fa-whatsapp'></i> Send us a DM</a>";?></p>
                         </figcaption>
                     </form>
                 </figure>
-                <div class="item_descriptions">
+                <div class="item_descriptions" id="trackItem">
                     <hr>
-                    <h3>Item Descriptions</h3>
-                    <p><?php echo $item->item_description;?></p>
+                    <h3>Order details</h3>
+                    <ul>
+                        <li>Order Placed on <?php echo date("jS M, Y", strtotime($item->order_date));?> <i class='fas fa-check'></i></li>
+                        <li>Order Processing <i class='fas fa-check'></i></li>
+                        <li><?php
+                            if($item->order_status == 2){
+                                echo "Order Shipped for delivery on ".date("jS M, Y", strtotime($item->dispense_date)) . " <i class='fas fa-check'></i>";
+                            }else{
+                                echo "<span>Order Shipped for delivery <i class='fas fa-spinner'></i></span>";
+                            }
+                        ?></li>
+                        <li><?php
+                            if($item->order_status == 1){
+                                echo "Order Delivered to destination on ".date("jS M, Y", strtotime($item->delivery_date)) . "<i class='fas fa-check'></i>";
+                            }elseif($item->order_status == -1){
+                                echo "Order Cancelled by seller on ".date("jS M, Y", strtotime($item->delivery_date)) . "<i class='fas fa-cancel'></i>";
+                            }else{
+                                echo "<span>Order Delivered to Destination <i class='fas fa-spinner'></i></span>";
+                            }
+                        ?></li>
+                    </ul>
                 </div>
                 <?php endforeach; }?>
             </div>
@@ -120,7 +136,7 @@
                 ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
-                        <img src="<?php echo 'items/'.$show->item_foto?>" alt="Item">
+                        <img src="<?php echo '../items/'.$show->item_foto?>" alt="Item">
 
                     </a>
                     <form action="../controller/cart.php" method="POST">
@@ -165,11 +181,17 @@
         } */
     ?>
     <footer>
-        <?php include "view/footer.php";?>
+        <?php include "footer.php";?>
     </footer>
     <!-- <script src="bootstrap.min.js"></script> -->
-    <script src="controller/jquery.js"></script>
-    <script src="controller/script.js"></script>
+    <script src="../controller/jquery.js"></script>
+    <script src="../controller/script.js"></script>
     
 </body>
 </html>
+
+<?php
+    }else{
+        header("Location: ../index.php");
+    }
+?> 

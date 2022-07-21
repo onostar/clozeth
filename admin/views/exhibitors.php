@@ -256,7 +256,7 @@
                                 <i class="fas fa-cart-arrow-down"></i>
                                 <p>
                                 <?php
-                                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status = 0");
+                                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status != 1 AND order_status != -1");
                                     $orders->bindvalue('company', $user->exhibitor_id);
                                     $orders->execute();
                                     echo $orders->rowCount();
@@ -324,7 +324,7 @@
                                     <tr>
                                         <td>S/N</td>
                                         <td>Date</td>
-                                        <td>Customers</td>
+                                        <td>Orders</td>
                                         <td>Revenue</td>
                                     </tr>
                                 </thead>
@@ -340,9 +340,9 @@
                                 <tbody>
                                     <tr>
                                         <td><?php echo $n?></td>
-                                        <td><?php echo $daily->order_date?></td>
+                                        <td><?php echo date("jS M, Y",strtotime($daily->delivery_date))?></td>
                                         <td><?php echo $daily->customers?></td>
-                                        <td><?php echo $daily->revenue?></td>
+                                        <td><?php echo "₦".number_format($daily->revenue)?></td>
                                     </tr>
                                 </tbody>
                                 <?php $n++; endforeach;?>
@@ -363,12 +363,13 @@
                                     <tr>
                                         <td>S/N</td>
                                         <td>Date</td>
-                                        <td>Customers</td>
+                                        <td>Orders</td>
                                         <td>Revenue</td>
+                                        <td>Daily Average</td>
                                     </tr>
                                 </thead>
                                 <?php
-                                    $get_monthly = $connectdb->prepare("SELECT COUNT(order_id) AS customers, SUM(item_price) AS revenue, MONTH(delivery_date) as months FROM orders WHERE company = :company AND order_status = 1 GROUP BY MONTH(delivery_date) ORDER BY order_date DESC");
+                                    $get_monthly = $connectdb->prepare("SELECT COUNT(order_id) AS customers, SUM(item_price) AS revenue, delivery_date FROM orders WHERE company = :company AND order_status = 1 GROUP BY MONTH(delivery_date) ORDER BY order_date DESC");
                                     $get_monthly->bindvalue("company", $user->exhibitor_id);
                                     $get_monthly->execute();
                                         $n = 1;
@@ -379,9 +380,10 @@
                                 <tbody>
                                     <tr>
                                         <td><?php echo $n?></td>
-                                        <td><?php echo $monthly->months?></td>
+                                        <td><?php echo date("M, Y", strtotime($monthly->delivery_date))?></td>
                                         <td><?php echo $monthly->customers?></td>
-                                        <td><?php echo $monthly->revenue?></td>
+                                        <td><?php echo "₦".number_format($monthly->revenue)?></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                                 <?php $n++; endforeach;?>
@@ -582,6 +584,18 @@
                                         ?>">
                                     </div>
                                     <div class="data">
+                                        <label for="payment_option">Payment Options</label>
+                                        <select name="payment_option" id="pyment_option" required>
+                                            <option value="" SELECTED>Select a payment option</option>
+                                            <option value="pay on delivery">Pay on Delivery</option>
+                                            <option value="50% upfront">Pay 50% upfront </option>
+                                            <option value="Full pyment">Full payment </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="inputs">
+                                    
+                                    <div class="data">
                                         <label for="item_desc">Item description</label>
                                         <textarea rows="6" type="text" name="item_desc" id="item_desc" required placeholder="Give proper description and features of the product"value="<?php
                                             if(isset($_SESSION['item_desc'])){
@@ -592,12 +606,12 @@
                                         ?>"></textarea>
                                     </div>
                                     
-                                    
-                                </div>
                                     <div class="data">
                                         <label for="item_foto">Item Image</label>
                                         <input type="file" name="item_foto" id="item_foto" required>
                                     </div>
+                                </div>
+                                    
                                     <div class="data">
                                         <button type="submit" id="addItem" name="addItem">Add item <i class="fas fa-folder-plus"></i></button>
                                     </div>
@@ -786,11 +800,12 @@
                             <tr>
                                 <td>S/N</td>
                                 <td>Customer</td>
-                                <td>Phone Number</td>
+                                <td>Phone No.</td>
                                 <td>item</td>
                                 <td>Qty</td>
                                 <td>Amount</td>
                                 <td>Address</td>
+                                <td>Payment</td>
                                 <td>Date</td>
                                 <td>Action</td>
                             </tr>
@@ -798,7 +813,7 @@
 
                         <?php
                             $n = 1;
-                            $select_order = $connectdb->prepare("SELECT shoppers.first_name, shoppers.last_name, shoppers.email, shoppers.address, shoppers.city, shoppers.phone_number, orders.order_id, orders.customer_email, orders.item_name, orders.quantity, orders.item_price, orders.company, orders.order_date, orders.order_time FROM shoppers, orders WHERE orders.company = :company AND shoppers.email = orders.customer_email AND orders.order_status = 0 ORDER BY orders.order_time");
+                            $select_order = $connectdb->prepare("SELECT shoppers.first_name, shoppers.last_name, shoppers.email, shoppers.address, shoppers.city, shoppers.phone_number, orders.order_id, orders.customer_email, orders.item_name, orders.quantity, orders.item_price, orders.company, orders.order_date, orders.order_status, orders.order_time, menu.payment_option FROM shoppers, orders, menu WHERE orders.company = :company AND shoppers.email = orders.customer_email AND orders.item_name = menu.item_name AND orders.order_status != 1 AND orders.order_status != -1 ORDER BY orders.order_time DESC");
                             $select_order->bindvalue('company', $user->exhibitor_id);
                             $select_order->execute();
                     
@@ -809,13 +824,24 @@
                             <tr>
                                 <td style="color:red; text-align:center;"><?php echo $n?></td>
                                 <td><?php echo $row->first_name . " " . $row->last_name?></td>
-                                <td><?php echo $row->item_name?></td>
                                 <td><?php echo $row->phone_number?></td>
+                                <td><?php echo $row->item_name?></td>
                                 <td><?php echo $row->quantity?></td>
-                                <td>₦ <?php echo $row->item_price?></td>
+                                <td>₦<?php echo number_format($row->item_price)?></td>
                                 <td><?php echo $row->address . "<br>" . $row->city;?></td>
-                                <td><?php echo $row->order_date?></td>
-                                <td><button style="background:transparent; border:none; margin:0 auto;" title="Dispense Item" onclick="dispenseItemUser('<?php echo $row->order_id?>')"><i class="fas fa-truck" style="color:green; font-size:1.2rem;" ></i></button><button style="background:transparent; border:none; margin:0 auto;" title="Cancel Order" onclick="cancelOrderUser('<?php echo $row->order_id?>')"><i class="fas fa-plane-slash" style="color:red; font-size:1.2rem;" ></i></button></td>
+                                <td><?php echo $row->payment_option;?></td>
+                                <td><?php echo date("jS M, Y", strtotime($row->order_date))?></td>
+                                <td>
+                                    <?php
+                                        if($row->order_status == 2){
+                                    ?>
+                                    <button style="background:transparent; border:none; margin:0 auto;" title="Confirm Delivery" onclick="confirmDeliveryUser('<?php echo $row->order_id?>')"><i class="fas fa-check" style="color:green; font-size:1rem;" ></i></button>
+                                    <?php
+                                        }else{
+                                    ?>
+                                    <button style="background:transparent; border:none; margin:0 auto;" title="Dispense Item" onclick="dispenseItem('<?php echo $row->order_id?>')"><i class="fas fa-truck" style="color:skyblue; font-size:1rem;" ></i></button>
+                                    <?php }?>
+                                    <button style="background:transparent; border:none; margin:0 auto;" title="Cancel Order" onclick="cancelOrder('<?php echo $row->order_id?>')"><i class="fas fa-plane-slash" style="color:red; font-size:1rem;" ></i></button></td>
                             </tr>
                             
                         </tbody>
@@ -841,7 +867,7 @@
                                 <label>Select to Date</label><br>
                                 <input type="date" name="to_date" id="to_date"><br>
                             </div>
-                            <button type="submit" name="search_date" id="search_date">Search</button>
+                            <button type="submit" name="search_date" id="search_date">Search <i class="fas fa-search"></i></button>
                         </form>
                     </div>
                     <div class="new_data allResults">
@@ -883,7 +909,7 @@
                                     <td><?php echo $row->quantity?></td>
                                     <td>₦ <?php echo $row->item_price?></td>
                                     <td><?php echo $row->address . "<br>" . $row->city;?></td>
-                                    <td><?php echo $row->delivery_date?></td>
+                                    <td><?php echo date("jS M, Y", strtotime($row->delivery_date))?></td>
                                     
                                 </tr>
                                 

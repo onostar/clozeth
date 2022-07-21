@@ -2,6 +2,20 @@
 window.onscroll = function(){
     displayFeatured(), displayAllItems(), displayTotop(), displayPopular();
 }
+
+/* show order details */
+$(document).ready(function(){
+    $("#track").click(function(){
+        $("#trackItem").toggle();
+        // alert("work");
+    })
+})
+
+function showDetails(){
+    document.getElementById("track").addEventListener("click", function(){
+        document.getElementById("trackItem").style.display = "block";
+    })
+}
 //display login on desktop page
 $(document).ready(function(){
     $("#loginDiv").click(function(){
@@ -315,3 +329,10 @@ function togglePassword(){
         pw.type = "password";
     }
 }
+
+/* view order details */
+function viewOrder(order){
+    window.open("../view/order_details.php?order="+order, "_parent");
+    return;
+}
+

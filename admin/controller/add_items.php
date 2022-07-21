@@ -8,10 +8,11 @@
         $prize = ucwords(htmlspecialchars(stripslashes($_POST['item_prize'])));
         $company = ucwords(htmlspecialchars(stripslashes($_POST['company'])));
         $description = htmlspecialchars(stripslashes($_POST['item_desc']));
+        $payment = htmlspecialchars(stripslashes($_POST['payment_option']));
         $item_foto = $_FILES['item_foto']['name'];
         $item_folder = "../../items/".$item_foto;
         $item_size = $_FILES['item_foto']['size'];
-        $allowed_ext = array("jpeg", "jpg", "png");
+        $allowed_ext = array("jpeg", "jpg", "png", "webp");
         $file_ext = explode('.', $item_foto);
         $file_ext = strtolower(end($file_ext));
         /* set sessions for all fields */
@@ -33,13 +34,14 @@
                     header("Location: ../views/exhibitors.php");
                 }else{
                     if(move_uploaded_file($_FILES['item_foto']['tmp_name'], $item_folder)){
-                        $add_item = $connectdb->prepare("INSERT INTO menu (item_name, item_category, item_prize, company, item_foto, item_description) VALUES (:item_name, :item_category, :item_prize, :company, :item_foto, :item_description)");
+                        $add_item = $connectdb->prepare("INSERT INTO menu (item_name, item_category, item_prize, company, item_foto, item_description, payment_option) VALUES (:item_name, :item_category, :item_prize, :company, :item_foto, :item_description, :payment_option)");
                         $add_item->bindvalue("item_name", $item);
                         $add_item->bindvalue("item_category", $category);
                         $add_item->bindvalue("item_prize", $prize);
                         $add_item->bindvalue("company", $company);
                         $add_item->bindvalue("item_foto", $item_foto);
                         $add_item->bindvalue("item_description", $description);
+                        $add_item->bindvalue("payment_option", $payment);
                         $add_item->execute();
                         if($add_item){
                             $_SESSION['success'] = "'$item' added successfully!";

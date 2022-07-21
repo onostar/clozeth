@@ -7,7 +7,7 @@
 
     if(isset($_GET['dispense'])){
         $item_id = $_GET['dispense'];
-        $dispense_item = $connectdb->prepare("UPDATE orders SET order_status = 2, dispense_date = CURDATE() WHERE order_id = :order_id");
+        $dispense_item = $connectdb->prepare("UPDATE orders SET order_status = 1, delivery_date = CURDATE() WHERE order_id = :order_id");
         $dispense_item->bindvalue('order_id', $item_id);
         $dispense_item->execute();
 
@@ -31,8 +31,8 @@
             $name = $get_name->fetch();
             $first_name = $name->first_name;
             //send notification and email to customer
-            $subject = "Item Dispensed for delivery";
-            $details = "Hello $first_name, your order '$item_name', with order number: $order_id has been dispensed for delivery to your address. \n Thanks for your business. Do Shop more with Us";
+            $subject = "Item Delivered";
+            $details = "Hello $first_name, this is to confirm that your order '$item_name', with order number: $order_id has been delivered to your address. \n Thanks for your business. Do Shop more with Us";
             // $mailHeader = "FROM: Admin";
             
             //send notification
@@ -86,9 +86,9 @@
             $to   = $customer;
             $from = 'admin@ippssolar.com';
             $from_name = "Clozeth";
-            $name = 'Clozeth order';
-            $subj = "$item_name dispensed for delivery";
-            $msg = "<p>Hello $first_name, your order '$item_name', with order number: $order_id has been dispensed for delivery to your address. <br>Your item will BE delivered to you shortly! Thanks for your business. Do Shop more with Clozeth</p>";
+            $name = 'Clozeth order delivery';
+            $subj = "$item_name delivered";
+            $msg = "<p>Hello $first_name, this is to confirm that your order '$item_name', with order number: $order_id has been delivered to your address. \n Thanks for your business. Do Shop more with Us</p>";
             
             $error=smtpmailer($to, $from, $name ,$subj, $msg);
         }else{

@@ -79,14 +79,20 @@
                                     echo "<i class='fas fa-glasses'></i>";
                                 }elseif($cat->category == "Beddings"){
                                     echo "<i class='fas fa-bed'></i>";
-                                }elseif($cat->category == "Shoes"){
-                                    echo "<i class='fas fa-shopping-cart'></i>";
-                                }elseif($cat->category == "Mens Fashion"){
-                                    echo "<i class='fas fa-shirt'></i>";
-                                }elseif($cat->category == "Womens Fashion"){
-                                    echo "<i class='fas fa-person-dress'></i>";
+                                }elseif($cat->category == "Hairs And Wigs"){
+                                    echo "<img src='images/hair_wig.png'>";
+                                }elseif($cat->category == "Jewelries"){
+                                    echo "<img src='images/necklace.png'>";
                                 }elseif($cat->category == "Wrist Watches"){
-                                    echo "<i class='fa-solid fa-watch-smart'></i>";
+                                    echo "<img src='images/wrist-watch.png'>";
+                                }elseif($cat->category == "Shoes"){
+                                    echo "<img src='images/sport-shoe.png'>";
+                                }elseif($cat->category == "Mens Fashion"){
+                                    echo "<img src='images/hawaiian-shirt.png'>";
+                                }elseif($cat->category == "Womens Fashion"){
+                                    echo "<img src='images/woman-clothes.png'>";
+                                }elseif($cat->category == "Kids Fashion"){
+                                    echo "<img src='images/baby-clothes.png'>";
                                 }else{
                             ?>
                             <i class="fas fa-shopping-cart"></i>
@@ -107,7 +113,7 @@
             </nav>
         </aside>
 
-        <?php include "mobile_menu.php";?>
+        <?php include "view/mobile_menu.php";?>
         
         <section id="banner">
             <div class="slide">
@@ -438,7 +444,7 @@
                     foreach($rows as $row):
                 ?>
                 <figure>
-                    <a href="login_page.php?item=Please Login to view item">
+                    <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
                         
                         <figcaption>

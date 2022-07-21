@@ -10,7 +10,7 @@
         $today_date = date("Y-m-d");
         $order_time = date("Y-m-d h:i:s");
         $status = 0;
-        $ran_number = rand(1, 1000);
+        $ran_number = rand(1, 5000);
         $order_dt = date("Ymdhis");
         $order_num = $ran_number . $order_dt;
         $confirm_order = $connectdb->prepare("INSERT INTO orders (customer_email, item_name, quantity, item_price, company) SELECT customer_email, item_name, quantity, item_price, company FROM cart WHERE customer_email = :customer_email");
@@ -21,7 +21,7 @@
             /* insert transaction date and number */
             $trans_id = $connectdb->lastInsertId();
             $order_num = $order_num.$trans_id;
-            $insert_date = $connectdb->prepare("UPDATE  orders SET order_number = :order_number WHERE customer_email = :customer_email AND order_time = CURTIME()");
+            $insert_date = $connectdb->prepare("UPDATE orders SET order_number = :order_number WHERE customer_email = :customer_email AND order_time = CURTIME()");
             // $insert_date->bindvalue('order_date', $today_date);
             $insert_date->bindvalue('order_number', $order_num);
             $insert_date->bindvalue('customer_email', $customer);
@@ -88,10 +88,10 @@
                 
                 /* success message */
                 $_SESSION['success'] = "You have placed your order. Thank You!";
-
+                $error = $_SESSION['success'];
                 header("Location: ../view/shopping_cart.php");
                 // header("Location: index.html");
-                // return $error;
+                return $error;
             }
         }
         

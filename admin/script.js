@@ -662,6 +662,15 @@ function dispenseItemUser(order_id){
     }
     
 }
+// confirm delivery for users
+function confirmDeliveryUser(order_id){
+    let deliver = confirm("Are you sure you want to confirm this delivery?", "");
+    if(deliver){
+        window.open("../controller/confirm_delivery.php?dispense="+order_id, "_parent");
+        return;
+    }
+    
+}
 //cancel order
 function cancelOrder(order_id){
     let cancel = confirm("Are you sure you want to Cancel this order?", "");
