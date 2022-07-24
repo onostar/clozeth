@@ -15,7 +15,7 @@
 
         if(!$check_email->rowCount() > 0){
             $_SESSION['error'] = "This email doesn't exist in our servers!";
-            header("Location: ../forgot_password.php");
+            header("Location: ../view/forgot_password.php");
             
         }else{
             function smtpmailer($to, $from, $from_name, $subject, $body)
@@ -49,11 +49,11 @@
                 else 
                 {
                     
-                    $_SESSION['success'] = "Password recovery link sent to email";
+                    $_SESSION['success'] = "Password recovery link sent to your email";
                     /* unlink($ssn_folder);
                     unlink($dlf_folder);
                     unlink($dlb_folder); */
-                    header("Location: ../forgot_password.php");
+                    header("Location: ../view/forgot_password.php");
                     // return $error;
                 }
             }
@@ -63,8 +63,8 @@
             $from_name = "Clozeth";
             $name = 'Clozeth Password recovery';
             $subj = 'Clozeth Password recovery';
-            $msg = "<p>KIndly click on the link Below to reset your password!</p><br>
-            <a style='padding:20px; background:green; color:white;' href='clozeth.com/change_password.php?email=$email'>Reset Password</a>";          
+            $msg = "<p>You have sent a request for a reset of your password.<br>KIndly click on the link Below to reset your password!</p><br>
+            <a style='padding:20px; background:green; color:white;' href='https://clozeth.com/view/reset_password.php?email=$email'>Reset Password</a>";          
             $error=smtpmailer($to, $from, $name ,$subj, $msg);
         }
     }

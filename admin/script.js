@@ -195,7 +195,7 @@ $(document).ready(function(){
         
     })
 })
-/* toggle inididvual menus */
+/* toggle indidvual menus */
 $(document).ready(function(){
     $(".addMenu").click(function(){
         $(".nav1Menu").toggle();
@@ -574,6 +574,54 @@ $(document).ready(function(){
 $(document).ready(function(){
     let $row = $('#deliveriesTable tbody tr');
     $('#searchDeliveries').keyup(function() {
+        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $row.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+})
+/* search confirm deliveries for users*/
+$(document).ready(function(){
+    let $row = $('#confirmDelTable tbody tr');
+    $('#searchConfirmDel').keyup(function() {
+        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $row.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+})
+/* search cancelled orders */
+$(document).ready(function(){
+    let $row = $('#cancelledTable tbody tr');
+    $('#searchCancelled').keyup(function() {
+        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $row.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+})
+/* search customer list */
+$(document).ready(function(){
+    let $row = $('#customersTable tbody tr');
+    $('#searchCustomers').keyup(function() {
+        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $row.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+})
+/* search Highest selling items */
+$(document).ready(function(){
+    let $row = $('#highestItemsTable tbody tr');
+    $('#searchHighestItems').keyup(function() {
         let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
         $row.show().filter(function() {
@@ -1306,3 +1354,45 @@ function disableItem(item){
         return
     }
 }
+//search highest selling items with date for admin
+$(document).ready(function(){
+    $("#search_highest").click(function(){
+        let highest_from_date = document.getElementById('highest_from_date').value;
+        let highest_to_date = document.getElementById('highest_to_date').value;
+        
+        //   alert(item + restaurant);
+        $.ajax({
+            type: "POST",
+            url: "../controller/search_highest.php",
+            data: {highest_from_date:highest_from_date, highest_to_date:highest_to_date},
+            success: function(response){
+                $(".new_highest_data").html(response);
+            }
+        });
+        /* $("#itemToDelete").focus();
+        $("#itemToDelete").val(''); */
+        return false;
+    })
+
+})
+/* show frequenty asked questions */
+function showFaq(faq){
+    //hide all pages when one displays
+    // page.preventDefault();
+    document.querySelectorAll('.faq_notes').forEach(div =>{
+        div.style.display = "none";
+    });
+    document.querySelector(`#${faq}`).style.display = "block";
+    document.querySelectorAll('.faqs i').forEach(arrows =>{
+        arrows.innerHTML = "<i class='fas fa-chevron-up></i>'";
+    })
+
+}
+//make links clickable to get to its respective page
+document.addEventListener("DOMContentLoaded", function(){
+    document.querySelectorAll(".faqs").forEach(faqs => {
+        faqs.onclick = function(){
+            showFaq(this.dataset.page);
+        }
+    })
+})

@@ -13,7 +13,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
-    <link rel="icon" type="image/png" href="../images/acpn_logo.png" size="32X32">
+    <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
 </head>     
@@ -24,7 +24,7 @@
             
             <div class="login_page">
                 <h1>
-                    <a href="index.php">
+                    <a href="../index.php">
                         <img src="images/logo.png" alt="logo">
                     </a>
                 </h1>
@@ -55,7 +55,7 @@
                     
                 </form>
                 <div class="signup_option">
-                    <p>Don't have an account yet? <a href="registration.php">Signup now</a></p>
+                    <p>Don't have an account yet? <a href="../registration.php">Signup now</a></p>
                 </div>
                 <div id="foot">
                     <p >&copy;<?php echo Date("Y");?> Clozeth. All Rights Reserved.</p>
@@ -64,9 +64,8 @@
 
             </div>
             <div class="adds">
-                <!-- <h2>Eko Akete</h2>
-                <h2>2022</h2>
-                <h2>National Conference</h2> -->
+                <img src="../images/home3.jpg" alt="clozeth login banner">
+
             </div>
         </section>
     </main>

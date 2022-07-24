@@ -86,6 +86,11 @@
                             <p><span>Payment Option:</span> <?php echo $item->payment_option?></p>
                             <!-- <p><span>Order date:</span> <?php echo date("jS M, Y", strtotime($item->order_date))?></p> -->
                             <a href="javascript:void(0)" id="track">Track item <i class="fas fa-cart-plus"></i></a>
+                            <?php
+                                if($item->order_status == 0){
+                            ?>
+                            <a class="cancel_order" href="javascript:void(0)" title="Cancel Order" onclick="cancelOrder('<?php echo $item->order_id?>')">Cancel Order <i class="fas fa-plane-slash"></i></a>
+                            <?php }?>
                             <p class="dm"><?php echo "<a target='_blank' href='https://wa.me/+234".$item->contact_phone."' title='Message Store owner'><i class='fab fa-whatsapp'></i> Send us a DM</a>";?></p>
                         </figcaption>
                     </form>
@@ -99,6 +104,8 @@
                         <li><?php
                             if($item->order_status == 2){
                                 echo "Order Shipped for delivery on ".date("jS M, Y", strtotime($item->dispense_date)) . " <i class='fas fa-check'></i>";
+                            }elseif($item->order_status == -1){
+                                echo "<span>Order Shipped for delivery <i class='fas fa-ban'></i></span>";
                             }else{
                                 echo "<span>Order Shipped for delivery <i class='fas fa-spinner'></i></span>";
                             }
@@ -107,7 +114,7 @@
                             if($item->order_status == 1){
                                 echo "Order Delivered to destination on ".date("jS M, Y", strtotime($item->delivery_date)) . "<i class='fas fa-check'></i>";
                             }elseif($item->order_status == -1){
-                                echo "Order Cancelled by seller on ".date("jS M, Y", strtotime($item->delivery_date)) . "<i class='fas fa-cancel'></i>";
+                                echo "<span style='color:red;'>Order Cancelled by seller on ".date("jS M, Y", strtotime($item->delivery_date)) . " <i style='color:red' class='fas fa-plane-slash'></i></span>";
                             }else{
                                 echo "<span>Order Delivered to Destination <i class='fas fa-spinner'></i></span>";
                             }

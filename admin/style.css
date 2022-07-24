@@ -1000,6 +1000,11 @@ main hr{
     font-size:4rem;
     letter-spacing: 10px;
 }
+.adds img{
+    width:100%;
+    height:200%;
+    object-fit: cover;
+}
 #reg_form{
     width:55%;
     height:auto;
@@ -1415,6 +1420,9 @@ main hr{
     width:100%;
     position:relative;
 }
+.admin_main aside nav ul li:last-child{
+    margin-bottom:40px!important;
+}
 .admin_main aside nav ul li a{
     color:rgb(59, 57, 57);
     padding:15px 20px;
@@ -1777,10 +1785,11 @@ main hr{
     display:block;
 }
 .allResults h2{
-    font-size:1.4rem;
+    font-size:1.2rem;
     text-transform: capitalize;
     font-family:"Poppins";
     color:var(--secondaryColor);
+    margin:0!important;
 }
 .management{
     display:none;
@@ -2533,6 +2542,47 @@ main hr{
 }
 .each_prices{
     color:#222!important;
+}
+#helpCenter ul{
+    width:80%;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+}
+#helpCenter li{
+    list-style: none;
+}
+#helpCenter h4{
+    cursor: pointer;
+    font-size:1rem;
+    color:#3b3b3b;
+    font-family: "Poppins";
+    margin:5px;
+    font-weight:normal;
+}
+#helpCenter i{
+    font-size: 1.1rem;
+}
+#helpCenter i:last-child{
+    font-size: .9rem;
+}
+#helpCenter p{
+    display:none;
+    margin:0 15px;
+    border-left:1px solid rgba(102, 100, 100, .2);
+    /* transform: scale(0); */
+    padding:10px;
+    animation:.3s faq 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+@keyframes faq{
+    0%{
+        transform:translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
 }
 @media screen and (max-width: 800px){
     #topHeader{

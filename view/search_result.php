@@ -45,7 +45,7 @@
                 if(isset($_POST['search'])){
                     $item_search = ucwords(htmlspecialchars(stripslashes($_POST['search_items'])));
 
-                    $search_query = $connectdb->prepare("SELECT * FROM menu WHERE item_name LIKE '%$item_search%' OR company LIKE '%$item_search%' OR item_category LIKE '%$item_search%' ORDER BY item_name");
+                    $search_query = $connectdb->prepare("SELECT menu.item_name, menu.item_foto, menu.item_prize, menu.company, exhibitors.company_name FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND menu.item_name LIKE '%$item_search%' OR exhibitors.company_name LIKE '%$item_search%' OR item_category LIKE '%$item_search%' ORDER BY item_name");
                     $search_query->execute();   
                 }
 

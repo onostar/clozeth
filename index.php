@@ -44,7 +44,7 @@
     </div>
 <div class="main"> -->
     <?php include "header.php";?>
-    <p class="successful">
+    <!-- <p class="successful">
         <?php
             if(isset($_SESSION['success'])){
                 echo $_SESSION['success'];
@@ -57,7 +57,7 @@
                 unset($_SESSION['error']);
             }
         ?>
-    </p>
+    </p> -->
     <section id="bannerContents">
         <aside id="asideLeft" class="main_cat">
             <nav id="index_nav">
@@ -134,7 +134,7 @@
                 <div class="slides">
                     
                     <div class="slide_img">
-                        <img src="images/home3.jpg" alt="ACPN Banner">
+                        <img src="images/home3.jpg" alt="Banner">
                     </div>
                     <div class="description">
                     <h2>The home of exclusive fashion</h2>
@@ -169,7 +169,7 @@
             <nav id="help">
                 <ul>
                     <li>
-                        <a href="contact.php" title="Get in touch">
+                        <a href="view/help_center.php" title="Get in touch">
                             <i class="far fa-question-circle"></i>
                             <div class="note">
                                 <h3>Help center</h3>

@@ -76,21 +76,26 @@
                             <p>Qty: <?php echo $row->quantity;?></p>
                             <p>Amount: ₦<?php echo number_format($row->item_price);?></p>
                             <!-- <p>Ordered: <?php echo date("M jS, Y", strtotime($row->order_date));?></p> -->
+                            <div class="status_order"> 
+                                <?php 
+                                    $order_status = 
+                                    $row->order_status;
+                                    if($order_status == 1){
+                                        echo "<p style='background:green;'>Delivered <i class='fas fa-truck'></i></p>";
+                                    }elseif($order_status == -1){
+                                        echo "<p style='background:red;'>Cancelled <i class='fas fa-plane-slash'></i></p>";
+                                    }elseif($order_status == 2){
+                                        echo "<p style='background:hsl(180, 81%, 24%, .8);'>On transit <i class='fas fa-plane'></i></p>";
+                                    }else{
+                                        echo "<p style='background:hsla(202, 81%, 22%, .9);'>Processing <i class='fas fa-spinner'></i></p>";
+                                    
+                                ?>
+                                    <a class="cancel_order" href="javascript:void(0);" title="Cancel Order" onclick="cancelOrder('<?php echo $row->order_id?>')">Cancel Order <i class="fas fa-plane-slash"></i></a>
+                                <?php }?>
+                            </div>
                         </div>
-                        <div class="status_order"> 
-                            <?php 
-                                $order_status = 
-                                $row->order_status;
-                                if($order_status == 1){
-                                    echo "<p style='background:green;'>Delivered <i class='fas fa-truck'></i></p>";
-                                }elseif($order_status == -1){
-                                    echo "<p style='background:red;'>Cancelled <i class='fas fa-plane-slash'></i></p>";
-                                }elseif($order_status == 2){
-                                    echo "<p style='background:hsl(180, 81%, 24%, .8);'>On transit <i class='fas fa-plane'></i></p>";
-                                }else{
-                                    echo "<p style='background:hsla(202, 81%, 22%, .9);'>Order Processing <i class='fas fa-spinner'></i></p>";
-                                }
-                            ?>
+                        <div class="status_order">
+                            <a href="javascript:void(0)" title="View Order details" onclick="viewOrder('<?php echo $row->order_id?>')">Show details</a>
                         </div>
                     </figcaption>
                 </figure>

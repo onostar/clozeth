@@ -336,3 +336,14 @@ function viewOrder(order){
     return;
 }
 
+//cancel order
+function cancelOrder(order_id){
+    let cancel = confirm("Are you sure you want to Cancel this order?", "");
+    if(cancel){
+        window.open("../controller/cancel_order.php?cancel="+order_id, "_parent");
+        return;
+    }
+    
+}
+
+

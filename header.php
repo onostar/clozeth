@@ -49,7 +49,7 @@
             <i class="fas fa-chevron-down"></i></button>
         <div class="login_option" id="account">
             <div>
-                <a href="view/account.php" class="signupBtn">My Account</a>
+                <a href="view/account.php" class="signupBtn">My Profile</a>
                 <a href="view/order_history.php" class="signupBtn">My orders</a>
                 <button id="logoutBtn"><a href="controller/logout.php">Logout</a></button>
                 
@@ -58,7 +58,7 @@
             <?php
                 }else{
             ?>
-            <button id="loginDiv"><i class="far fa-user"></i> Account <i class="fas fa-chevron-down"></i></button>
+            <button id="loginDiv"><i class="far fa-user"></i> Your Account <i class="fas fa-chevron-down"></i></button>
             <div class="login_option">
                 <div>
                     <button id="loginBtn"><a href="login_page.php">Login<i class="fas fa-sign-in-alt"></i></a></button>

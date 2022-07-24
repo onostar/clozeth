@@ -126,6 +126,7 @@
 
             </div>
             <div class="adds" id="reg_adds">
+                <img src="images/home3.jpg" alt="clozeth login banner">
                 
             </div>
         </section>
