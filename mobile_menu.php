@@ -17,25 +17,25 @@
                     
                 ?>
                 
-                <a class="logout" title="Logout" href="../controller/logout.php"><i class="fas fa-power-off"></i></a>
+                <a class="logout" title="Logout" href="controller/logout.php"><i class="fas fa-power-off"></i></a>
                 
             <?php
                 }else{    
             ?>
-            <button id="loginDiv"><i class="far fa-user"></i> <a href="login_page.php">Singn in</a> <i class="fas fa-sign-in-alt"></i></button>
+            <button id="loginDiv"><i class="far fa-user"></i> <a href="login_page.php">Sign in</a> <i class="fas fa-sign-in-alt"></i></button>
             <?php }?>
         </div>
         <nav id="index_nav">
             <ul>
                 <?php if(isset($_SESSION['user'])){
                 ?>
-                <li class="user"><a href="account.php" class="signupBtn"><i class="fas fa-user-cog"></i> My Profile</a></li>
-                <li class="user"><a href="order_history.php" class="signupBtn"><i class="fas fa-cart-arrow-down"></i> orders</a></li>
+                <li class="user"><a href="view/account.php" class="signupBtn"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                <li class="user"><a href="view/order_history.php" class="signupBtn"><i class="fas fa-cart-arrow-down"></i> orders</a></li>
                 
                 <?php
                     }else{    
                 ?>
-                <li><a href="../admin/index.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
+                <li><a href="admin/index.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
                 <?php }?>
                     <h3>Our Categories</h3>
                     <?php
@@ -127,7 +127,7 @@
 <!-- cart and notification for mobile -->
 <?php if(isset($_SESSION['user'])){?>
 <div class="cart_not">
-    <a href="shopping_cart.php" title="view cart" class="mobile_cart"><i class="fas fa-shopping-cart"></i><span id="cart_value">
+    <a href="view/shopping_cart.php" title="view cart" class="mobile_cart"><i class="fas fa-shopping-cart"></i><span id="cart_value">
     <?php
         $cart_num = $connectdb->prepare("SELECT * FROM cart WHERE customer_email = :customer_email");
         $cart_num->bindvalue('customer_email', $user);
@@ -143,7 +143,7 @@
     <!-- notification -->
     <?php if(isset($_SESSION['user'])){?>
         <div class="notification">
-            <a href="notifications.php" title="Notifications">
+            <a href="view/notifications.php" title="Notifications">
             <i class="fas fa-bell"></i> 
                 <?php
                     $get_not = $connectdb->prepare("SELECT * FROM notifications WHERE customer_email =:customer_email AND status = 0");

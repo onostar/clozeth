@@ -40,46 +40,34 @@
     <?php include "mobile_menu.php";?>
 
     <main>
-        <section id="help_center">
-            <div class="help_logo">
-                <i class="fas fa-headset"></i>
-                <h3>HELP<span>Center</span></h3>
-            </div>
-            <h2>Clozeth customer care</h2>
-            <p class="help_p">How can we be of help?</p>
-            <input type="search" placeholder="Describe your issues">
-
-            <div class="help_popular">
-                <div class="help_pop">
-                    <a href="help.php" title="How to place orders">
-                        <i class="fas fa-cart-plus"></i>
-                        <p>Place order</p>
-                    </a>
+        <section id="helpNotes">
+            <figure class="help_banner">
+                <div class="help_img">
+                    <img src="../images/shop_owner.webp" alt="order & track banner">
                 </div>
-                <div class="help_pop">
-                    <a href="help.php#trackOrder" class="help_link" data-page="trackOrder" title="How to track orders">
-                        <i class="fas fa-truck-moving"></i>
-                        <p>Track order</p>
-                    </a>
+                <figcaption>
+                    <h2>Refunds and return of items</h2>
+                    <i class="fas fa-truck-moving"></i>
+                <figcaption>
+            </figure>
+            <div class="all_helps">
+                <div class="help_links">
+                    <p class="help_link active_help" data-page="placeOrder">Refunds & returns</p>
+                    
                 </div>
-                <div class="help_pop">
-                    <a href="order_cancellation.php" title="Policies for order cancellation">
-                        <i class="fas fa-luggage-cart"></i>
-                        <p>Order cancellation</p>
-                    </a>
+                <div class="help_details" id="placeOrder">
+                    <div class="place_order_tips">
+                        <div class="tips_img">
+                            <img src="../images/shop_owner.jpg" alt="order tips">
+                        </div>
+                        <div class="order_tips">
+                            <p>All items on clozeth are strictly under a return and refund policy enacted by Clozeth. <br>Customers are expected to get exactly what they ordered for, if there is a breach of contract, the customer shall duely refund payments and be purnished by the clozeth team.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="help_pop">
-                    <a href="refunds.php" title="Refund policies">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <p>Refunds & Returns</p>
-                    </a>
-                </div>
-                <div class="help_pop">
-                    <a href="payments.php" title="How to make payment">
-                        <i class="fas fa-credit-card"></i>
-                        <p>Payments</p>
-                    </a>
-                </div>
+                
+                
+                
             </div>
         </section>
         

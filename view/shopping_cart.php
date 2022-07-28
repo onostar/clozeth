@@ -122,7 +122,7 @@
                     <div class="order_or_clear">
                         <form action="../controller/order.php" method="POST" class="order_form">
                             <input type="hidden" name="customer" value="<?php echo $user?>">
-                            <button type="submit" name="order" id="order"><i class="fas fa-wallet"></i> Check out</button>
+                            <button type="submit" name="order" id="order"><i class="fas fa-wallet"></i> Confirm order</button>
                         </form>
                         <form action="../controller/clear_cart.php" method="POST" class="clear_cart_form">
                             <input type="hidden" name="customer_email" value="<?php echo $user;?>">

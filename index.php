@@ -113,7 +113,7 @@
             </nav>
         </aside>
 
-        <?php include "view/mobile_menu.php";?>
+        <?php include "mobile_menu.php";?>
         
         <section id="banner">
             <div class="slide">
@@ -148,7 +148,6 @@
                     
                 </div>
                 <div class="slides">
-                    
                     <div class="slide_img">
                         <img src="images/home.jpg" alt="Clozeth Banner">
                     </div>
@@ -178,7 +177,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="about.php" title="who we are">
+                        <a href="javascript:void(0)" title="who we are">
                             <i class="fas fa-street-view"></i>
                             <div class="note">
                                 <h3>About us</h3>
@@ -187,7 +186,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a href="view/refunds.php">
                             <i class="fas fa-hand-holding-usd"></i>
                             <div class="note">
                                 <h3>Refunds</h3>
@@ -632,3 +631,4 @@
     <script src="controller/script.js"></script>
 </body>
 </html>
+

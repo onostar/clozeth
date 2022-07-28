@@ -16,18 +16,19 @@
                 </div>
             </section>
         </section>
+        <div class="socialLinks">
+            <a target="_blank" href="#" title="Follow Clozeth on facebook" style="color:#4267B2"><i class="fab fa-facebook-square"></i></a>
+            <a target="_blank" href="#" title="Follow Clozeth on twitter" style="color:#1DA1F2"><i class="fab fa-twitter-square"></i></a>
+            <a target="_blank" href="#" title="Follow Clozeth on instagram" style="color:#cd486b"><i class="fab fa-instagram-square"></i></a>
+            <a target="_blank" href="#" title="Follow Clozeth on Linkedin" style="color:#0072b1"><i class="fab fa-linkedin"></i></a>
+            <!-- <a target="_blank" href="#" title="Join us on whatsapp" style="color:#25D366"><i class="fab fa-whatsapp"></i></a> -->
+        </div>
         <section class="secondaryFooter">
             <p>&copy;<?php echo date("Y")?> Clozeth. All Rights Reserved.</p>
         </section>
     </footer>
 
-    <div class="socialLinks">
-        <a target="_blank" href="#" title="Follow Clozeth on facebook" style="color:#4267B2"><i class="fab fa-facebook-square"></i></a>
-        <a target="_blank" href="#" title="Follow Clozeth on twitter" style="color:#1DA1F2"><i class="fab fa-twitter-square"></i></a>
-        <a target="_blank" href="#" title="Follow Clozeth on instagram" style="color:#cd486b"><i class="fab fa-instagram-square"></i></a>
-        <a target="_blank" href="#" title="Follow Clozeth on Linkedin" style="color:#0072b1"><i class="fab fa-linkedin"></i></a>
-        <!-- <a target="_blank" href="#" title="Join us on whatsapp" style="color:#25D366"><i class="fab fa-whatsapp"></i></a> -->
-    </div>
+    
     <div class="toTop">
         <a href="#banner" title="Go to top"><i class="fas fa-chevron-up"></i></a>
     </div>
