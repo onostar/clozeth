@@ -73,14 +73,15 @@
             <div class="notification">
                 <a href="notifications.php" title="Notifications">
                 <i class="fas fa-bell"></i> 
-                    <?php
-                        $get_not = $connectdb->prepare("SELECT * FROM notifications WHERE customer_email =:customer_email AND status = 0");
-                        $get_not->bindvalue("customer_email", $user);
-                        $get_not->execute();
+                    <span>
+                        <?php
+                            $get_not = $connectdb->prepare("SELECT * FROM notifications WHERE customer_email =:customer_email AND status = 0");
+                            $get_not->bindvalue("customer_email", $user);
+                            $get_not->execute();
 
-                        echo $get_not->rowCount();
-                    ?>
-                    
+                            echo $get_not->rowCount();
+                        ?>
+                    </span>
                 </a>
             </div>
         <?php }?>

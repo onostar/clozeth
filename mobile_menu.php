@@ -30,7 +30,7 @@
                 <?php if(isset($_SESSION['user'])){
                 ?>
                 <li class="user"><a href="view/account.php" class="signupBtn"><i class="fas fa-user-cog"></i> My Profile</a></li>
-                <li class="user"><a href="view/order_history.php" class="signupBtn"><i class="fas fa-cart-arrow-down"></i> orders</a></li>
+                <li class="user"><a href="view/order_history.php" class="signupBtn"><i class="fas fa-cart-arrow-down"></i> My orders</a></li>
                 
                 <?php
                     }else{    
@@ -83,7 +83,7 @@
         <hr>
         <nav id="help">
             <ul>
-            <li>
+                <li>
                         <a href="view/help_center.php" title="Get in touch">
                             <i class="far fa-question-circle"></i>
                             <div class="note">
@@ -144,15 +144,16 @@
     <?php if(isset($_SESSION['user'])){?>
         <div class="notification">
             <a href="view/notifications.php" title="Notifications">
-            <i class="fas fa-bell"></i> 
-                <?php
-                    $get_not = $connectdb->prepare("SELECT * FROM notifications WHERE customer_email =:customer_email AND status = 0");
-                    $get_not->bindvalue("customer_email", $user);
-                    $get_not->execute();
+            <i class="fas fa-bell"></i>
+                <span>
+                    <?php
+                        $get_not = $connectdb->prepare("SELECT * FROM notifications WHERE customer_email =:customer_email AND status = 0");
+                        $get_not->bindvalue("customer_email", $user);
+                        $get_not->execute();
 
-                    echo $get_not->rowCount();
-                ?>
-                
+                        echo $get_not->rowCount();
+                    ?>
+                </span>
             </a>
         </div>
     <?php }?>

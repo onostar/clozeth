@@ -280,6 +280,16 @@ header{
     color:#fff;
     padding:10px 5px;
 }
+.notification{
+    position:relative;
+
+}
+.notification span{
+    position:absolute;
+    top:-50%;
+    left:80%;
+    color: var(--secondaryColor);
+}
 .cart{
     margin-right:10px;
 }
@@ -290,8 +300,8 @@ header{
     color:var(--secondaryColor);
 }
 .cart a #cart_value{
-    padding:5px;
-    background:var(--primaryColor);    
+    padding:2px 5px;
+    background:var(--secondaryColor);    
     color:#fff;
     border-radius:50%;
 }
@@ -2280,7 +2290,7 @@ color: rgb(231, 226, 226);
     #mobile_menu #asideLeft{
         width:100%;
         margin-right:0;
-        overflow-y:scroll;
+        overflow:scroll;
     }
     #mobile_menu #asideLeft li a{
         /* color:rgba(68, 66, 66, .8); */
@@ -2359,13 +2369,14 @@ color: rgb(231, 226, 226);
     .cart_not{
         display:block;
         position:fixed;
-        right:1%;
+        right:2%;
         top:30%;
         z-index:3;
     }
     .cart_not .mobile_cart{
         margin:0;
         padding:0;
+        position:relative;
         /* color:var(--secondaryColor)!important; */
         
     }
@@ -2374,15 +2385,28 @@ color: rgb(231, 226, 226);
         font-size:1.2rem;
     }
     .mobile_cart #cart_value{
-        padding:3px;
+        padding:2px 5px;
         background:var(--primaryColor);    
         color:#fff;
         border-radius:50%;
         margin:0;
+        position:absolute;
+        top:-100%;
+        left:60%;
 
     }
     .cart_not .notification{
-        margin-top: 20px;
+        margin: 50px 0 0 0;
+    }
+    .cart_not .notification a{
+        position:relative;
+    }
+    .cart_not .notification i{
+        color:var(--secondaryColor);
+
+    }
+    .cart_not .notification span{
+        color:var(--primaryColor);
     }
     #banner{
         width:100%;
