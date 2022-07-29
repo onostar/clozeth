@@ -132,7 +132,6 @@
                     </div>
                 </div>
                 <div class="slides">
-                    
                     <div class="slide_img">
                         <img src="images/home3.jpg" alt="Banner">
                     </div>
@@ -143,9 +142,7 @@
                             <a class="appointment" href="javascript:void(0);"><i class="fas fa-paper-plane"></i> Get in touch</a>
                             <!-- <a href="javascript:void(0);"><i class="fas fa-photo-video"></i> View Media</a> -->
                         </div>
-                        
                     </div>
-                    
                 </div>
                 <div class="slides">
                     <div class="slide_img">
@@ -153,7 +150,7 @@
                     </div>
                     <div class="description">
                     <h2>Online all the time</h2>
-                        <p>Shope with us all day</p>
+                        <p>Shop with us all day</p>
                         <div class="links">
                             <a href="view/all_items.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                             <!-- <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a> -->
@@ -357,7 +354,7 @@
                                 $get_category->bindvalue("category_id",$row->item_category);
                                 $get_category->execute();
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
-                                <span>₦ <?php echo number_format($row->item_prize)?></span>
+                                <span>₦<?php echo number_format($row->item_prize)?></span>
                             </div>
                             <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
                         </figcaption>
@@ -617,7 +614,7 @@
         <?php }?>
     </main>
     <footer>
-        <?php include "view/footer.php"; ?>
+        <?php include "footer.php"; ?>
     </footer>
     <!-- <div id="loginPrompt">
         <p>Kindly Login to View Item!</p>

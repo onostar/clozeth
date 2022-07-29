@@ -264,7 +264,7 @@ $(document).ready(function(){
 
 //display featured items on scroll
 function displayFeatured(){
-    if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
+    if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
         document.getElementById("featured").style.display = "block";
     }else{
         document.getElementById("featured").style.display = "none";
@@ -272,7 +272,7 @@ function displayFeatured(){
 }
 //display shop items on scroll
 function displayAllItems(){
-    if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
+    if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
         document.getElementById("all_items").style.display = "block";
     }else{
         document.getElementById("all_items").style.display = "none";
@@ -346,4 +346,7 @@ function cancelOrder(order_id){
     
 }
 
-
+// close add to cart success box
+setTimeout(function(){
+    $(".success_box").hide();
+},3000);

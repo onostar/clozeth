@@ -55,19 +55,19 @@
                                 }elseif($cat->category == "Beddings"){
                                     echo "<i class='fas fa-bed'></i>";
                                 }elseif($cat->category == "Hairs And Wigs"){
-                                    echo "<img src='images/hair_wig.png'>";
+                                    echo "<img src='../images/hair_wig.png'>";
                                 }elseif($cat->category == "Jewelries"){
-                                    echo "<img src='images/necklace.png'>";
+                                    echo "<img src='../images/necklace.png'>";
                                 }elseif($cat->category == "Wrist Watches"){
-                                    echo "<img src='images/wrist-watch.png'>";
+                                    echo "<img src='../images/wrist-watch.png'>";
                                 }elseif($cat->category == "Shoes"){
-                                    echo "<img src='images/sport-shoe.png'>";
+                                    echo "<img src='../images/sport-shoe.png'>";
                                 }elseif($cat->category == "Mens Fashion"){
-                                    echo "<img src='images/hawaiian-shirt.png'>";
+                                    echo "<img src='../images/hawaiian-shirt.png'>";
                                 }elseif($cat->category == "Womens Fashion"){
-                                    echo "<img src='images/woman-clothes.png'>";
+                                    echo "<img src='../images/woman-clothes.png'>";
                                 }elseif($cat->category == "Kids Fashion"){
-                                    echo "<img src='images/baby-clothes.png'>";
+                                    echo "<img src='../images/baby-clothes.png'>";
                                 }else{
                             ?>
                             <i class="fas fa-shopping-cart"></i>

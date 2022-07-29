@@ -29,6 +29,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="images/logo.png" size="32X32">
     <link rel="stylesheet" href="controller/style.css">
     
@@ -48,7 +49,7 @@
                         $item_id = $_GET['item'];
                     
 
-                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, menu.payment_option, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
+                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, menu.payment_option, menu.delivery_time, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
                         $view_item->bindvalue('item_id', $item_id);
                         $view_item->execute();
 
@@ -78,8 +79,9 @@
                                 <img src="<?php echo "admin/logos/".$item->company_logo;?>" alt="company">
                                 <!-- view store  -->
                                 <?php
-                                    echo "<a href='view/exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-store'></i> Visit store</a>";
+                                    echo "<a href='view/exhibitor_menu.php?company=".$item->reg_number."'><i class='fas fa-shop'></i> Visit store</a>";
                                 ?>
+                                
                             </div>
                             <div class="clear"></div>
                             <p><span>Name:</span> <?php echo $item->item_name?></p>
@@ -87,7 +89,8 @@
                             <p><span>Amount:</span> ₦<?php echo number_format($item->item_prize)?></p>
                             <p><span>Company:</span> <?php echo $item->company_name?></p>
                             <p><span>Payment Option:</span> <?php echo $item->payment_option?></p>
-                            <input type="number" id="quantity" name="quantity" required placeholder="Select Quantity">
+                            <p><span>Delivery time:</span> <?php echo $item->delivery_time?></p>
+                            <input type="number" id="quantity" title="Enter quantity" name="quantity" required placeholder="Quantity">
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
                             <p class="dm"><?php echo "<a target='_blank' href='https://wa.me/+234".$item->contact_phone."' title='Message Store owner'><i class='fab fa-whatsapp'></i> Send us a DM</a>";?></p>
                         </figcaption>
@@ -157,15 +160,9 @@
         </section> -->
         
     </main>
-    <?php
-        /* if(isset($_SESSION['error_box'])){
-            echo "<div class='error_box'><p>" . $_SESSION['error_box'] . "</p>
-            <button id='close_error'>Ok</button></div>";
-            unset($_SESSION['error_box']);
-        } */
-    ?>
+    
     <footer>
-        <?php include "view/footer.php";?>
+        <?php include "footer.php";?>
     </footer>
     <!-- <script src="bootstrap.min.js"></script> -->
     <script src="controller/jquery.js"></script>

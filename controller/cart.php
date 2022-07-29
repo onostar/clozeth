@@ -29,8 +29,10 @@
         $check_user->execute();
 
         if($check_user->rowCount() > 0){
-            echo "<script>alert('".$item_name." already in Cart!');
-            window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>";
+            $_SESSION['cart_already'] = "";
+            header("Location: ../view/item_info.php?item=".$item_id);
+            /* echo "<script>alert('".$item_name." already in Cart!');
+            window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>"; */
             // header("Location: main.php");
             /* $_SESSION['error_box'] = "$item_name from $item_restaurant already in Cart!";
             header("Location: main.php"); */
@@ -45,10 +47,11 @@
             $add_cart->execute();
 
             if($add_cart){
-                echo "<script>alert('".$item_name. " added to cart!');
-                window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>";
+                $_SESSION['cart_added'] = "";
+                /* echo "<script>alert('".$item_name. " added to cart!');
+                window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>"; */
                 // $_SESSION['success'] = "$category added Successfully!";
-                // header("Location: ../view/main.php");
+                header("Location: ../view/item_info.php?item=".$item_id);
             }else{
                 echo "<script>alert('Item not added!');
                 window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>";
