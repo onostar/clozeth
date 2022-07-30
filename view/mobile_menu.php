@@ -35,7 +35,7 @@
                 <?php
                     }else{    
                 ?>
-                <li><a href="../admin/index.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
+                <li><a href="sellers.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
                 <?php }?>
                     <h3>Our Categories</h3>
                     <?php

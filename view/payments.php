@@ -43,7 +43,7 @@
         <section id="helpNotes">
             <figure class="help_banner">
                 <div class="help_img">
-                    <img src="../images/shop_owner.webp" alt="order & track banner">
+                    <img src="../images/payment2.webp" alt="order & track banner">
                 </div>
                 <figcaption>
                     <h2>How to make payments</h2>
@@ -58,10 +58,10 @@
                 <div class="help_details" id="placeOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/shop_owner.jpg" alt="order tips">
+                            <img src="../images/payment.png" alt="order tips">
                         </div>
                         <div class="order_tips">
-                            <p>Items ordered for can be paid for after seller has contacted you. You can send money for the product to the customer after sending you payment details.</p>
+                            <p>Items ordered for can be paid for after seller has contacted you. You can send money for the product to the customer after sending your payment details.</p>
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
             $customer = $show->customer_email;
             $order_id = $show->order_number;
             $item_name = $show->item_name;
-            $company = $show->company;
+            $companys = $show->company;
             }
             //get customer name
             $get_name = $connectdb->prepare("SELECT first_name, last_name FROM shoppers WHERE email = :email");
@@ -34,13 +34,14 @@
             }
             //get company details
             $get_company = $connectdb->prepare("SELECT company_email, company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
-            $get_company->bindvalue("exhibitor_id", $company);
+            $get_company->bindvalue("exhibitor_id", $companys);
             $get_company->execute();
             $sellers = $get_company->fetchAll();
             foreach($sellers as $seller){
-                $seller = $seller->company_name;
-                $seller_mail = $seller->company_mail;
+                $seller_com = $seller->company_name;
+                $seller_mail = $seller->company_email;
             }
+            // echo $seller_mail;
             //send notification and email to customer
             /* $subject = "Order Cancelled";
             $details = "Hello $seller, an order '$item_name', with order number: $order_id has been Cancelled for some reason by the shopper. "; */
@@ -102,7 +103,7 @@
             $from_name = "Clozeth";
             $name = 'Clozeth Cancelled Order';
             $subj = "$item_name order Cancelled";
-            $msg = "<p>Hello $seller, an order '$item_name', with order number: $order_id has been Cancelled for some reason by $full_name. </p>";
+            $msg = "<p>Hello $seller_com, an order '$item_name', with order number: $order_id has been Cancelled for some reason by $full_name. </p>";
             
             $error=smtpmailer($to, $from, $name ,$subj, $msg);
         }else{

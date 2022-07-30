@@ -25,6 +25,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
@@ -68,15 +69,12 @@
                         <div class="order_details">
                             <h4>Order#: <?php echo $row->order_number;?></h4>
                             <p id="name"><?php echo $row->item_name;?></p>
-                            <p><i class="fas fa-store"></i> <?php
-                            $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
-                            $get_company->bindvalue("exhibitor_id",$row->company);
-                            $get_company->execute();
-                            $com = $get_company->fetch(); echo $com->company_name;?></p>
+                            
                             <p>Qty: <?php echo $row->quantity;?></p>
                             <p>Amount: ₦<?php echo number_format($row->item_price);?></p>
+                            <p>Ordered on <?php echo date("jS M, Y", strtotime($row->order_date))?></p>
                             <!-- <p>Ordered: <?php echo date("M jS, Y", strtotime($row->order_date));?></p> -->
-                            <div class="status_order"> 
+                            <div class="status_order" id="status_flex"> 
                                 <?php 
                                     $order_status = 
                                     $row->order_status;
@@ -88,14 +86,13 @@
                                         echo "<p style='background:hsl(180, 81%, 24%, .8);'>On transit <i class='fas fa-plane'></i></p>";
                                     }else{
                                         echo "<p style='background:hsla(202, 81%, 22%, .9);'>Processing <i class='fas fa-spinner'></i></p>";
-                                    
                                 ?>
-                                    <a class="cancel_order" href="javascript:void(0);" title="Cancel Order" onclick="cancelOrder('<?php echo $row->order_id?>')">Cancel Order <i class="fas fa-plane-slash"></i></a>
+                                    <a class="cancel_order" id="showHistory" href="javascript:void(0);" title="Cancel Order" onclick="cancelOrder('<?php echo $row->order_id?>')">Cancel Order <i class="fas fa-plane-slash"></i></a>
                                 <?php }?>
                             </div>
                         </div>
                         <div class="status_order">
-                            <a href="javascript:void(0)" title="View Order details" onclick="viewOrder('<?php echo $row->order_id?>')">Show details</a>
+                            <a href="javascript:void(0)" title="View Order details" onclick="viewOrder('<?php echo $row->order_id?>')">Show details <i class="fas fa-eye"></i></a>
                         </div>
                     </figcaption>
                 </figure>

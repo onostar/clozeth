@@ -43,7 +43,7 @@
         <section id="helpNotes">
             <figure class="help_banner">
                 <div class="help_img">
-                    <img src="../images/shop_owner.webp" alt="order & track banner">
+                    <img src="../images/order_cancel.jpg" alt="order & track banner">
                 </div>
                 <figcaption>
                     <h2>How & When to cancel orders</h2>
@@ -59,7 +59,7 @@
                 <div class="help_details" id="placeOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/shop_owner.jpg" alt="order tips">
+                            <img src="../images/cancel2.jpg" alt="order tips">
                         </div>
                         <div class="order_tips">
                             <p>An order can conly be cancelled if it has not been shipped by the seller. Once shipped, Cancellation option will be removed</p>
@@ -69,7 +69,7 @@
                 <div class="help_details" id="trackOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/home.jpg" alt="order tips">
+                            <img src="../images/cancel2.jpg" alt="order tips">
                         </div>
                         <div class="order_tips">
                             <p>To cancel an order, pls follow theses steps below:</p>

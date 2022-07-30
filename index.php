@@ -107,7 +107,7 @@
                         echo "";
                     }else{    
                     ?>
-                    <li><a href="admin/index.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
+                    <li><a href="view/sellers.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
                     <?php }?>
                 </ul>
             </nav>

@@ -43,7 +43,7 @@
         <section id="helpNotes">
             <figure class="help_banner">
                 <div class="help_img">
-                    <img src="../images/shop_owner.webp" alt="order & track banner">
+                    <img src="../images/place_order3.jpg" alt="order & track banner">
                 </div>
                 <figcaption>
                     <h2>How to Place & track orders</h2>
@@ -61,7 +61,7 @@
                 <div class="help_details" id="placeOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/shop_owner.jpg" alt="order tips">
+                            <img src="../images/place_order2.jpg" alt="order tips">
                         </div>
                         <div class="order_tips">
                             <p><strong>To place an order, kindly follow the steps below:</strong></p>
@@ -78,7 +78,7 @@
                 <div class="help_details" id="trackOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/home.jpg" alt="order tips">
+                            <img src="../images/track_order.png" alt="order tips">
                         </div>
                         <div class="order_tips">
                             <p>To track your orders kindly follow the steps below</p>
@@ -100,28 +100,31 @@
                     <div id="helpCenter">
                         <ul>
                             <li>
-                                <h4 data-page="how_add_items" class="faqs"> How do i add items to my store <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_add_items" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_add_items" class="faqs"> How do i contact a seller <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_add_items" class="faq_notes">Click on an item you want to order and click on send us a dm to contact the seller. Or Click on companies or stores on the home page and select your desired seller to communicate with.<br>
+                                Now click on the whatsapp icon to start chatting with the seller.
+                                </p>
                             </li>
                             <li>
-                                <h4 data-page="how_change_price" class="faqs">How to change price of an item <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_change_price" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_change_price" class="faqs">Can i add more than one item to my cart? <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_change_price" class="faq_notes">Yes! Simply select the item you want to order and add to cart. Search for another and add to cart.<br>When you are done, head on to your cart to complete your order</p>
                             </li>
                             <li>
-                                <h4 data-page="how_deactivate" class="faqs">Deactivate an item <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_deactivate" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_deactivate" class="faqs">How do i make payments <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_deactivate" class="faq_notes">Payments on clozeth is strictly between you and the seller.<br>
+                            For every item you order, please contact the seller for payment details via chat. However, the sellers will always contact you for every order you make on clozeth.</p>
                             </li>
                             <li>
-                                <h4 data-page="how_incoming_orders" class="faqs">Manage incoming orders <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_incoming_orders" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_incoming_orders" class="faqs">Can i order items without signing in? <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_incoming_orders" class="faq_notes">No. You must login for you to be able to add items to your cart. However, you can view the item info, contact sellers and more.</p>
                             </li>
                             <li>
-                                <h4 data-page="how_deliveries" class="faqs">Manage Deliveries <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_deliveries" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_deliveries" class="faqs">Are prices on clozeth negotiable? <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_deliveries" class="faq_notes">Prices for products are non-negotiable on clozeh. However, you can communicate with the seller via whatsapp and establish a transaction.</p>
                             </li>
                             <li>
-                                <h4 data-page="how_cancel_order" class="faqs">How to cancel an order <i class="fas fa-chevron-down"></i></h4>
-                                <p id="how_cancel_order" class="faq_notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas hic aliquam ipsum laudantium culpa sunt dolore porro aliquid odio excepturi? Beatae eligendi vel voluptate cum nostrum dicta fuga nisi placeat?</p>
+                                <h4 data-page="how_cancel_order" class="faqs">Are there any hidden cost if i order from clozeth? <i class="fas fa-chevron-down"></i></h4>
+                                <p id="how_cancel_order" class="faq_notes">All item prices are fixed and no extra charges from clozeth. However, extra charges such as delivery fee may be charged by the seller</p>
                             </li>
                         </ul>
                     </div>

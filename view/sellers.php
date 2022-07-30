@@ -20,9 +20,9 @@
                 $user_info->bindvalue('email', $user);
                 $user_info->execute();
                 $view = $user_info->fetch();
-                echo $view->first_name . " " . $view->last_name. " - Help center";
+                echo $view->first_name . " " . $view->last_name. " - Sell on Clozeth";
             }else{
-                echo "Clozeth | Help center";
+                echo "Sell on Clozeth";
             }
          ?>
 
@@ -30,6 +30,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
@@ -43,27 +44,39 @@
         <section id="helpNotes">
             <figure class="help_banner">
                 <div class="help_img">
-                    <img src="../images/return_policy.png" alt="order & track banner">
+                    <img src="../images/sell_online.jpg" alt="order & track banner">
                 </div>
                 <figcaption>
-                    <h2>Refunds and return of items</h2>
-                    <i class="fas fa-truck-moving"></i>
+                    <h2>Become a seller on Clozeth</h2>
+                    <i class="fas fa-box-check"></i>
                 <figcaption>
             </figure>
             <div class="all_helps">
                 <div class="help_links">
-                    <p class="help_link active_help" data-page="placeOrder">Refunds & returns</p>
+                    <p class="help_link active_help" data-page="placeOrder">Why sell on clozeth</p>
                     
                 </div>
                 <div class="help_details" id="placeOrder">
                     <div class="place_order_tips">
                         <div class="tips_img">
-                            <img src="../images/return_policy2.jpg" alt="order tips">
+                            <img src="../images/online_shop2.jpg" alt="order tips">
                         </div>
                         <div class="order_tips">
-                            <p>All items on clozeth are strictly under a return and refund policy enacted by Clozeth. <br>Customers are expected to get exactly what they ordered for, if there is a breach of contract, the customer shall duely refund payments and be purnished by the clozeth team.</p>
+                            <p><strong>Ready to sell? Launch your brand today on clozeth with great benefits.</strong></p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Get connected with more customers</li>
+                                <li><i class="fas fa-check"></i> Sell more products with different designs</li>
+                                <li><i class="fas fa-check"></i> Top notch 24/7 online seller support</li>
+                                <li><i class="fas fa-check"></i> Improve your revenue by reaching out to more customers</li>
+                                <li><i class="fas fa-check"></i> Free online/offline training</li>
+                                <li><i class="fas fa-check"></i> Manage your orders and your customer records</li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                <div class="how_it_works">
+                    <p class="help_link" data-page="placeOrder">How it works</p>
+
                 </div>
                 
                 

@@ -1658,14 +1658,23 @@ main{
     color:#fff;
     font-size:.9rem;
 }
+
+#history .order_history figure figcaption #status_flex{
+    display:flex;
+}
 #history .order_history figure figcaption .status_order p{
     padding:5px;
     border-radius: 4px;
     width:auto!important;
     
 }
+#history .order_history figure figcaption .status_order #showHistory{
+    color:#fff!important;
+    /* display:inline-block; */
+}
 #history .order_history figure figcaption .status_order:last-child a{
-    color:var(--secondaryColor);
+    color:var(--primaryColor);
+    
 }
 #trackItem{
     display:none;
@@ -1747,7 +1756,7 @@ main{
     color:rgba(66, 65, 65, .8);
 }
 #account .profile_details .userss h3{
-    color:chocolate;
+    color:var(--secondaryColor);
     border-bottom:1px solid rgba(177, 175, 175, .3);
     margin-bottom:10px;
 }
@@ -1765,7 +1774,7 @@ main{
     border:none;
 }
 #account .profile_details #change_password a{
-    background:chocolate;
+    background:var(--primaryColor);
     padding:10px;
     text-align:center;
     color:#fff;
@@ -2130,7 +2139,7 @@ color: rgb(231, 226, 226);
     left:0;
     height:100%;
     width:70%;
-    background:var(--secondaryColor);
+    background:rgba(231, 56, 25, .9);
     border-radius: 0 100% 0 0;
 }
 #helpNotes .help_banner figcaption{
@@ -2171,6 +2180,7 @@ color: rgb(231, 226, 226);
     transition: .3s all ease-in-out;
     margin-bottom:20px;
 }
+
 .active_help{
     border-bottom: 2px solid var(--secondaryColor);
     padding:10px;
@@ -2179,6 +2189,13 @@ color: rgb(231, 226, 226);
 .all_helps .help_links .help_link{
     cursor: pointer;
     text-transform: uppercase;
+}
+.how_it_works .help_link{
+    text-align:center;
+    width:150px;
+    margin:auto;
+    border-bottom: 2px solid var(--secondaryColor);
+    padding:10px;
 }
 .all_helps .help_links .help_link:hover, .all_helps .help_links .help_link:focus{
     color:var(--secondaryColor);
@@ -2197,6 +2214,15 @@ color: rgb(231, 226, 226);
 .all_helps .place_order_tips{
     display:flex;
     gap:1rem;
+}
+.order_tips li{
+    margin:10px 0;
+}
+.order_tips ul li{
+    list-style:none;
+}
+.order_tips ul li i{
+    color:green;
 }
 .all_helps .tips_img{
     width:50%;
@@ -2737,6 +2763,7 @@ color: rgb(231, 226, 226);
         font-size:.8rem;
         text-align:center;
     }
+    
     #loginPrompt{
         left:20%;
         width:60%;
@@ -2784,6 +2811,77 @@ color: rgb(231, 226, 226);
         justify-content: center;
         gap:1rem;
         padding:5px 0;
+    }
+    #help_center{
+        width:90%!important;
+    }
+    #help_center .help_logo i{
+        font-size:1.6rem;
+        /* color:#222; */
+    }
+    #help_center h2{
+        font-size: 1.7rem;
+    }
+    .help_popular{
+        flex-wrap:wrap;
+        gap:1.2rem;
+    }
+    .help_popular .help_pop i{
+       font-size:2.8rem;
+    }
+    #helpNotes{
+        width:100%;
+        margin:0;
+    }
+    #helpNotes .help_banner .help_img:after{
+        width:70%;
+        border-radius: 0 100% 0 0;
+    }
+    #helpNotes .help_banner figcaption{
+        top:10vh;
+        width:50%;
+        padding:20px 10px;
+        /* background:var(--secondaryColor); */
+        /* border-radius: 0 100% 0 0; */
+    }
+    #helpNotes .help_banner figcaption h2{
+        font-size:1.9rem;
+        line-height: 1.1;
+    }
+    #helpNotes .help_banner figcaption img{
+        width:100%;
+    }
+    .all_helps{
+        padding: 10px;
+    }
+    .all_helps .help_links{
+        gap:.5rem;
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+    .all_helps .help_links .help_link{
+        width:auto;
+    }
+    .all_helps .place_order_tips{
+        flex-direction:column-reverse;
+        gap:.5rem;
+    }
+    .all_helps .tips_img{
+        width:100%;
+    }
+    .all_helps .tips_img img{
+        width:100%;
+        object-fit: cover;
+    }
+    #DeliveryTimeline{
+        width:100%;
+    }
+    #helpCenter{
+        width:100%;
+        /* padding:20px; */
+    }
+    #helpCenter h4{
+        font-size:.9rem;
     }
 }
 @media screen and (max-width:650px){

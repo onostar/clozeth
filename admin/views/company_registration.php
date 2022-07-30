@@ -23,13 +23,13 @@
             <section class="reg_log">
                 
                 <div class="login_page" id="reg_form">
-                    <h1>
+                    <h1 class="mobile_reg_logo">
                         <a href="../index.php">
                             <img src="../images/logo.png" alt="logo">
                         </a>
                     </h1>
                     
-                    <h2>Welcome Store owner!</h2>
+                    <h2>Sell on Clozeth!</h2>
                     <p>Register your company to start selling on Clozeth</p>
                     <?php
                         if(isset($_SESSION['error'])){
