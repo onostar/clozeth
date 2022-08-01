@@ -232,8 +232,13 @@ function getCartTotal(){
     let itemTotal = document.getElementById("itemTotal").innerText;
     let discount = document.getElementById("discount").innerText;
     // let delivery = document.getElementById("delivery").innerText;
+    // remove the comma
+    itemTotal = itemTotal.replace(/,/g, '');
     let grandTotal = document.getElementById("grandTotal");
-    grandTotal.innerText = parseInt(itemTotal) + parseInt(discount);
+    let thisTotal = parseInt(itemTotal) + parseInt(discount);
+    // add comma to the total
+    grandTotal.innerText = thisTotal.toLocaleString();
+    
     // alert(delivery);
 }
 getCartTotal();

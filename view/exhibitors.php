@@ -19,9 +19,9 @@
                 $user_info->bindvalue('email', $user);
                 $user_info->execute();
                 $view = $user_info->fetch();
-                echo $view->first_name . " " . $view->last_name. " - Clozeth Companies";
+                echo $view->first_name . " " . $view->last_name. " - Clozeth Stores";
             }else{
-                echo "Clozeth | Companies";
+                echo "Clozeth | Stores";
             }
          ?>
 
@@ -42,13 +42,13 @@
         <section id="searchResults">
             <?php
                 
-                    $search_query = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email != 'Admin@clozeth.com' ORDER BY company_name");
+                    $search_query = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email != 'Admin@clozeth.com' AND payment_status = 2 ORDER BY reg_date");
                     $search_query->execute();
                     
                 
 
             ?>
-            <h2>Registered stores on clozeth</h2>
+            <h2>Official stores on clozeth</h2>
             <hr>
             <div class="results">
                 
@@ -58,7 +58,7 @@
                 ?>
                 <figure>
                     <a href="javascript:void(0);" title="View menu" onclick="showMenus('<?php echo $show->reg_number?>')">
-                        <img src="<?php echo '../admin/logos/'.$show->company_logo;?>" alt="stores">
+                        <img class="stores" src="<?php echo '../admin/logos/'.$show->company_logo;?>" alt="stores">
                     </a>
                     <form>
                         <figcaption>

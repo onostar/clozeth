@@ -84,7 +84,7 @@
                                 $update_reg->execute();
                                 /* update payment status */
                                 
-                                $_SESSION['reg_success'] = "Woo Hoo!!!. Your registration was successful, Set up your store by adding a banner and start adding items to sell on Clozeth!";
+                                $_SESSION['reg_success'] = "Woo Hoo!!!. Your registration was successful, Set up your store by updating your store banners and start adding items to sell on Clozeth!";
                                 header("Location: ../views/exhibitors.php");
                                 
                             }else{

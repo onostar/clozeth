@@ -62,6 +62,15 @@
                     $shows = $search_query->fetchAll();
                     foreach($shows as $show):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $show->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
                         <img src="<?php echo '../items/'.$show->item_foto?>" alt="Item">
@@ -93,7 +102,7 @@
                     </form>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php }; endforeach ?>
             </div>
         </section>
 

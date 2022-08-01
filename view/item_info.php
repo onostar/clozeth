@@ -90,7 +90,7 @@
                             <p><span>Company:</span> <?php echo $item->company_name?></p>
                             <p><span>Payment Option:</span> <?php echo $item->payment_option?></p>
                             <p><span>Delivery time:</span> <?php echo $item->delivery_time?></p>
-                            <input type="number" id="quantity" name="quantity" title="Please Enter Quantity" required placeholder="Quantity">
+                            <input type="number" id="quantity" name="quantity" title="Please Enter Quantity" required placeholder="Quantity" value="1">
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
                             <p class="dm"><?php echo "<a target='_blank' href='https://wa.me/+234".$item->contact_phone."' title='Message Store owner'><i class='fab fa-whatsapp'></i> Send us a DM</a>";?></p>
                         </figcaption>
@@ -121,6 +121,15 @@
                     $shows = $select_featured->fetchAll();
                     foreach($shows as $show):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $show->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
                         <img src="<?php echo '../items/'.$show->item_foto?>" alt="Item">
@@ -149,7 +158,7 @@
                     </form>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php }; endforeach ?>
             </div>
             <?php }?>
             <!-- <button id="view_more">View more</button>

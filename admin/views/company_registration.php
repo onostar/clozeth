@@ -123,7 +123,7 @@
 
                 </div>
                 <div class="adds" id="reg_adds">
-                    
+                    <img src="../../images/shop_owner.webp" alt="Register company">
                 </div>
             </section>
     </main>

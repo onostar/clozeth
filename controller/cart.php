@@ -18,6 +18,7 @@
         $item_price = ucwords(htmlspecialchars(stripslashes($_POST['cart_item_price']))) * $quantity;
         $item_restaurant = ucwords(htmlspecialchars(stripslashes($_POST['cart_item_restaurant'])));
         $customer_email = ucwords(htmlspecialchars(stripslashes($_POST['customer_email'])));
+        
     if(isset($_SESSION['user'])){
         
         /* check user availability */
@@ -48,6 +49,17 @@
 
             if($add_cart){
                 $_SESSION['cart_added'] = "";
+                // update cart number
+                $cart_code = $connectdb->lastInsertId();
+                $ran_num = rand(1, 10000);
+                // generate random numbers each time
+                // $cart_num = $ran_num;
+                // $cart_date = date("Y");
+                $order_num = "CL0".$cart_date.$ran_num.$cart_code;
+                $update_cart = $connectdb->prepare("UPDATE cart SET cart_number = :cart_number WHERE cart_id = :cart_id");
+                $update_cart->bindvalue("cart_number", $order_num);
+                $update_cart->bindvalue("cart_id", $cart_code);
+                $update_cart->execute();
                 /* echo "<script>alert('".$item_name. " added to cart!');
                 window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>"; */
                 // $_SESSION['success'] = "$category added Successfully!";
@@ -63,4 +75,5 @@
     }else{
         header("Location: ../login_page.php?item=Please login to continue");
     }
+// }
 ?>

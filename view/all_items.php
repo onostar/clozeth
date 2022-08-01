@@ -29,6 +29,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="images/foodie.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
@@ -56,6 +57,15 @@
                     $shows = $search_query->fetchAll();
                     foreach($shows as $show):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $show->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
                         <img src="<?php echo '../items/'.$show->item_foto?>" alt="featured item" title="click to view">
@@ -70,19 +80,32 @@
                         <figcaption>
                             <div class="todo">
                                 <p class="first"><?php echo $show->item_name?></p>
-                                <p><i class="fas fa-store"></i> <?php
+                                <p><i class="fas fa-shop"></i> <?php
                                 $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
                                 $get_company->bindvalue("exhibitor_id",$show->company);
                                 $get_company->execute();
                                 $com = $get_company->fetch(); echo $com->company_name;?></p>
                                 <!-- <p><?php echo $show->item_category?></p> -->
                                 <span>₦ <?php echo number_format($show->item_prize)?></span>
+                                <?php if($show->item_prize < $show->previous_price){?>
+                                    <span class="previous_price">₦<?php echo number_format($show->previous_price)?></span>
+                                <?php }?>
                             </div>
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                            <?php
+                                if($show->item_prize < $show->previous_price){
+                            ?>
+                            <div class="percentage">
+                                <?php
+                                    $percent = (($show->previous_price - $show->item_prize) / $show->previous_price) * 100;
+                                ?>
+                                <p style="color:#2e2d2d">-<?php echo number_format($percent);?>%</p>
+                            </div>
+                            <?php }?>
                         </figcaption>
                     </form>
                 </figure>
-                
+                <?php }?>
                 <?php endforeach ?>
             </div>
         </section>

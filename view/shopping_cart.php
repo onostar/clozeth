@@ -24,6 +24,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
@@ -70,7 +71,7 @@
 
                         <figcaption>
                             <p><strong><?php echo $view->item_name?></strong></p>
-                            <p><i class="fas fa-store"></i> <?php
+                            <p><i class="fas fa-shop"></i> <?php
                             $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
                             $get_company->bindvalue("exhibitor_id",$view->company);
                             $get_company->execute();
@@ -88,6 +89,7 @@
                                 
                                 <a onclick="removeCartItem('<?php echo $view->cart_id?>')" href="javascript:void(0);" title="Remove item" id="remove_item"><i class="fas fa-trash"></i></a>
                             </div>
+                            
                         </figcapiton>
                     </figure>
                     <?php
@@ -105,14 +107,13 @@
                         if($cart_items->rowCount() > 0):
                     ?>
                     <h3>Amount Due</h3>
-                    <p class="total_per_item">Total: <span class="itemsTotal" id="itemTotals">₦ <span id="itemTotal"><?php
+                    <p class="total_per_item">Total: <span class="itemsTotal" id="itemTotals">₦<span id="itemTotal"> <?php
                         $get_total = $connectdb->prepare("SELECT SUM(item_price) AS total_prize FROM cart WHERE customer_email = :customer_email");
                         $get_total->bindvalue('customer_email', $user);
                         $get_total->execute();
-
                         $totals = $get_total->fetchAll();
                         foreach($totals as $total){
-                    echo $total->total_prize;}?>.00</span></span></p>
+                    echo number_format($total->total_prize);}?></span></span></p>
                    
                     <p class="total_per_item">Delivery fee: <span><span id="delivery">Negotiable</span></span></p>
                     <p class="total_per_item">Discount: <span> ₦ <span id="discount">0.00</span></span></p>
@@ -122,6 +123,16 @@
                     <div class="order_or_clear">
                         <form action="../controller/order.php" method="POST" class="order_form">
                             <input type="hidden" name="customer" value="<?php echo $user?>">
+                            <div id="del_address">
+                                <label>Delivery Address: <i class="fas fa-pen"></i></label>
+                                <input type="text" name="address" id="address" value="<?php 
+                                    $get_address = $connectdb->prepare("SELECT address FROM shoppers WHERE email = :email");
+                                    $get_address->bindvalue("email", $user);
+                                    $get_address->execute();
+                                    $user_address = $get_address->fetch();
+                                    echo $user_address->address;
+                                ?>">
+                            </div>
                             <button type="submit" name="order" id="order"><i class="fas fa-wallet"></i> Confirm order</button>
                         </form>
                         <form action="../controller/clear_cart.php" method="POST" class="clear_cart_form">

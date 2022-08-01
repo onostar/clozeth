@@ -29,6 +29,7 @@
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.0.0-web/css/all.css">
     <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
@@ -67,6 +68,15 @@
                     $shows = $search_query->fetchAll();
                     foreach($shows as $show):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $show->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
                         <img src="<?php echo '../items/'.$show->item_foto?>" alt="Item">
@@ -82,7 +92,7 @@
                         <figcaption>
                             <div class="todo">
                                 <p class="first"><?php echo $show->item_name?></p>
-                                <p><i class="fas fa-store"></i> <?php
+                                <p><i class="fas fa-shop"></i> <?php
                                 $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
                                 $get_company->bindvalue("exhibitor_id",$show->company);
                                 $get_company->execute();
@@ -98,14 +108,14 @@
                         </figcaption>
                     </form>
                 </figure>
-                
+                <?php }?>
                 <?php endforeach ?>
             </div>
         </section>
 
         
     </main>
-    
+    <?php include "footer.php"?>
     <script src="../controller/jquery.js"></script>
     <script src="../controller/script.js"></script>
     

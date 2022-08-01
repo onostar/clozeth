@@ -7,19 +7,26 @@
     
     if(isset($_POST['order'])){
         $customer = htmlspecialchars(stripslashes($_POST['customer']));
-        $today_date = date("Y-m-d");
-        $order_time = date("Y-m-d h:i:s");
+        $address = htmlspecialchars(stripslashes($_POST['address']));
+        /* $today_date = date("Y-m-d");
+        $order_time = date("Y-m-d h:i:s"); */
         $status = 0;
         $ran_number = rand(1, 5000);
         $order_dt = date("Ymdhis");
         $order_num = $ran_number . $order_dt;
-        $confirm_order = $connectdb->prepare("INSERT INTO orders (customer_email, item_name, quantity, item_price, company) SELECT customer_email, item_name, quantity, item_price, company FROM cart WHERE customer_email = :customer_email");
+        $confirm_order = $connectdb->prepare("INSERT INTO orders (customer_email, item_name, quantity, item_price, company, order_number) SELECT customer_email, item_name, quantity, item_price, company, cart_number FROM cart WHERE customer_email = :customer_email");
         $confirm_order->bindvalue('customer_email', $customer);
         $confirm_order->execute();
 
         if($confirm_order){
+            /* update delivery address */
+            $update_address = $connectdb->prepare("UPDATE shoppers SET address = :address WHERE email = :email");
+            $update_address->bindvalue("address", $address);
+            $update_address->bindvalue("email", $customer);
+            $update_address->execute();
+
             /* insert transaction date and number */
-            $trans_id = $connectdb->lastInsertId();
+            /* $trans_id = $connectdb->lastInsertId();
             $order_num = $order_num.$trans_id;
             $insert_date = $connectdb->prepare("UPDATE orders SET order_number = :order_number WHERE customer_email = :customer_email AND order_time = CURTIME()");
             // $insert_date->bindvalue('order_date', $today_date);
@@ -28,7 +35,7 @@
             // $insert_date->bindvalue('order_time', $order_time);
             
             
-            $insert_date->execute();
+            $insert_date->execute(); */
 
 
             /* delete from cart */

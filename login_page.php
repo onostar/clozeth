@@ -82,7 +82,7 @@
 
             </div>
             <div class="adds">
-                <img src="images/home3.jpg" alt="clozeth login banner">
+                <img src="images/online_shop3.jpg" alt="clozeth login banner">
             </div>
         </section>
     </main>

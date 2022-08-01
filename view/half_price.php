@@ -47,9 +47,9 @@
                     </div>
                     <div class="description">
                         <h2>Half price deals</h2>
-                        <p>Get products for more than 50% off</p>
+                        <!-- <p>Get products for more than 50% off</p> -->
                         <div class="links">
-                            <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                            <!-- <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a> -->
                             <!-- <a href="contact.php"><i class="fas fa-photo-video"></i> Learn more</a> -->
                         </div>
                         
@@ -78,6 +78,15 @@
                     $rows = $search_deals->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo '../items/'.$row->item_foto?>" alt="Top deals">
@@ -104,7 +113,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php }; endforeach ?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">

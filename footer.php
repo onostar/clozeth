@@ -9,6 +9,7 @@
                             <li><a href="contact.php">Contact us</a></li>
                             <li><a href="view/sellers.php" title="Become a seller on Clozeth">Open an online store</a></li>
                             <li><a href="contac.php" title="Report a product">Report a product</a></li>
+                            <li><a href="view/exhibitors.php" title="View official stores">Stores</a></li>
                             <li><a href="view/terms.php" title="Terms and conditions">Terms & conditions</a></li>
                             <li><a href="view/help_center.php" title="Clozeth help">Help center</a></li>
                         </div>

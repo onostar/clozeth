@@ -53,7 +53,7 @@
                     </div>
                     <div class="data">
                         <label for="payment_option">Payment Options</label>
-                        <select name="payment_option" id="pyment_option" required>
+                        <select name="payment_option" id="payment_option" required>
                             <option value="" SELECTED>Select a payment option</option>
                             <option value="pay on delivery">Pay on Delivery</option>
                             <option value="50% upfront">Pay 50% upfront </option>
@@ -62,7 +62,21 @@
                     </div>
                 </div>
                 <div class="inputs">
-                    
+                    <div class="data">
+                        <label for="delivery_time">Delivery time frame</label>
+                        <select name="delivery_time" id="delivery_time" required>
+                            <option value="" SELECTED>Select delivery time</option>
+                            <option value="1 to 3 days">1 to 3 days</option>
+                            <option value="4 to 7 day">4 to 7 days </option>
+                            <option value="Within 2 weeks">Within 2 weeks </option>
+                        </select>
+                    </div>
+                    <div class="data">
+                        <label for="item_foto">Item Image</label>
+                        <input type="file" name="item_foto" id="item_foto" required>
+                    </div>
+                </div>
+                <div class="inputs">
                     <div class="data">
                         <label for="item_desc">Item description</label>
                         <textarea rows="4" type="text" name="item_desc" id="item_desc" required placeholder="Give proper description and features of the product"value="<?php
@@ -73,16 +87,11 @@
                             }
                         ?>"></textarea>
                     </div>
-                    
-                    <div class="data">
-                        <label for="item_foto">Item Image</label>
-                        <input type="file" name="item_foto" id="item_foto" required>
-                    </div>
-                </div>
-                    
                     <div class="data">
                         <button type="submit" id="addItem" name="addItem">Add item <i class="fas fa-folder-plus"></i></button>
                     </div>
+                </div>  
+                    
             </div>
             
         </form>

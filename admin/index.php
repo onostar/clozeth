@@ -24,12 +24,12 @@
             
             <div class="login_page">
                 <h1>
-                    <a href="index.php">
+                    <a href="../index.php">
                         <img src="../images/logo.png" alt="logo">
                     </a>
                 </h1>
                 
-                <h2>Welcome store owner!</h2>
+                <h2>Welcome seller!</h2>
                 <p>Sign in to continue</p>
                 <?php
                     if(isset($_SESSION['success'])){
@@ -83,7 +83,7 @@
 
             </div>
             <div class="adds">
-                <img src="../images/home3.jpg" alt="clozeth login banner">
+                <img src="../images/online_shop2.jpg" alt="clozeth login banner">
             </div>
         </section>
     </main>

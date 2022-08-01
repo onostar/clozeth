@@ -39,9 +39,9 @@
                 </a>
             </h1>
             <h2 id="desktop_h2"><?php echo $user->company_name?></h2>
-            <h2 id="mobile_h2">Portal</h2>
+            <h2 id="mobile_h2"><?php echo $user->company_name;?></h2>
             <div class="other_menu">
-                <a href="#" title="Our Gallery">Store owner</a>
+                <a href="#" title="Our Gallery">Seller</a>
             </div>
             <div class="login">
                 <button id="loginDiv"><i class="far fa-user"></i> Account <i class="fas fa-chevron-down"></i></button>
@@ -131,7 +131,7 @@
                         </p>
                     </div>
                     <?php endif?>
-                    <p class="user_store"><i class="fas fa-store"></i> <span><?php 
+                    <p class="user_store"><i class="fas fa-shop"></i> <span><?php 
                         echo "<a target='_blank' href='../../view/exhibitor_menu.php?company=".$user->reg_number."'>Visit store</a>";
                     ?></span></p>
                     <!-- <div class="clear"></div> -->

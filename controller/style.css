@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 :root{
-    --primaryColor:rgb(3, 69, 75);;
+    --primaryColor:rgb(3, 69, 75);
     /* --otherColor: linear-gradient(35deg, rgb(26, 149, 158),#90c7a3e6 ); */
     --secondaryColor: rgba(231, 56, 25);
     --otherColor:rgb(3, 69, 75);
@@ -482,15 +482,28 @@ header i{
 }
 #exhibitor_store .description{
     width:100%;
-    position:relative;
-    top:30vh;
+    position:absolute;
+    top:20vh;
     display:flex;
+    gap:.5rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+#exhibitor_store .slides .seller_logo{
+    position:absolute;
+    top:0;
+    left:0;
+}
+#exhibitor_store .slides .seller_logo img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit: cover;
+}
 #exhibitor_store .description h2{
     font-family: "Pacifico";
+    font-size: 2rem;
 }
 #exhibitor_store .description a{
     background:var(--otherColor);
@@ -521,7 +534,7 @@ header i{
     transition:.2s all ease-in-out;
 }
 #asideRight li a:hover, #asideRight li a:focus{
-    color:chocolate;
+    color:var(--secondaryColor);
     /* border-radius:3px;
     border-bottom:1px solid chocolate; */
 }
@@ -590,19 +603,19 @@ main{
     padding:20px;
     display:flex;
     justify-content: center;
-    flex-wrap:nowrap;
+    /* flex-wrap:nowrap; */
     gap:.7rem;
     width:100%;
     /* white-space:nowrap; */
-    overflow-x:auto;
+    overflow-x:scroll;
     /* overflow-y: hidden; */
     scrollbar-width: none;
     scroll-behavior: smooth;
     box-shadow: 2px 2px 2px #c4c4c4;
 }
-#general_cat::-webkit-scrollbar{
+/* #general_cat::-webkit-scrollbar{
     display:none;
-}
+} */
 #general_cat figure{
     flex: 0 0 auto;
     width:17%;
@@ -617,7 +630,8 @@ main{
     height:150px;
     border-radius: 20px;
     background:#d5e6e9;
-}#general_cat figure figcaption{
+}
+#general_cat figure figcaption{
     width:100%;
     text-align:center;
 }
@@ -690,9 +704,10 @@ main{
     box-shadow: 2px 2px 5px 2px #c4c4c4;
     background:#fff;
     padding:20px;
+    color:#2e2d2d
 }
 
-.featured figure, .all_items figure{
+.featured figure, .all_items figure, .results figure{
     position:relative;
     width:16%;
     /* box-shadow:2px 2px 2px 2px #c4c4c4; */
@@ -826,7 +841,7 @@ main{
     text-align: center;
     text-transform: capitalize;
     font-size:1.2rem;
-    color:green;
+    color:var(--secondaryColor);
 }
 
 .login_page p{
@@ -1387,11 +1402,11 @@ main{
     text-align:center;
 }
 #searchResults hr{
-    width:50px;
-    height:4px;
-    border-radius:5px;
+    /* width:50px;
+    height:4px; */
     margin:10px auto;
-    background:#222;
+    background:rgba(124, 121, 121, 0.1);
+    color:rgba(124, 121, 121, 0.1);
 }
 #searchResults .results{
     display:flex;
@@ -1416,11 +1431,16 @@ main{
     transition:.2s all ease-in-out;
     /* background:#fff; */
 }
+
 #searchResults .results figure img{
     width:100%;
     height:130px;
     /* border-radius:10px; */
 }
+/* #searchResults .results figure .stores{
+    height:100px;
+    width:
+} */
 #searchResults .results figure figcaption{
     padding:5px;
     text-align: center;
@@ -1431,7 +1451,6 @@ main{
 #searchResults .results figure figcaption p:first-child{
     font-weight: bold;
     color: var(--secondaryColor);
-
 }
 /* .todo p:nth-child(2){
     background:red;
@@ -1463,14 +1482,15 @@ main{
     color:var(--primaryColor);
 }
 #shoppingCart hr{
-    width:50px;
-    height:5px;
+    /* width:50px;  */
+    /* height: 5px; */
     margin:10px auto;
-    background:#222;
-    border-radius:5px;
+    background:rgba(124, 121, 121, 0.1);
+    color:rgba(124, 121, 121, 0.1);
     
 }
 #shoppingCart .shop_cart{
+    position:relative;
     display:flex;
     justify-content: space-between;
     width:100%;
@@ -1479,16 +1499,20 @@ main{
 #shoppingCart .shop_cart .cart_items{
     width:60%;
     padding:10px;  
+    /* margin-top:50px; */
 }
 #shoppingCart .shop_cart .cart_items figure{
-    height:200px;
-    margin:20px 10x;
+    height:190px;
+    margin:0 5px;
     display:flex;
     align-items:center;
 }
+#shoppingCart .shop_cart .cart_items figure:last-child{
+    margin-bottom: 50px;
+}
 #shoppingCart .shop_cart .cart_items figure img{
     width:200px;
-    height:150px;
+    height:160px;
     border-radius:5px;
     margin-right:20px;
 }
@@ -1515,7 +1539,7 @@ main{
 }
 #shoppingCart .shop_cart .total{
     width:30%;
-    background:linear-gradient(45deg, hsl(0, 0%, 0%), hsla(0, 10%, 0%, .7));
+    background:linear-gradient(45deg, rgb(3, 69, 75), rgba(3, 69, 75, .9));
     box-shadow:2px 2px 2px 2px #c4c4c4;
     margin:10px;
     border:1px solid #c4c4c4;
@@ -1542,10 +1566,36 @@ main{
     color: rgba(202, 195, 195, 0.2);
     background:rgba(202, 195, 195, 0.2);
 }
+#del_address{
+    display: block;
+    position:absolute;
+    bottom:0%;
+    left:20px;
+    margin-top:10px;
+    width:100%;
+
+}
+#del_address label{
+    display:block;
+    color:var(--primaryColor);
+    font-weight: bold;
+
+}
+#del_address label i{
+    color:var(--secondaryColor);
+}
+#del_address input{
+    width:50%;
+    padding:10px;
+    border-color:rgba(196, 196, 196, .4);
+    border-radius:5px;
+    color:#3b3b3b;
+}
 /* quantity */
 #quantity{
     padding:8px;
     border-radius:5px;
+    z-index:3;
     /* appearance: textfield; */
 }
 /* #grand{
@@ -1616,11 +1666,11 @@ main{
     color:var(--primaryColor);
 }
 #history hr, #notification hr{
-    width:50px; 
-    height: 5px;
+    /* width:50px;  */
+    /* height: 5px; */
     margin:10px auto;
-    background:var(--primaryColor);
-    color:var(--primaryColor);
+    background:rgba(124, 121, 121, 0.1);
+    color:rgba(124, 121, 121, 0.1);
 }
 #history .order_history, #notification .notifications{
     background:#fff;
@@ -1715,7 +1765,7 @@ main{
     width:80%;
 }
 .notify i{
-    color:rgb(177, 115, 58);
+    color:var(--primaryColor);
     font-size: 2.5rem;
     margin:5px;
 }
@@ -1724,7 +1774,7 @@ main{
     font-size:1.1rem;
 }
 .notify_date{
-    color: rgb(177, 115, 58);
+    color: var(--secondaryColor);
     width:20%;
 }
 .clear{
@@ -2040,6 +2090,9 @@ color: rgb(231, 226, 226);
     width:90%;
     margin:10px auto;
 }
+#exhibitor_store #searchResults .first{
+    color:var(--primaryColor);
+}
 .no_record, .no_result_exh{
     text-align:center;
     color:var(--secondaryColor);
@@ -2285,6 +2338,47 @@ color: rgb(231, 226, 226);
         transform: translateY(0%);
     }
 }
+.how_works{
+    display:flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap:Wrap;
+}
+.steps{
+    width:23%;
+    margin:10px 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+}
+.steps img{
+    width:70px;
+    height:70px;
+    margin:5px auto;
+    text-align: center;
+    border-radius: 50%;
+    border:2px dotted var(--primaryColor);
+}
+.steps h4{
+    color:rgba(20, 20, 20, .9);
+    font-size:.8rem;
+}
+.steps p{
+    color:rgba(20, 20, 20, .8);
+    font-size:.8rem;
+    margin-top:5px;
+}
+.start_selling{
+    text-align:center;
+}
+.start_selling a{
+    background:var(--secondaryColor);
+    color:#fff;
+    padding:15px;
+    border-radius: 5px;
+}
 @media screen and (max-width:800px){
     .top_head{
         display:none;
@@ -2452,6 +2546,10 @@ color: rgb(231, 226, 226);
     #mobile_menu #index_nav h3{
         font-family: "Pacifico";
     }
+    #mobile_menu #index_nav .user:hover a{
+        background:none;
+        /* color:var(--secondaryColor); */
+    }
     .cart_not{
         display:block;
         position:fixed;
@@ -2528,6 +2626,9 @@ color: rgb(231, 226, 226);
         margin-right:5px;
         color:rgba(210, 105, 30, .6);
         font-size:2rem;
+    }
+    #mobile_menu #help li a h3{
+        color:var(--primaryColor);
     }
     /* links */
     #links{
@@ -2691,9 +2792,13 @@ color: rgb(231, 226, 226);
     #shoppingCart{
         width:95%;
     }
+    #shoppingCart h2{
+        font-size:1.2rem;
+    }
     #shoppingCart .shop_cart{
         flex-wrap:wrap;
         align-items:center;
+        margin-bottom:100px;
     }
     #shoppingCart .shop_cart .cart_items{
         width:100%; 
@@ -2722,11 +2827,39 @@ color: rgb(231, 226, 226);
     .total_per_item span{
         float:right;
     }
+    #del_address{
+        position:fixed;
+        bottom:0;
+        left:5%;
+        z-index:5;
+        background:#fff;
+        padding:20px 0;
+        box-shadow: 2px 2px 2px var(--primaryColor);
+        /* padding:10px 0; */
+        width:90%;
+        margin:10px auto;
+        border-radius: 10px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #del_address input{
+        width:80%;
+        margin:auto;
+    }
+    #del_address label{
+        font-size: .9rem;
+    }
     /* quantity */
     #quantity{
         padding:8px;
         border-radius:5px;
         /* appearance: textfield; */
+    }
+    .empty{
+        font-size:1rem;
     }
     #account .profile_details{
         width: 97%;
@@ -2883,6 +3016,39 @@ color: rgb(231, 226, 226);
     #helpCenter h4{
         font-size:.9rem;
     }
+    .steps{
+        width:48%;
+    }
+    .start_selling{
+        margin:10px 0;
+
+    }
+    .start_selling a{
+        padding:10px;
+    }
+    #exhibitor_store .description{
+        position:absolute;
+        top:5vh;
+        left:0;
+        margin:0;
+        text-align: center;
+    }
+    #exhibitor_store .description h2{
+        font-size:1.6rem;
+    }
+    /* .seller_logo a img{
+        height:100px;
+    } */
+    #exhibitor_store .slides .seller_logo img{
+        width:80px;
+        height:80px;
+    }
+    #exhibitor_store .new_goods, #exhibitor_store #just_in, #exhibitor_store #popular, #exhibitor_store #searchResults{
+        width:95%;
+    }
+    #exhibitor_store #searchResults{
+        width:100%;
+    }
 }
 @media screen and (max-width:650px){
     .call{
@@ -2958,6 +3124,9 @@ color: rgb(231, 226, 226);
     #notification{
         width:100%;
     }
+    #notification h2{
+        font-size:1.2rem;
+    }
     .notifications{
         padding:1px;
         margin:0;
@@ -2978,6 +3147,9 @@ color: rgb(231, 226, 226);
     .notify i{
         font-size:2rem;
         margin:0 3px 0 0;
+    }
+    .notify p{
+        font-size:.9rem;
     }
     .not_sum{
         width:78%;

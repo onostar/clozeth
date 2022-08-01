@@ -27,9 +27,9 @@
     <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
     <title>Clozeth | <?php echo $show->company_name?> Store</title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
-    <link rel="icon" type="../image/png" href="../images/logo.png" size="32X32">
+    <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
     <link rel="stylesheet" href="../controller/style.css">
     
 </head>
@@ -54,10 +54,13 @@
                         </div>
                         
                     </div>
+                    <div class="seller_logo">
+                        <img src="<?php echo "../admin/logos/".$show->company_logo?>" alt="company logo">
+                    </div>
                 </div>
                 <div class="slides">
                     
-                <div class="slide_img">
+                    <div class="slide_img">
                         <img src="<?php echo '../banners/'.$show->banner2?>" alt="banner">
                     </div>
                     <div class="description">
@@ -69,11 +72,14 @@
                         </div>
                         
                     </div>
+                    <div class="seller_logo">
+                        <img src="<?php echo "../admin/logos/".$show->company_logo?>" alt="company logo">
+                    </div>
                     
                 </div>
                 <div class="slides">
                     
-                <div class="slide_img">
+                    <div class="slide_img">
                         <img src="<?php echo '../banners/'.$show->banner3?>" alt="banner">
                     </div>
                     <div class="description">
@@ -84,6 +90,9 @@
                             <!-- <a href="contact.php"><i class="fas fa-photo-video"></i> Learn more</a> -->
                         </div>
                         
+                    </div>
+                    <div class="seller_logo">
+                        <img src="<?php echo "../admin/logos/".$show->company_logo?>" alt="company logo">
                     </div>
                 </div>
                 
@@ -108,6 +117,15 @@
                         
                         $showss = $search_new->fetchAll();
                         foreach($showss as $shows):
+                    ?>
+                    <!-- check company status -->
+                    <?php
+                        $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                        $get_company->bindvalue("exhibitor_id", $shows->company);
+                        $get_company->execute();
+                        $company_stat = $get_company->fetch();
+                        $company_status = $company_stat->payment_status;
+                        if($company_status == 2){
                     ?>
                     <figure>
                         <!-- <a href="login_page.php?item=Please login to view new items"> -->
@@ -139,7 +157,7 @@
                             </div>
                             <?php }?> -->
                     </figure>
-                    <?php endforeach?>
+                    <?php }; endforeach?>
 
                 </div>
                 <?php }?>
@@ -162,6 +180,15 @@
                     
                     $rows = $search_deals->fetchAll();
                     foreach($rows as $row):
+                ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
                 ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
@@ -189,7 +216,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php }; endforeach ?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">
@@ -218,6 +245,15 @@
                     $rows = $search_pop->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo '../items/'.$row->item_foto?>" alt="Top deals">
@@ -231,11 +267,12 @@
                                 $get_category->execute();
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
                                 <span>₦ <?php echo number_format($row->item_prize)?></span>
+                                <?php if($row->item_prize < $row->previous_price){?>
                                 <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
+                                <?php }?>
                             </div>
                             <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
                         </figcaption>
-                        <div class="percentage">
                         <?php
                             if($row->item_prize < $row->previous_price){
                         ?>
@@ -246,11 +283,11 @@
                             <p>-<?php echo number_format($percent);?>%</p>
                         </div>
                         <?php }?>
-                        </div>
+                        
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php }; endforeach ?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">
@@ -282,6 +319,15 @@
                     $showss = $search_query->fetchAll();
                     foreach($showss as $shows):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $shows->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0)" onclick="showItems('<?php echo $shows->item_id?>')">
                         <img src="<?php echo '../items/'.$shows->item_foto?>" alt="featured item">
@@ -296,7 +342,10 @@
                                 $get_category->bindvalue("category_id",$shows->item_category);
                                 $get_category->execute();
                                 $cat = $get_category->fetch(); echo $cat->category;?></p>
-                                <span>₦ <?php echo number_format($shows->item_prize)?></span>
+                                <span>₦<?php echo number_format($shows->item_prize)?></span>
+                                <?php if($shows->item_prize < $shows->previous_price){?>
+                                    <span class="previous_price">₦<?php echo number_format($shows->previous_price)?></span>
+                                <?php }?>
                             </div>
                             <!-- <button onclick="loginFirst();"><i class="fas fa-shopping-cart"></i></button> -->
                         </figcaption>
@@ -305,13 +354,13 @@
                         ?>
                         <div class="percentage">
                             <?php
-                                $percent = (($row->previous_price - $row->item_prize) / $row->previous_price) * 100;
+                                $percent = (($shows->previous_price - $shows->item_prize) / $shows->previous_price) * 100;
                             ?>
                             <p>-<?php echo number_format($percent);?>%</p>
                         </div>
                         <?php }?>
                 </figure>
-            <?php endforeach?>
+            <?php }; endforeach?>
 
             </div>
             <?php }?>

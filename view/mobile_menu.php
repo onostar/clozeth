@@ -45,7 +45,7 @@
                         foreach($cats as $cat):
                     ?>
                     <li>
-                        <form action="view/categories.php" method="POST">
+                        <form action="categories.php" method="POST">
                             <input type="hidden" name="item_cat" value="<?php echo $cat->category_id?>">
                             <?php 
                                 if($cat->category == "Bag"){
@@ -83,8 +83,8 @@
         <hr>
         <nav id="help">
             <ul>
-            <li>
-                        <a href="view/help_center.php" title="Get in touch">
+                    <li>
+                        <a href="help_center.php" title="Get in touch">
                             <i class="far fa-question-circle"></i>
                             <div class="note">
                                 <h3>Help center</h3>
@@ -102,7 +102,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="view/refunds.php">
+                        <a href="refunds.php">
                             <i class="fas fa-hand-holding-usd"></i>
                             <div class="note">
                                 <h3>Refunds</h3>

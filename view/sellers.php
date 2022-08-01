@@ -75,11 +75,34 @@
                     </div>
                 </div>
                 <div class="how_it_works">
-                    <p class="help_link" data-page="placeOrder">How it works</p>
-
+                    <p class="help_link">How it works</p>
+                    <div class="how_works">
+                        <div class="steps">
+                            <img src="../images/online_store.jpg" alt="seller">
+                            <h4>Step 1: Register a free account</h4>
+                            <p>Fill in the registration form with your details (company name, phone number) to get a free 1 month access to sell on clozeth.</p>
+                        </div>
+                        <div class="steps">
+                            <img src="../images/sell_online.jpg" alt="seller">
+                            <h4>Step 2: Become an e-commerce expert</h4>
+                            <p>Go through the training and activate your account to start uploading items</p>
+                        </div>
+                        <div class="steps">
+                            <img src="../images/place_order3.jpg" alt="seller">
+                            <h4>Step 3: Add your products and sell</h4>
+                            <p>Upload your best sellng products with prices and description and start selling</p>
+                        </div>
+                        <div class="steps">
+                            <img src="../images/onlinie_shop.jpg" alt="seller">
+                            <h4>Step 4: Benefit from our marketing and promotions</h4>
+                            <p>Get more customers, and insights from our promotions.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                
+                <div class="start_selling">
+                    <a href="../admin/views/company_registration.php">Start selling</a>
+                </div>
                 
             </div>
         </section>

@@ -1336,7 +1336,7 @@ main hr{
     background:#f1f1f1;
 }
 .allResults table tbody tr:hover a{
-    color:#fff;
+    color:var(--primaryColor);
 }
 .allResults .results .no_result, .no_result{
     text-align:center;
@@ -1663,6 +1663,7 @@ main hr{
 .add_user_form form .inputs .data input, .add_user_form form .inputs .data select, .add_user_form form .inputs .data textarea{
     padding:10px;
     width:100%;
+    border: 1px solid rgba(56, 55, 55, 0.4);
 }
 .add_user_form form button{
     background:#000;
@@ -2543,6 +2544,7 @@ main hr{
 .each_prices{
     color:#222!important;
 }
+
 #helpCenter ul{
     width:80%;
     margin:auto;
@@ -2551,8 +2553,11 @@ main hr{
 }
 #helpCenter li{
     list-style: none;
+    border-bottom: 1px solid rgba(124, 121, 121, 0.5);
 }
 #helpCenter h4{
+    display:flex;
+    justify-content: space-between;
     cursor: pointer;
     font-size:1rem;
     color:#3b3b3b;
@@ -2561,10 +2566,9 @@ main hr{
     font-weight:normal;
 }
 #helpCenter i{
-    font-size: 1.1rem;
-}
-#helpCenter i:last-child{
     font-size: .9rem;
+    padding:10px 0;
+    color:var(--secondaryColor);
 }
 #helpCenter p{
     display:none;
@@ -2627,7 +2631,9 @@ main hr{
         width:100%;
         margin:5px;
     }
-    
+    #user_name span{
+        display:none;
+    }
     #navigation{
         display:none;
         position:absolute;
@@ -2715,6 +2721,35 @@ main hr{
     }
     .main_header .menu-icon a, .new_header .menu-icon a{
         color:#fff;
+    }
+    .booth{
+        align-items: center;
+        width:97%;
+        font-size: .8rem;
+    }
+    .booth p{
+        padding:6px;
+    }
+    .user_store{
+        display:none;
+    }
+    .user_mobile{
+        font-size: .8rem;
+    }
+    .user_mobile i{
+        color:green;
+        font-size: 1rem;
+    }
+    .quick_links{
+        display:flex;
+        flex-wrap: wrap;
+        /* gap:.4rem; */
+    }
+    .quick_links a{
+        padding:5px 10px!important;
+        /* margin:2px; */
+        font-size:.9rem;
+        /* box-shadow:none; */
     }
     /* .new_header .menu-icon a:hover{
         color:var(--secondaryColor);
@@ -2968,11 +3003,11 @@ main hr{
         height:100vh;
         margin:0;
         z-index:1;
-        /* overflow-y:scroll; */
+        overflow-y:scroll;
         animation:.4s slideIn 1;
         animation-timing-function: linear;
         animation-fill-mode: forwards;
- 
+        scrollbar-width: none;
     }
     @keyframes slideIn{
         from{
@@ -3000,6 +3035,9 @@ main hr{
         background:var(--primaryColor);
         text-align:center;
         color:#fff;
+    }
+    .admin_main .main_menu .login, .admin_main .mobile_menu li:last-child{
+        margin-bottom: 20px;
     }
     #user_aside .login{
         background:var(--primaryColor);
@@ -3063,8 +3101,9 @@ main hr{
     /* contents */
     #contents{
         margin:0;
-        margin-top:8vh;
+        margin-top:0;
         width:100vw;
+        padding:0;
         /* overflow:hidden; */
     }
     #dashboard{
@@ -3082,7 +3121,7 @@ main hr{
     }
     #dashboard .cards{
         width:180px;
-        margin:10px;
+        /* margin:10px; */
         height:120px;
     }
     #dashboard .cards p{
@@ -3091,21 +3130,40 @@ main hr{
     #dashboard .cards .infos{
         font-size:1.7rem;
     }
-    #reg_success, .reg_success{
-        
+    #reg_success, .reg_success{   
         width:70%;
         
+    }
+    .daily_monthly{
+        width:100%;
+    }
+    .daily_monthly div{
+        width:100%;
+        margin:10px;
+    }
+    .daily_monthly h3{
+        font-size:1rem!important;
+    }
+    .daily_monthly table tr{
+        font-size:.9rem;
     }
     /* create users */
     #createUser{
         width:100%;
     }
     .add_user_form{
-        width:90%;
+        width:100%;
         
     }
     .add_user_form form{
-        width:95%;
+        width:100%;
+    }
+    .add_user_form form .inputs{
+        margin:0;
+    }
+    .add_user_form form .inputs .data{
+        width:100%;
+        margin:10px 0;
     }
     /* management */
     .management{
@@ -3140,6 +3198,7 @@ main hr{
     }
     #mobile_h2{
         display:block;
+        font-size:1rem;
     }
     .reg_form .inputs .data{
         width:90%
@@ -3160,7 +3219,47 @@ main hr{
     .management .enrolled{
         width:80%;
     }
-    
+    .displays{
+        width:100%!important;
+        margin:0;
+    }
+    #searchResults, .allResults{
+        width:100%!important;
+        margin:0;
+    }
+    #addBanner .bannerBtns button{
+        margin:10px;
+        font-size:.9rem;
+    }
+    .select_date{
+        width:100%;
+        margin:10px 0;
+    }
+    .select_date form{
+        display:flex;
+        flex-wrap:wrap;
+        gap:.3rem;
+    }
+    .select_date form .from_to_date{
+        margin:10px 0;
+        width:47%;
+    }
+    .select_date form .from_to_date label{
+        font-size:.9rem;
+    }
+    .select_date form input{
+        width:100%;
+        margin:5px;
+    }
+    .select_date form button{
+        width:40%;
+    }
+    .user_passport{
+        width:140px;
+    }
+    #helpCenter ul{
+        width:95%;
+    }
 }
 @media screen and (max-width:650px){
     #login_reg{
@@ -3264,6 +3363,7 @@ main hr{
     } */
     #addRestaurant, #approved_table, .allResults, .displays, .management{
         display:none;
+
     }
     .download_slip, #certificate{
         display:block!important;

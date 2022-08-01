@@ -123,10 +123,10 @@
                     </div>
                     <div class="description">
                         <h2>Welcome to clozeth</h2>
-                        <p>Your home of all things fshion</p>
+                        <p>Your home for all things fashion</p>
                         <div class="links">
-                            <a href="#just_in"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                            <a href="contact.php"><i class="fas fa-photo-video"></i> Learn more</a>
+                            <a href="view/all_items.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                            <!-- <a href="contact.php"><i class="fas fa-photo-video"></i> Learn more</a> -->
                         </div>
                         
                     </div>
@@ -137,22 +137,22 @@
                     </div>
                     <div class="description">
                     <h2>The home of exclusive fashion</h2>
-                        <p>Every thing you need when ever you need it</p>
+                        <p>Great stores, great choices</p>
                         <div class="links">
-                            <a class="appointment" href="javascript:void(0);"><i class="fas fa-paper-plane"></i> Get in touch</a>
+                            <a class="appointment" href="view/all_items.php"><i class="fas fa-paper-plane"></i>shop now</a>
                             <!-- <a href="javascript:void(0);"><i class="fas fa-photo-video"></i> View Media</a> -->
                         </div>
                     </div>
                 </div>
                 <div class="slides">
                     <div class="slide_img">
-                        <img src="images/home.jpg" alt="Clozeth Banner">
+                        <img src="images/top_deals2.webp" alt="Clozeth Banner">
                     </div>
                     <div class="description">
-                    <h2>Online all the time</h2>
-                        <p>Shop with us all day</p>
+                    <!-- <h2>All the best deals</h2> -->
+                        <!-- <p>Best deals all day</p> -->
                         <div class="links">
-                            <a href="view/all_items.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                            <a href="view/top_deals.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                             <!-- <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a> -->
                         </div>
                         
@@ -195,7 +195,7 @@
             </nav>
             <div id="adds">
                 
-                <img src="images/acpn_add.png" alt="clozeth adds">
+                <img src="images/place_order3.jpg" alt="clozeth adds">
                 
             </div>
         </aside>
@@ -298,6 +298,15 @@
                     $rows = $select_featured->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
@@ -318,7 +327,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php } endforeach?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">
@@ -341,6 +350,15 @@
                     $rows = $select_featured->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                     <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
@@ -362,7 +380,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php } endforeach ?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">
@@ -390,6 +408,15 @@
                     $rows = $search_deals->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                 <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="Top deals">
@@ -416,7 +443,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php } endforeach ?>
                 
             </div>
             
@@ -439,6 +466,15 @@
                     $rows = $select_all->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
@@ -459,7 +495,7 @@
                     </a>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php } endforeach ?>
                 
             </div>
             <!-- <button id="more_popular">View more</button>
@@ -582,6 +618,15 @@
                     $rows = $select_all->fetchAll();
                     foreach($rows as $row):
                 ?>
+                <!-- check company status -->
+                <?php
+                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                    $get_company->bindvalue("exhibitor_id", $row->company);
+                    $get_company->execute();
+                    $company_stat = $get_company->fetch();
+                    $company_status = $company_stat->payment_status;
+                    if($company_status == 2){
+                ?>
                 <figure>
                     <form action="../controller/cart.php" method="POST">
                         <a href="javascript:void(0);" onclick="showItems('<?php echo $row->item_id?>')">
@@ -607,7 +652,7 @@
                     </form>
                 </figure>
                 
-                <?php endforeach ?>
+                <?php } endforeach ?>
                 
             </div>
         </section>
