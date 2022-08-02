@@ -119,8 +119,7 @@ $(document).ready(function(){
 function showPage(page){
     //hide all pages when one displays
     document.getElementById("dashboard").style.display = "none";
-    document.querySelector(".expiration_date").style.display = "none";
-    document.querySelector(".user_store").style.display = "none";
+    
     document.querySelectorAll(".reminder").forEach(remind => {
         remind.style.display = "none";
     })
@@ -140,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function(){
             showPage(this.dataset.page);
             $("#paid_receipt").hide();
             // document.querySelector(".booth").style.display = "none";
+            document.querySelector(".expiration_date").style.display = "none";
+            document.querySelector(".user_store").style.display = "none";
 
         }
     })

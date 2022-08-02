@@ -4,7 +4,7 @@
         <div class="login_option">
             
             <div>
-                <button id="loginBtn"><a href="../controller/exh_logout.php">Log out</a></button>
+                <button id="loginBtn"><a href="../controller/exh_logout.php">Log out <i class="fas fa-power-off"></i></a></button>
                 
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="login_option">
             <div>
                 <a class="password_link page_navs" href="javascript:void(0)" data-page="update_password">Change password <i class="fas fa-key"></i></a>
-                <button id="loginBtn"><a href="../controller/logout.php">Log out</a></button>
+                <button id="loginBtn"><a href="../controller/logout.php">Log out <i class="fas fa-power-off"></i></a></button>
                 
             </div>
         </div>

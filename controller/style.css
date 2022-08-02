@@ -3034,7 +3034,13 @@ color: rgb(231, 226, 226);
         text-align: center;
     }
     #exhibitor_store .description h2{
-        font-size:1.6rem;
+        font-size:1.5rem;
+    }
+    #exhibitor_store .description p{
+        display:none;
+    }
+    #exhibitor_store .description a{
+        display:none;
     }
     /* .seller_logo a img{
         height:100px;
@@ -3048,6 +3054,9 @@ color: rgb(231, 226, 226);
     }
     #exhibitor_store #searchResults{
         width:100%;
+    }
+    .featured_float h3, #featured h3, #just_in h3, #all_items h3, #popular h3, .featured_float h2{
+        font-size: .9rem!important;
     }
 }
 @media screen and (max-width:650px){

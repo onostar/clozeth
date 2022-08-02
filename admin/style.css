@@ -15,7 +15,7 @@ body{
     position:relative;
     font:14px/1.5 'Poppins', Sans-serif;
     color:#222;
-    background:#f0f5d9;
+    background:#f4f7ea;
     /* overflow: hidden; */
 }
 a{
@@ -3023,6 +3023,10 @@ main hr{
     .main_searchbtn{
         display:none;
     }
+    .admin_main .mobile_menu ul{
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
     .admin_main aside li a{
         color:rgba(68, 66, 66, .8);
         font-size:.9rem;
@@ -3131,8 +3135,11 @@ main hr{
         font-size:1.7rem;
     }
     #reg_success, .reg_success{   
-        width:70%;
+        width:90%;
         
+    }
+    #reg_success, .reg_success p{
+        font-size:.9rem;
     }
     .daily_monthly{
         width:100%;
@@ -3259,6 +3266,30 @@ main hr{
     }
     #helpCenter ul{
         width:95%;
+    }
+    #floor_plans h3{
+        border-radius: 10px;
+        margin:5px auto 10px;
+        font-size:1.3rem;
+    }
+    .plans h4{
+        font-size:1rem;
+    }
+    .plans .store_plan{
+        gap:1rem;
+    }
+    .plans .store_plan .packages h5{
+        font-size: 1rem;
+    }
+    .plans .store_plan .packages{
+        padding:20px 10px;
+        width:46%;
+        min-height: 200px;
+        margin-bottom: 10px;
+    }
+    
+    .packages h2{
+        font-size:1.4rem;
     }
 }
 @media screen and (max-width:650px){

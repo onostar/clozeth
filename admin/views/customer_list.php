@@ -28,7 +28,7 @@
             <tr>
                 <td style="color:red; text-align:center;"><?php echo $n?></td>
                 <td><?php echo $row->first_name . " " . $row->last_name?></td>
-                <td><?php echo $row->phone_number?></td>
+                <td><?php echo "<a href='https://wa.me/+234".$row->phone_number."' title='Chat on whatsapp'>$row->phone_number</a>"?></td>
                 <td><?php echo $row->address . ", " . $row->city;?></td>
                 
             </tr>
