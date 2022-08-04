@@ -1,7 +1,9 @@
 <?php
     include "connections.php";
     session_start();
-
+    require "../../PHPMailer/PHPMailerAutoload.php";
+    require "../../PHPMailer/class.phpmailer.php";
+    require "../../PHPMailer/class.smtp.php";
     $_SESSION['success'] = "";
     $_SESSION['error'] = "";
 
@@ -31,8 +33,62 @@
                         $update_status->bindvalue("exhibitor_id", $user_id);
                         $update_status->execute();
                         if($update_status){
-                            $_SESSION['success'] = "Payment uploaded successfully";
-                            header("Location: ../views/exhibitors.php");
+                            function smtpmailer($to, $from, $from_name, $subject, $body){
+                                $mail = new PHPMailer();
+                                $mail->IsSMTP();
+                                $mail->SMTPAuth = true; 
+                        
+                                $mail->SMTPSecure = 'ssl'; 
+                                $mail->Host = 'www.ippssolar.com';
+                                $mail->Port = 465; 
+                                $mail->Username = 'admin@ippssolar.com';
+                                $mail->Password = 'admin@ippssolar';   
+                        
+                        
+                                $mail->IsHTML(true);
+                                $mail->From="admin@ippssolar.com";
+                                $mail->FromName=$from_name;
+                                $mail->Sender=$from;
+                                $mail->AddReplyTo($from, $from_name);
+                                $mail->Subject = $subject;
+                                $mail->Body = $body;
+                                $mail->AddAddress($to);
+                                $mail->AddAddress('onostarkels@gmail.com@gmail.com');
+                                $mail->AddAddress('onostarmedia@gmail.com');
+                                
+                                if(!$mail->Send())
+                                {
+                                    $error ="Please try Later, Error Occured while Processing...";
+                                    return $error; 
+                                }
+                                else 
+                                {
+                                    
+                                    /* success message */
+                                    $_SESSION['success'] = "Payment uploaded successfully";
+                                    header("Location: ../views/exhibitors.php");
+                                    $error = $_SESSION['success'];
+                                    header("Location: ../views/exhibitors.php");
+                                    // header("Location: index.html");
+                                    return $error;
+                                }
+                            }
+                            /* get company name */
+                            $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                            $get_company->bindvalue("exhibitor_id", $user_id);
+                            $get_company->execute();
+                            $comp = $get_company->fetch();
+                            $company = $comp->company_name;
+                            $to   = 'clozeth@gmail.com';
+                            $from = 'admin@ippssolar.com';
+                            $from_name = "Clozeth";
+                            $name = 'Clozeth payment upload!';
+                            $subj = "Payment from $company";
+                            $msg = "<p>Hello Admin, You have a seller package payment from $company.<br>Kindly click on the link below to confirm payment.</p><br>
+                            <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com/admin/index.php'>Confirm payment</a>";
+                            
+                            $error=smtpmailer($to, $from, $name ,$subj, $msg);
+                            
                         }else{
                             $_SESSION['error'] = "failed to upload receipt";
                             header("Location: ../views/exhibitors.php");

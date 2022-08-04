@@ -1,7 +1,9 @@
 <?php
     include "connections.php";
     session_start();
-
+    require "../../PHPMailer/PHPMailerAutoload.php";
+    require "../../PHPMailer/class.phpmailer.php";
+    require "../../PHPMailer/class.smtp.php";
     $_SESSION['success'] = "";
     $_SESSION['error'] = "";
 
@@ -52,8 +54,66 @@
                     $update_expiration->bindvalue("expiration", $expiration);
                     $update_expiration->bindvalue("exhibitor_id", $exhibitor->exhibitor);
                     $update_expiration->execute();
-                    $_SESSION['success'] = "Exhibitor payment confirmed!";
-                    header("Location: ../views/admin.php");
+                    if($update_expiration){
+                        /* get company email */
+                        $get_company = $connectdb->prepare("SELECT company_email FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+                        $get_company->bindvalue("exhibitor_id", $exhibitor->exhibitor);
+                        $get_company->execute();
+                        $comp = $get_company->fetch();
+                        $email = $comp->company_email;
+                        /* send exhibitor mail */
+                        function smtpmailer($to, $from, $from_name, $subject, $body){
+                            $mail = new PHPMailer();
+                            $mail->IsSMTP();
+                            $mail->SMTPAuth = true; 
+                    
+                            $mail->SMTPSecure = 'ssl'; 
+                            $mail->Host = 'www.ippssolar.com';
+                            $mail->Port = 465; 
+                            $mail->Username = 'admin@ippssolar.com';
+                            $mail->Password = 'admin@ippssolar';   
+                    
+                    
+                            $mail->IsHTML(true);
+                            $mail->From="admin@ippssolar.com";
+                            $mail->FromName=$from_name;
+                            $mail->Sender=$from;
+                            $mail->AddReplyTo($from, $from_name);
+                            $mail->Subject = $subject;
+                            $mail->Body = $body;
+                            $mail->AddAddress($to);
+                            $mail->AddAddress('kellyikpefua@gmail.com');
+                            $mail->AddAddress('onostarmedia@gmail.com');
+                            
+                            if(!$mail->Send())
+                            {
+                                $error ="Please try Later, Error Occured while Processing...";
+                                return $error; 
+                            }
+                            else 
+                            {
+                                
+                                /* success message */
+                                
+                                $_SESSION['success'] = "Exhibitor payment confirmed!";
+                                $error = $_SESSION['reg_success'];
+                                header("Location: ../views/admin.php");
+                                // header("Location: index.html");
+                                return $error;
+                            }
+                        }
+                        
+                        $to = $email;
+                        $from = 'admin@ippssolar.com';
+                        $from_name = "Clozeth";
+                        $name = 'Clozeth payment Aproved!';
+                        $subj = 'Your store payment has been approved';
+                        $msg = "<p>Congratulations! Your payment for a clozeth store plan has been approved.<br>You can now manage your store, customers and orders.</p>
+                        <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com/admin/index.php'>Visit store</a>";
+                        
+                        $error=smtpmailer($to, $from, $name ,$subj, $msg);
+                    }
+                    
                 }else{
                     $_SESSION['error'] = "Failed to confirm payment!";
                     header("Location: ../views/admin.php");

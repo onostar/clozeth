@@ -2,6 +2,9 @@
     include "connections.php";
     session_start();
 
+    require "../../PHPMailer/PHPMailerAutoload.php";
+    require "../../PHPMailer/class.phpmailer.php";
+    require "../../PHPMailer/class.smtp.php";
     $_SESSION['success'] = "";
     $_SESSION['error'] = "";
     // $_SESSION['reg_success'] = "";
@@ -82,10 +85,63 @@
                                 $update_reg->bindvalue("company_email", $email);
                                 $update_reg->bindvalue("banner_description", $description);
                                 $update_reg->execute();
+
+                                /* send mails to seller */
+                                function smtpmailer($to, $from, $from_name, $subject, $body){
+                                    $mail = new PHPMailer();
+                                    $mail->IsSMTP();
+                                    $mail->SMTPAuth = true; 
+                            
+                                    $mail->SMTPSecure = 'ssl'; 
+                                    $mail->Host = 'www.ippssolar.com';
+                                    $mail->Port = 465; 
+                                    $mail->Username = 'admin@ippssolar.com';
+                                    $mail->Password = 'admin@ippssolar';   
+                            
+                            
+                                    $mail->IsHTML(true);
+                                    $mail->From="admin@ippssolar.com";
+                                    $mail->FromName=$from_name;
+                                    $mail->Sender=$from;
+                                    $mail->AddReplyTo($from, $from_name);
+                                    $mail->Subject = $subject;
+                                    $mail->Body = $body;
+                                    $mail->AddAddress($to);
+                                    $mail->AddAddress('kellyikpefua@gmail.com');
+                                    // $mail->AddAddress('onostarmedia@gmail.com');
+                                    
+                                    if(!$mail->Send())
+                                    {
+                                        $_SESSION['error'] = "Failed to send mail";
+                                        $error = $_SESSION['error'];
+                                        header("Location: ../views/exhibitors.php");
+                                        
+                                        return $error; 
+                                    }
+                                    else 
+                                    {
+                                        
+                                        /* success message */
+                                        $_SESSION['reg_success'] = "Woo Hoo!!!. Your registration was successful, Set up your store by updating your store banners and start adding items to sell on Clozeth!";
+                                        $error = $_SESSION['reg_success'];
+                                        header("Location: ../views/exhibitors.php");
+                                        // header("Location: index.html");
+                                        return $error;
+                                    }
+                                }
+                                
+                                $to = $email;
+                                $from = 'admin@ippssolar.com';
+                                $from_name = "Clozeth";
+                                $name = 'Store Registration Successful!';
+                                $subj = 'Clozeth successful seller registration';
+                                $msg = "<p>Congratulations $name on your successful registration as a seller on clozeth.<br>Kindly update your store banner, upload your favourite items with their prices and start selling!<br></p>
+                                <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com/admin/index.php'>Start selling</a>";
+                                
+                                $error=smtpmailer($to, $from, $name ,$subj, $msg);
                                 /* update payment status */
                                 
-                                $_SESSION['reg_success'] = "Woo Hoo!!!. Your registration was successful, Set up your store by updating your store banners and start adding items to sell on Clozeth!";
-                                header("Location: ../views/exhibitors.php");
+                                
                                 
                             }else{
                                 $_SESSION['error'] = "failed to register";

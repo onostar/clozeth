@@ -308,10 +308,18 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
+                    <form action="controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                        <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
                         
                         <figcaption>
+                        
                             <div class="todo">
                                 <p><?php echo $row->item_name?></p>
                                 <!-- <p><i class="fas fa-layer-group"></i> <?php
@@ -320,11 +328,13 @@
                                 $get_category->execute();
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
                                 <span>₦ <?php echo number_format($row->item_prize)?></span>
-                            </div>
                             <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+
+                            </div>
                         </figcaption>
                     
                     </a>
+                    </form>
                 </figure>
                 
                 <?php } endforeach?>
@@ -360,11 +370,19 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
+                    <form action="controller/cart.php" method="POST">
+                        <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                        <input type="hidden" id="quantity" name="quantity" value="1">
+                    <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                     <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
 
                         
                         <figcaption>
+                        
                             <div class="todo">
                                 <p><?php echo $row->item_name?></p>
                                 <!-- <p><i class="fas fa-layer-group"></i> <?php
@@ -373,11 +391,14 @@
                                 $get_category->execute();
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
                                 <span>₦<?php echo number_format($row->item_prize)?></span>
+                            <button title="add to cart" class="add_cart"><i class="fas fa-cart-plus"></i></button>
+
                             </div>
-                            <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                        
                         </figcaption>
                     
                     </a>
+                    </form>
                 </figure>
                 
                 <?php } endforeach ?>
@@ -422,6 +443,13 @@
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="Top deals">
                         
                         <figcaption>
+                        <form action="controller/cart.php" method="POST">
+                        <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                        <input type="hidden" id="quantity" name="quantity" value="1">
                             <div class="todo">
                                 <p><?php echo $row->item_name?></p>
                                 <!-- <p><i class="fas fa-layer-group"></i> <?php
@@ -433,6 +461,7 @@
                                 <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
                             </div>
                             <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                        </form>
                         </figcaption>
                         <div class="percentage">
                             <?php
@@ -480,6 +509,13 @@
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="featured item">
                         
                         <figcaption>
+                        <form action="controller/cart.php" method="POST">
+                        <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                        <input type="hidden" id="quantity" name="quantity" value="1">
                             <div class="todo">
                                 <p><?php echo $row->item_name?></p>
                                 <p><i class="fas fa-layer-group"></i> <?php
@@ -490,7 +526,7 @@
                                 <span>₦ <?php echo number_format($row->item_prize)?></span>
                             </div>
                             <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
-                        
+                        </form>
                         </figcaption>
                     </a>
                 </figure>
@@ -628,7 +664,7 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                    <form action="../controller/cart.php" method="POST">
+                    <form action="controller/cart.php" method="POST">
                         <a href="javascript:void(0);" onclick="showItems('<?php echo $row->item_id?>')">
                             <img src="<?php echo 'items/'.$row->item_foto?>" alt="recommended item" title="Click to view">
                         </a>
@@ -648,6 +684,7 @@
                                 <span>₦ <?php echo number_format($row->item_prize)?></span>
                             </div>
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                            
                         </figcaption>
                     </form>
                 </figure>

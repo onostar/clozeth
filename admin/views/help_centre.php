@@ -8,11 +8,11 @@
         </li>
         <li>
             <h4 data-page="how_change_price" class="faqs">How to change price of an item <i class="fas fa-chevron-down"></i></h4>
-            <p id="how_change_price" class="faq_notes">Click <strong>Manage store</strong> menu, click on <strong>item prices</strong>. It display all your items with their prices. Click on the price of the item you want to modify and then enter the correct price on the pop-box. Click on the check box or press enter key to compelete change</p>
+            <p id="how_change_price" class="faq_notes">Click <strong>Manage store</strong> menu, click on <strong>item prices</strong>. It display all your items with their prices. Click on the price of the item you want to modify and then enter the correct price on the pop-up box. Click on the check box or press enter key to compelete change</p>
         </li>
         <li>
             <h4 data-page="how_deactivate" class="faqs">Deactivate an item <i class="fas fa-chevron-down"></i></h4>
-            <p id="how_deactivate" class="faq_notes">If you do not want an item to displayed for buyers to see, then you can go to your <strong>Manage store</strong> menu, click on <strong>item list, all items in your store will display with their availability status on the last column. Click on the disable icon to disable an item or click on the enable icon to activate the item again.</strong></p>
+            <p id="how_deactivate" class="faq_notes">If you do not want an item to be displayed for buyers to see, then you can go to your <strong>Manage store</strong> menu, click on <strong>item list, all items in your store will display with their availability status on the last column. Click on the disable icon to disable an item or click on the enable icon to activate the item again.</strong></p>
         </li>
         <li>
             <h4 data-page="how_incoming_orders" class="faqs">Manage incoming orders <i class="fas fa-chevron-down"></i></h4>
