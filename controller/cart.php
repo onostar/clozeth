@@ -63,7 +63,12 @@
                 /* echo "<script>alert('".$item_name. " added to cart!');
                 window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>"; */
                 // $_SESSION['success'] = "$category added Successfully!";
-                header("Location: ../view/item_info.php?item=".$item_id);
+                if(isset($_SESSION['order_page'])){
+                    header("Location: ".$_SESSION['current_page']);
+                    
+                }else{
+                    header("Location: ../view/item_info.php?item=".$item_id);
+                }
             }else{
                 echo "<script>alert('Item not added!');
                 window.open('../view/item_info.php?item=".$item_id."', '_parent');</script>";

@@ -2,7 +2,7 @@
     require "controller/server.php";
     session_start();
     $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-    
+    $_SESSION['order_page'] = $_SERVER['REQUEST_URI'];
 
 ?>
 <!DOCTYPE html>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="slides">
                     <div class="slide_img">
-                        <img src="images/top_deals2.webp" alt="Clozeth Banner">
+                        <img src="images/online_shop3.jpg" alt="Clozeth Banner">
                     </div>
                     <div class="description">
                     <!-- <h2>All the best deals</h2> -->
@@ -195,7 +195,7 @@
             </nav>
             <div id="adds">
                 
-                <img src="images/place_order3.jpg" alt="clozeth adds">
+                <img src="images/online_shop2.jpg" alt="clozeth adds">
                 
             </div>
         </aside>

@@ -2,6 +2,7 @@
     require "../controller/server.php";
     session_start();
     $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+    $_SESSION['order_page'] = $_SERVER['REQUEST_URI'];
 
 
 ?>
@@ -97,7 +98,6 @@
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
                                 <span>₦ <?php echo number_format($show->item_prize)?></span>
                             </div>
-                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
                         </figcaption>
                     </form>
                 </figure>
