@@ -104,7 +104,7 @@
                                 $cat = $get_category->fetch(); echo $cat->category;?></p> -->
                                 <span>₦ <?php echo number_format($show->item_prize)?></span>
                             </div>
-                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                            
                         </figcaption>
                     </form>
                 </figure>

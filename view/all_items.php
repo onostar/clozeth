@@ -48,7 +48,7 @@
             ?>
             <h2><strong>Check out more items from our collections</strong></h2>
             <hr>
-            <div class="results">
+            <div class="results featured">
                 
                 <?php 
                     if(!$search_query->rowCount()){
@@ -67,16 +67,9 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                    <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
                         <img src="<?php echo '../items/'.$show->item_foto?>" alt="featured item" title="click to view">
 
-                    </a>
-                    <form action="cart.php" method="POST">
-                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $show->item_name?>">
-                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $show->item_prize?>">
-                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $show->company?>">
-                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
-                        <input type="hidden" id="quantity" name="quantity" value="1">
+                   
                         <figcaption>
                             <div class="todo">
                                 <p class="first"><?php echo $show->item_name?></p>
@@ -91,7 +84,7 @@
                                     <span class="previous_price">₦<?php echo number_format($show->previous_price)?></span>
                                 <?php }?>
                             </div>
-                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+
                             <?php
                                 if($show->item_prize < $show->previous_price){
                             ?>
@@ -103,7 +96,17 @@
                             </div>
                             <?php }?>
                         </figcaption>
-                    </form>
+                        <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $show->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="../controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $show->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $show->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $show->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $show->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
                 </figure>
                 <?php }?>
                 <?php endforeach ?>

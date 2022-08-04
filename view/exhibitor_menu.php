@@ -128,8 +128,6 @@
                         if($company_status == 2){
                     ?>
                     <figure>
-                        <!-- <a href="login_page.php?item=Please login to view new items"> -->
-                        <a href="javascript:void(0)" onclick="showItems('<?php echo $shows->item_id?>')">
                             <img src="<?php echo '../items/'.$shows->item_foto?>" alt="new item">
                         </a>
                         
@@ -144,8 +142,19 @@
                                     $cat = $get_category->fetch(); echo $cat->category;?></p>
                                     <span>₦ <?php echo number_format($shows->item_prize)?></span>
                                 </div>
-                                <!-- <button onclick="loginFirst();"><i class="fas fa-shopping-cart"></i></button> -->
                             </figcaption>
+                            <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $shows->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="../controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $shows->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $shows->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $shows->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $shows->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
+                        </div>
                             <!-- <?php
                                 if($shows->item_prize < $shows->previous_price){
                             ?>
@@ -191,7 +200,6 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo '../items/'.$row->item_foto?>" alt="Top deals">
                         
                         <figcaption>
@@ -205,15 +213,26 @@
                                 <span>₦ <?php echo number_format($row->item_prize)?></span>
                                 <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
                             </div>
-                            <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                            
                         </figcaption>
+                        <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $row->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="../controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
+                        </div>
                         <div class="percentage">
                             <?php
                                 $percent = (($row->previous_price - $row->item_prize) / $row->previous_price) * 100;
                             ?>
                             <p>-<?php echo number_format($percent);?>%</p>
                         </div>
-                    </a>
                 </figure>
                 
                 <?php }; endforeach ?>
@@ -255,7 +274,6 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                <a href="javascript:void(0)" onclick="showItems('<?php echo $row->item_id?>')">
                         <img src="<?php echo '../items/'.$row->item_foto?>" alt="Top deals">
                         
                         <figcaption>
@@ -271,8 +289,20 @@
                                 <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
                                 <?php }?>
                             </div>
-                            <button title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                            
                         </figcaption>
+                        <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $row->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="../controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
+                        </div>
                         <?php
                             if($row->item_prize < $row->previous_price){
                         ?>
@@ -284,7 +314,7 @@
                         </div>
                         <?php }?>
                         
-                    </a>
+                    
                 </figure>
                 
                 <?php }; endforeach ?>
@@ -329,9 +359,8 @@
                     if($company_status == 2){
                 ?>
                 <figure>
-                    <a href="javascript:void(0)" onclick="showItems('<?php echo $shows->item_id?>')">
                         <img src="<?php echo '../items/'.$shows->item_foto?>" alt="featured item">
-                    </a>
+                  
                     
                         <figcaption>
                             <div class="todo">
@@ -349,6 +378,18 @@
                             </div>
                             <!-- <button onclick="loginFirst();"><i class="fas fa-shopping-cart"></i></button> -->
                         </figcaption>
+                        <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $shows->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="../controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $shows->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $shows->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $shows->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $shows->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
+                        </div>
                         <?php
                             if($shows->item_prize < $shows->previous_price){
                         ?>
