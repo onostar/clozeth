@@ -64,7 +64,7 @@
             $name = 'Clozeth Password recovery';
             $subj = 'Clozeth Password recovery';
             $msg = "<p>You have sent a request for a reset of your password.<br>KIndly click on the link Below to reset your password!</p><br>
-            <a style='padding:20px; background:green; color:white;' href='https://clozeth.com/view/reset_password.php?email=$email'>Reset Password</a>";          
+            <a style='padding:20px; background:green; color:white;' href='https://clozeth.com.ng/view/reset_password.php?email=$email'>Reset Password</a>";          
             $error=smtpmailer($to, $from, $name ,$subj, $msg);
         }
     }

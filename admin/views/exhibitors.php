@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clozeth is an online platform made for the purpose of ordering fashion wears, men and women clothing, bed sheets, jewellries, etc from all kinds of retailers and wholesalers in Nigeria and Abroad from whereever you are through your mobile phone, tablet or pc">
     <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
@@ -108,15 +108,6 @@
                 <div class="booth">
                     
                     <?php
-                        if($user->payment_status == 2):
-                    ?>
-                    <div class="quick_links">
-                        <a class="page_navs" data-page="add_items"href="javascript:void(0)" title="Add items"><i class="fas fa-cart-plus"></i></a>
-                        <a class="page_navs" data-page="managePrice"href="javascript:void(0)" title="manage item prices"><i class="fas fa-tags"></i></a>
-                        <a class="page_navs" data-page="deleteItems" href="javascript:void(0)" title="Delete items from store"><i class="fas fa-trash"></i></a>
-                        <a class="page_navs" data-page="addBanner" href="javascript:void(0)" title="Update store banners"><i class="fas fa-photo-video"></i></a>
-                    </div>
-                    <?php
                         if($user->payment_status == 2):   
                     ?>
                     <div class="expiration_date">
@@ -130,13 +121,68 @@
                             ?>
                         </p>
                     </div>
-                    <?php endif?>
                     <p class="user_store"><i class="fas fa-shop"></i> <span><?php 
                         echo "<a target='_blank' href='../../view/exhibitor_menu.php?company=".$user->reg_number."'>Visit store</a>";
                     ?></span></p>
+                        <a class="user_store" id="userStore" target="_blank" href="../../view/exhibitor_menu.php?company=<?php echo $user->reg_number?>" title='view store'><i class="fas fa-shop"></i> Store</a>
                     <!-- <div class="clear"></div> -->
                     <?php endif?>
                 </div>
+                <!-- quick links -->
+                <?php
+                        if($user->payment_status == 2):
+                    ?>
+                <div class="quick_links" id="quickLinks">
+                    <div class="links page_navs" data-page="add_items">
+                        <i class="fas fa-folder-plus"></i>
+                        <p>Add items</p>
+                    </div>
+                    <div class="links page_navs" data-page="addBanner">
+                        <i class="fas fa-images"></i>
+                        <p>Update store banner</p>
+                    </div>
+                    <div class="links page_navs" data-page="itemList">
+                        <i class="fas fa-list"></i>
+                        <p>Item list</p>
+                    </div>
+                    <div class="links page_navs" data-page="managePrice">
+                        <i class="fas fa-tags"></i>
+                        <p>Manage prices</p>
+                    </div>
+                    <div class="links page_navs" data-page="orderList">
+                        <i class="fas fa-cart-arrow-down"></i>
+                        <p>Incoming orders</p>
+                    </div>
+                    <div class="links page_navs" data-page="confirmDelivery">
+                        <i class="fas fa-truck"></i>
+                        <p>Deliveries</p>
+                    </div>
+                    <div class="links page_navs" data-page="customers">
+                        <i class="fas fa-users"></i>
+                        <p>Customers</p>
+                    </div>
+                    <div class="links page_navs" data-page="deliveryList">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Sales report</p>
+                    </div>
+                    <div class="links page_navs" data-page="cancelledOrders">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Cancelled orders</p>
+                    </div>
+                    <div class="links page_navs" data-page="highestSelling">
+                        <i class="fas fa-plane-slash"></i>
+                        <p>Highest Selling items</p>
+                    </div>
+                    <div class="links page_navs" data-page="profile">
+                        <i class="fas fa-user-cog"></i>
+                        <p>Profile</p>
+                    </div>
+                    <div class="links page_navs" data-page="helpCenter">
+                        <i class="fas fa-question-circle"></i>
+                        <p>Help</p>
+                    </div>
+                </div>
+                <?php endif?>
                 <!-- dasghboard -->
                 <?php include "dashboard.php"?>
                 <!-- show message to encourage sellers to buy plan -->

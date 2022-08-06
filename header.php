@@ -61,7 +61,7 @@
             <button id="loginDiv"><i class="far fa-user"></i> Your Account <i class="fas fa-chevron-down"></i></button>
             <div class="login_option">
                 <div>
-                    <button id="loginBtn"><a href="login_page.php">Login<i class="fas fa-sign-in-alt"></i></a></button>
+                    <button id="loginBtn"><a href="view/user_type.php">Login<i class="fas fa-sign-in-alt"></i></a></button>
                     <h3>Or</h3>
                     <a href="registration.php" id="signupBtn"><i class="fas fa-paper-plane"></i> Create an account</a>
                 </div>

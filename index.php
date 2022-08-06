@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clozeth is an online platform made for the purpose of ordering fashion wears, men and women clothing, bed sheets, jewellries, etc from all kinds of retailers and wholesalers in Nigeria and Abroad from whereever you are through your mobile phone, tablet or pc">
+    <meta name="description" content="Clozeth is an online platform made for the purpose of ordering fashion wears, men and women clothing, bed sheets, jewellerie, etc from all kinds of retailers and wholesalers in Nigeria and Abroad from where eve you are through your mobile phone, tablet or pc">
     <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
     <title>
         <?php
@@ -62,9 +62,11 @@
         <aside id="asideLeft" class="main_cat">
             <nav id="index_nav">
             <ul>
+                <h3>Shop by Categories</h3>
+                
                 <!-- <h3>Categories</h3> -->
                 <?php
-                    $get_categories = $connectdb->prepare("SELECT * FROM categories ORDER BY category");
+                    $get_categories = $connectdb->prepare("SELECT * FROM categories LIMIT 10");
                     $get_categories->execute();
                     $cats = $get_categories->fetchAll();
                     foreach($cats as $cat):
@@ -93,6 +95,8 @@
                                     echo "<img src='images/woman-clothes.png'>";
                                 }elseif($cat->category == "Kids Fashion"){
                                     echo "<img src='images/baby-clothes.png'>";
+                                }elseif($cat->category == "Deodorant"){
+                                    echo "<i class='fas fa-spray-can'></i>";
                                 }else{
                             ?>
                             <i class="fas fa-shopping-cart"></i>
@@ -174,11 +178,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" title="who we are">
+                        <a href="view/report_product.php" title="who we are">
                             <i class="fas fa-street-view"></i>
                             <div class="note">
-                                <h3>About us</h3>
-                                <p>Who we are</p>
+                                <h3>Report product</h3>
+                                <p>Drop your complaint</p>
                             </div>
                         </a>
                     </li>
@@ -355,20 +359,12 @@
             </div>
             <div class="featured">
                 <?php
-                    $select_featured = $connectdb->prepare("SELECT * FROM menu WHERE item_status = 0 ORDER BY time_created DESC LIMIT 6");
+                    $select_featured = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 AND menu.item_prize < menu.previous_price ORDER BY menu.time_created DESC LIMIT 6");
                     $select_featured->execute();
                     $rows = $select_featured->fetchAll();
                     foreach($rows as $row):
                 ?>
-                <!-- check company status -->
-                <?php
-                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
-                    $get_company->bindvalue("exhibitor_id", $row->company);
-                    $get_company->execute();
-                    $company_stat = $get_company->fetch();
-                    $company_status = $company_stat->payment_status;
-                    if($company_status == 2){
-                ?>
+                
                 <figure>
                     
                     
@@ -405,7 +401,7 @@
                         
                 </figure>
                 
-                <?php } endforeach ?>
+                <?php endforeach ?>
                 
             </div>
             <!-- <form action="controller/more_featured.php" method="POST">
@@ -417,7 +413,7 @@
         </section>
         <!-- show top deals -->
         <?php
-            $search_deals = $connectdb->prepare("SELECT * FROM menu WHERE item_status = 0 AND item_prize < previous_price ORDER BY time_created DESC LIMIT 6");
+            $search_deals = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 AND menu.item_prize < menu.previous_price ORDER BY menu.time_created DESC LIMIT 6");
             $search_deals->execute();
             if($search_deals->rowCount() > 0){
                 
@@ -433,15 +429,7 @@
                     $rows = $search_deals->fetchAll();
                     foreach($rows as $row):
                 ?>
-                <!-- check company status -->
-                <?php
-                    $get_company = $connectdb->prepare("SELECT payment_status FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
-                    $get_company->bindvalue("exhibitor_id", $row->company);
-                    $get_company->execute();
-                    $company_stat = $get_company->fetch();
-                    $company_status = $company_stat->payment_status;
-                    if($company_status == 2){
-                ?>
+                
                 <figure>
                 
                         <img src="<?php echo 'items/'.$row->item_foto?>" alt="Top deals">
@@ -479,7 +467,7 @@
                             </form>
                 </figure>
                 
-                <?php } endforeach ?>
+                <?php endforeach ?>
                 
             </div>
             
@@ -654,6 +642,24 @@
                         <img src="images/bags2.webp" alt="Bags">
                         <figcaption>
                             <input type="submit" name="check_category"value="Bags">
+                        </figcaption>
+                    </form>
+                </figure>
+                <figure>
+                    <form action="view/categories.php" method="POST">
+                        <input type="hidden" name="item_cat" id="item_cat" value="22">
+                        <img src="images/deodorants.jpg" alt="deodorants">
+                        <figcaption>
+                            <input type="submit" name="check_category"value="Deodorants">
+                        </figcaption>
+                    </form>
+                </figure>
+                <figure>
+                    <form action="view/categories.php" method="POST">
+                        <input type="hidden" name="item_cat" id="item_cat" value="23">
+                        <img src="images/makeup-cosmetics.webp" alt="other accessories">
+                        <figcaption>
+                            <input type="submit" name="check_category"value="Others">
                         </figcaption>
                     </form>
                 </figure>

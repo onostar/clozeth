@@ -7,9 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ACPN is the National reguatory body for all pharmacist in Nigeria. it is formally known as Pharmacist society of NIgeria">
-    <meta name="keywords" content="PSN, psn, Pharmacist, pharmacist association, pharmacist society, Nigeria">
-    <title>ACPN National Conference| Member Registration</title>
+    <meta name="description" content="Clozeth is an online platform made for the purpose of ordering fashion wears, men and women clothing, bed sheets, jewellries, etc from all kinds of retailers and wholesalers in Nigeria and Abroad from whereever you are through your mobile phone, tablet or pc">
+    <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
+    <title>Clozeth | <?php echo $user->company_name;?> Portal</title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
@@ -28,7 +28,7 @@
                     </a>
                 </h1>
                 
-                <h2>Exhibitor! Recover password</h2>
+                <h2>Seller! Recover password</h2>
                 <p>Kindly Enter your registered email. We will send a link to the email to enable you reset your password</p>
                 <?php
                     if(isset($_SESSION['success'])){
@@ -54,7 +54,7 @@
                     
                 </form>
                 <div class="signup_option">
-                    <p>Don't have an account yet? <a href="registration.php">Signup now</a></p>
+                    <p>Don't have an account yet? <a href="company_registration.php">Signup now</a></p>
                 </div>
                 <div id="foot">
                     <p >&copy;<?php echo Date("Y");?> Clozeth. All Rights Reserved.</p>

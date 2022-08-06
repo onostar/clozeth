@@ -13,7 +13,7 @@
                 </div>
                 <div class="data">
                     <label for="contact_person">Store address:</label>
-                    <p style=" color:red; display:block; margin-right:10px"><?php echo "www.clozeth.com/exhibitor_menu.php?company=".$user->reg_number?></p>
+                    <p style=" color:red; display:block; margin-right:10px"><?php echo "<a href='https://www.clozeth.com.ng/exhibitor_menu.php?company=".$user->reg_number."' title='share store link'>Copy and share store link</a>"?></p>
                 </div>
             </div>
             <div class="inputs">

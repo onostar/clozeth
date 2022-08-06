@@ -1,5 +1,36 @@
 <div id="dashboard">
-                    
+<div class="cards" id="card4">
+        <a href="javascript:void(0)" class="page_navs" data-page="orderList">
+            <p>Incoming Orders</p>
+            <div class="infos">
+                <i class="fas fa-cart-arrow-down"></i>
+                <p>
+                <?php
+                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status = 0");
+                    $orders->bindvalue('company', $user->exhibitor_id);
+                    $orders->execute();
+                    echo $orders->rowCount();
+                ?>
+                </p>
+            </div>
+        </a>
+    </div> 
+    <div class="cards" id="card5">
+        <a href="javascript:void(0)" class="page_navs" data-page="confirmDelivery">
+            <p>Pending Delivery</p>
+            <div class="infos">
+                <i class="fas fa-truck"></i>
+                <p>
+                <?php
+                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status = 2");
+                    $orders->bindvalue('company', $user->exhibitor_id);
+                    $orders->execute();
+                    echo $orders->rowCount();
+                ?>
+                </p>
+            </div>
+        </a>
+    </div> 
     <div class="cards" id="card2">
         <a href="javascript:void(0)">
             <p>Store status</p>
@@ -35,37 +66,6 @@
             </div>
         </a>
     </div> 
-    <div class="cards" id="card4">
-        <a href="javascript:void(0)" class="page_navs" data-page="orderList">
-            <p>Incoming Orders</p>
-            <div class="infos">
-                <i class="fas fa-cart-arrow-down"></i>
-                <p>
-                <?php
-                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status = 0");
-                    $orders->bindvalue('company', $user->exhibitor_id);
-                    $orders->execute();
-                    echo $orders->rowCount();
-                ?>
-                </p>
-            </div>
-        </a>
-    </div> 
-    <div class="cards" id="card5">
-        <a href="javascript:void(0)" class="page_navs" data-page="confirmDelivery">
-            <p>Pending Delivery</p>
-            <div class="infos">
-                <i class="fas fa-truck"></i>
-                <p>
-                <?php
-                    $orders = $connectdb->prepare("SELECT * FROM orders WHERE company = :company AND order_status = 2");
-                    $orders->bindvalue('company', $user->exhibitor_id);
-                    $orders->execute();
-                    echo $orders->rowCount();
-                ?>
-                </p>
-            </div>
-        </a>
-    </div> 
+    
     
 </div>

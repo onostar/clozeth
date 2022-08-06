@@ -127,6 +127,8 @@ function showPage(page){
     document.querySelectorAll('.displays').forEach(div =>{
         div.style.display = "none";
     });
+    document.getElementById("quickLinks").style.display = "none";
+
     // $(`#${page}`).load(`admin.php #${page}`);
     // refreshDiv(page);
     document.querySelector(`#${page}`).style.display = "block";
@@ -138,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function(){
         navs.onclick = function(){
             showPage(this.dataset.page);
             $("#paid_receipt").hide();
-            // document.querySelector(".booth").style.display = "none";
             document.querySelector(".expiration_date").style.display = "none";
             document.querySelector(".user_store").style.display = "none";
 

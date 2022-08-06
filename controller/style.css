@@ -336,6 +336,11 @@ header i{
     list-style:none;
     margin:10px 0;
 }
+#asideLeft ul h3{
+    color:var(--primaryColor);
+    font-family: "Poppins";
+    font-size:.9rem;
+}
 #asideLeft li a{
     /* color:rgba(13, 54, 44, .7); */
     color:var(--primaryColor);
@@ -843,7 +848,31 @@ main{
     flex-wrap:wrap;
     min-height:100vh;
 }
-
+.user_type{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:20px auto;
+    text-align:center;
+    gap:2rem;
+}
+.user_type img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit: cover;
+    border:2px dotted var(--primaryColor);
+    margin-bottom:5px;
+}
+.user_type p{
+    padding:10px;
+    color:#fff;
+    background:var(--primaryColor);
+}
+.user_type a:last-child p{
+    background: var(--secondaryColor);
+}
 .login_page{
     /* position:relative; */
     width:35%;
@@ -2163,7 +2192,7 @@ color: rgb(231, 226, 226);
 #help_center .help_p{
     margin:20px 0 0;
 }
-#help_center input{
+#help_center input, #help_center select{
     width:70%;
     margin:auto;
     padding:10px;
@@ -2406,6 +2435,43 @@ color: rgb(231, 226, 226);
     color:#fff;
     padding:15px;
     border-radius: 5px;
+}
+#help_center .report_form{
+    width:100%;
+}
+#help_center .report_form .help_p{
+    font-size:1rem;
+    color:var(--primaryColor);
+    text-align: center;
+    margin-bottom:20px;
+}
+#help_center .report_form form{
+    background:#fff;
+    padding:20px;
+}
+#help_center .report_form .inputs{
+    display:flex;
+    /* justify-content: space-between; */
+    width:100%;
+    align-items: center;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+#help_center .report_form .data{
+    display:block;
+    width:49%;
+}
+#help_center .report_form input, #help_center .report_form select, #help_center .report_form textarea{
+    width:100%;
+}
+#help_center .report_form label{
+    display:block;
+
+}
+#help_center .report_form button{
+    border:none;
+    border-radius: 5px;
+    padding:10px;
 }
 @media screen and (max-width:800px){
     .top_head{
@@ -2680,6 +2746,9 @@ color: rgb(231, 226, 226);
     #general_cat figure{
         width:25%;
         margin:0;
+    }
+    #general_cat figure:first-child{
+        margin-left:100px;
     }
     #general_cat figure img{
         width:100%;
@@ -3095,6 +3164,9 @@ color: rgb(231, 226, 226);
     }
     .featured_float h3, #featured h3, #just_in h3, #all_items h3, #popular h3, .featured_float h2{
         font-size: .9rem!important;
+    }
+    #help_center .report_form .data{
+        width:100%;
     }
 }
 @media screen and (max-width:650px){

@@ -44,7 +44,7 @@
             <li><a href="javascript:void(0);" class="page_navs" data-page="deliveryList"><i class="fas fa-coins"></i> Sales Reports </a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="customers"><i class="fas fa-users" title="View Customers"></i> Customer List </a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="highestSelling"><i class="fas fa-chart-line" title="View Highest & lowest selling items"></i> Highest selling items </a></li>
-            <li><a href="javascript:void(0);" id="updateUser" class="page_navs" data-page="profile"><i class="fas fa-user-cog"></i> Update profile</a></li>
+            <li><a href="javascript:void(0);" id="updateUser" class="page_navs" data-page="profile"><i class="fas fa-user-cog"></i> Profile</a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="helpCenter"><i class="fas fa-question-circle"></i> Help centre</a></li>
         </ul>
     </nav>
@@ -99,7 +99,7 @@
             <li><a href="javascript:void(0);" class="page_navs" data-page="deliveryList"><i class="fas fa-coins"></i> Sales Reports </a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="customers"><i class="fas fa-users" title="View Customers"></i> Customer List </a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="highestSelling"><i class="fas fa-chart-line" title="View Highest & lowest selling items"></i> Highest selling items </a></li>
-            <li><a href="javascript:void(0);" id="updateUser" class="page_navs" data-page="profile"><i class="fas fa-user-cog"></i> Update profile</a></li>
+            <li><a href="javascript:void(0);" id="updateUser" class="page_navs" data-page="profile"><i class="fas fa-user-cog"></i> Profile</a></li>
             <li><a href="javascript:void(0);" class="page_navs" data-page="helpCenter"><i class="fas fa-question-circle"></i> Help centre</a></li>
         </ul>
     </nav>

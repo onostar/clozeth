@@ -3,6 +3,10 @@
     <hr>
     <ul>
         <li>
+            <h4 data-page="share-store" class="faqs">How to share your store link to your customers <i class="fas fa-chevron-down"></i></h4>
+            <p id="share-store" class="faq_notes">Click on the <strong>Profile</strong> menu, Scroll to find store address. Right click on the link to copy adrees if you are using a pc or tap down and click on copy link if you are using a mobile device. Go paste the link on your socila media pages</p>
+        </li>
+        <li>
             <h4 data-page="how_add_items" class="faqs">How do i add items to my store? <i class="fas fa-chevron-down"></i></h4>
             <p id="how_add_items" class="faq_notes">Click on the <strong>Manage store</strong> menu, and click on <strong>add items</strong>. FIll in the item information and add an image , then click on add item button to upload that item.</p>
         </li>
@@ -13,6 +17,10 @@
         <li>
             <h4 data-page="how_deactivate" class="faqs">Deactivate an item <i class="fas fa-chevron-down"></i></h4>
             <p id="how_deactivate" class="faq_notes">If you do not want an item to be displayed for buyers to see, then you can go to your <strong>Manage store</strong> menu, click on <strong>item list, all items in your store will display with their availability status on the last column. Click on the disable icon to disable an item or click on the enable icon to activate the item again.</strong></p>
+        </li>
+        <li>
+            <h4 data-page="share-link" class="faqs">How to share an item link on my social media <i class="fas fa-chevron-down"></i></h4>
+            <p id="share-link" class="faq_notes">Click on the <strong>Manage store</strong> menu, click on <strong>item list</strong>, all items in your store will display. Click on <strong>view/copy item</strong> or simply press down to copy the link if you are on mobile, go paste the url/link on your whatsapp status, facebook fields, etc to share that product information </p>
         </li>
         <li>
             <h4 data-page="how_incoming_orders" class="faqs">Manage incoming orders <i class="fas fa-chevron-down"></i></h4>

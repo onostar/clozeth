@@ -22,7 +22,7 @@
             <?php
                 }else{    
             ?>
-            <button id="loginDiv"><i class="far fa-user"></i> <a href="login_page.php">Sign in</a> <i class="fas fa-sign-in-alt"></i></button>
+            <button id="loginDiv"><i class="far fa-user"></i> <a href="view/user_type.php">Sign in</a> <i class="fas fa-sign-in-alt"></i></button>
             <?php }?>
         </div>
         <nav id="index_nav">
@@ -37,9 +37,9 @@
                 ?>
                 <li><a href="view/sellers.php"><i class="fas fa-shop"></i>Become a Seller</a></li>
                 <?php }?>
-                    <h3>Our Categories</h3>
+                    <h3>                    <h3>Shop by Categories</h3>
                     <?php
-                        $get_categories = $connectdb->prepare("SELECT * FROM categories ORDER BY category");
+                        $get_categories = $connectdb->prepare("SELECT * FROM categories ");
                         $get_categories->execute();
                         $cats = $get_categories->fetchAll();
                         foreach($cats as $cat):
@@ -68,6 +68,9 @@
                                     echo "<img src='images/woman-clothes.png'>";
                                 }elseif($cat->category == "Kids Fashion"){
                                     echo "<img src='images/baby-clothes.png'>";
+                                }elseif($cat->category == "Deodorant"){
+                                    echo "<i class='fas fa-spray-can'></i>";
+                                    
                                 }else{
                             ?>
                             <i class="fas fa-shopping-cart"></i>
@@ -93,11 +96,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" title="who we are">
+                        <a href="view/report_product.php" title="who we are">
                             <i class="fas fa-street-view"></i>
                             <div class="note">
-                                <h3>About us</h3>
-                                <p>Who we are</p>
+                                <h3>Report product</h3>
+                                <p>Drop your complaint</p>
                             </div>
                         </a>
                     </li>
