@@ -14,7 +14,7 @@
                             <i class="fas fa-user-tie"></i>
                             <p>Agent</p>
                         </div>
-                        <p class="chats">Hi. This is customer service<br> Welcome to Clozeth. Your online stop shop for all things fashion and home interiors. How may we be of service today?</p>
+                        <p class="chats">Hi. This is customer service<br> Welcome to Clozeth. Your online stop shop for all things fashion, skin care and accessories. How may we be of service today?</p>
                         
                     </div>
                 </div>

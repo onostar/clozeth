@@ -238,16 +238,16 @@
                     <input type="hidden" name="item_cat" id="item_cat" value="12">
                     <img src="images/men_suit.webp" alt="Mens Collections">
                     <figcaption>
-                        <input type="submit" name="check_category"value="Men's Fashion">
+                        <input type="submit" name="check_category"value="Men">
                     </figcaption>
                 </form>
              </figure>
              <figure>
                 <form action="view/categories.php" method="POST">
                     <input type="hidden" name="item_cat" id="item_cat" value="13">
-                    <img src="images/women.webp" alt="Mens Collections">
+                    <img src="images/women.webp" alt="Women's Collections">
                     <figcaption>
-                        <input type="submit" name="check_category"value="Women's Fashion">
+                        <input type="submit" name="check_category"value="Ladies">
                     </figcaption>
                 </form>
              </figure>

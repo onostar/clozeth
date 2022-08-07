@@ -625,8 +625,21 @@ main{
 #general_cat figure{
     flex: 0 0 auto;
     width:17%;
-    min-height:fit-content;
+    /* min-height:fit-content; */
     transition: .3s all ease-in-out;
+}
+#general_cat figure form{
+    width:100%;
+    height:auto;
+    
+}
+#general_cat figure form figcaption{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
 }
 #general_cat figure:hover, #general_cat figure:focus{
     transform: scale(1.05);
@@ -640,16 +653,18 @@ main{
 #general_cat figure figcaption{
     width:100%;
     text-align:center;
+    height:auto;
 }
 #general_cat figure figcaption input, #general_cat figure a figcaption button{
     background:transparent;
     border:none;
     /* border-radius: 10px; */
-    padding:10px;
+    padding:5px;
     cursor: pointer;
-    color:var(--secondaryColor);
-    font-family: "Pacifico";
-    font-size:.9rem;
+    color:#2e2d2d;
+    font-family: "Poppins";
+    font-size:1rem;
+    text-align:center;
 
 
 }
@@ -686,7 +701,7 @@ main{
     background:var(--primaryColor);
     padding:5px 10px;
     width:auto;
-    font-family: "Pacifico";
+    font-family: "Poppins";
     font-size: 1.2rem;
     border-radius: 5px 5px 0 0;
 }
@@ -799,9 +814,9 @@ main{
     border:none;
     background:transparent;
     text-decoration: underline;
-    color:var(--secondaryColor);
+    color:var(--primaryColor);
     font-family: "Pacifico";
-    font-size:.9rem;
+    font-size:1.1rem;
     cursor: pointer;
 }
 .all_items figure p:first-child{
@@ -2694,7 +2709,7 @@ color: rgb(231, 226, 226);
         /* box-shadow:2px 2px 2px 2px #e2e2e2; */
     }
     #mobile_menu #index_nav h3{
-        font-family: "Pacifico";
+        font-family: "Poppins";
     }
     #mobile_menu #index_nav .user:hover a{
         background:none;
@@ -2703,7 +2718,7 @@ color: rgb(231, 226, 226);
     .cart_not{
         display:block;
         position:fixed;
-        right:2%;
+        right:3%;
         top:30%;
         z-index:3;
     }
@@ -2801,7 +2816,7 @@ color: rgb(231, 226, 226);
     }
     #general_cat figure{
         width:25%;
-        margin:0;
+        margin:0 10px 0 0;
     }
     #general_cat figure:first-child{
         margin-left:100px;
