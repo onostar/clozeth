@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../fontawesome-free-5.15.1-web/css/all.css">
     <link rel="icon" type="image/png" href="../images/logo.png" size="32X32">
-    <link rel="stylesheet" href="../controller/style.css">
+    <link rel="stylesheet" href="../style.css">
     
 </head>     
 <body> 
@@ -51,29 +51,29 @@
                     if(isset($_GET['email'])){
                         $email = $_GET['email'];
                     
-                        $get_details = $connectdb->prepare("SELECT * FROM shoppers WHERE email = :email");
-                        $get_details->bindValue("email", $email);
+                        $get_details = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email = :company_email");
+                        $get_details->bindvalue("company_email", $email);
                         $get_details->execute();
-                        $results = $get_email->fetchAll();
+                        $results = $get_details->fetchAll();
                         foreach($results as $result){
                 ?>
-                <form action="../controller/change_password.php" method="POST">
+                <form action="../controller/reset_password.php" method="POST">
                     <div class="data">
                         <!-- <label for="username">Enter email address</label> -->
-                        <input type="hidden" name="email" id="email" required value="<?php echo $email?>">
-                        <input type="hidden" name="current_password" id="current_password" required value="<?php echo $results->user_password?>">
+                        <input type="hidden" name="admin_email" id="admin_email" required value="<?php echo $email?>">
+                        <input type="hidden" name="current_password" id="current_password" required value="<?php echo $result->company_password?>">
                         
                     </div>
                     <div class="data">
                         <label for="new_password">Enter new Password</label>
-                        <input type="password" name="new_password" id="new_password" placeholder="*******" required>
+                        <input type="password" name="new_password" id="password" placeholder="*******" required>
                         <div class="show_password">
                             <a href="javascript:void(0)" onclick="togglePassword()"><i class="fas fa-eye"></i> Show password</a>
                         </div>
                     </div>
                     <div class="data">
                         <label for="password">Confirm Password</label>
-                        <input type="retype_password" name="retype_password" id="retype_password" placeholder="*******" required>
+                        <input type="password" name="retype_password" id="retype_password" placeholder="*******" required>
                         <div class="show_password">
                             <a href="javascript:void(0)" onclick="togglePassword()"><i class="fas fa-eye"></i> Show password</a>
                         </div>
@@ -97,7 +97,7 @@
 
             </div>
             <div class="adds">
-                <img src="../images/online_shop3.jpg" alt="clozeth login banner">
+                <img src="../../images/online_shop3.jpg" alt="clozeth login banner">
             </div>
         </section>
     </main>

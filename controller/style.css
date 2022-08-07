@@ -2149,6 +2149,7 @@ color: rgb(231, 226, 226);
 .categories li a{
     color:rgb(218, 214, 214);
     text-transform: capitalize;
+    font-size:.9rem;
 }
 .categories li a:hover{
     text-decoration:underline;

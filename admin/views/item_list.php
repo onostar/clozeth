@@ -38,7 +38,7 @@
                     ?></td>
                     <td><?php echo $item->item_name;?></td>
                     <td><?php echo "<a href='https://www.clozeth.com.ng/item_info.php?item=".$item->item_id."' target='_blank'>View/copy item</a>";?></td>
-                    <td><?php echo "₦ ".number_format($item->item_prize, 2, ".")?></td>
+                    <td><?php echo "₦ ".number_format($item->item_prize)?></td>
                         
                     <td>
                         <?php

@@ -59,13 +59,13 @@
             </div>
         </div>
         <div class="cart">
-            <a href="javascript:void(0);" title="Registered members"><i class="fas fa-users"></i> Registered 
-                <span id="cart_value"><?php
-                $get_members = $connectdb->prepare("SELECT * FROM users WHERE last_name != 'Admin' AND last_name != 'User'");
-                $get_members->execute();
-                echo $get_members->rowCount();
-                ?> </span></a>
-        </div>
+                <a href="javascript:void(0);" title="Registered members" data-page="exhibitors" class="page_navs"><i class="fas fa-users"></i> <span id="reg_text">Registered </span>
+                    <span id="cart_value"><?php
+                    $get_members = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email != 'Admin@clozeth.com'");
+                    $get_members->execute();
+                    echo $get_members->rowCount();
+                    ?> </span></a>
+            </div>
         <div class="menu_icon">
             <a href="javascript:void(0)"><i class="fas fa-bars"></i></a>
         </div>

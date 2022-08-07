@@ -4,7 +4,7 @@
                 <span>Call us </span>(+234) 706 8897 068
             </p>
             <p>
-                info@clozeth.com
+                info@clozeth.com.ng
             </p>
         </div>
         <div class="contact_phone">
@@ -19,7 +19,7 @@
     <header>
         <h1 class="logo">
             <a href="../index.php" title="home">
-                <img src="images/logo.png" alt="Clozeth" class="img-fluid">
+                <img src="../images/logo.png" alt="Clozeth" class="img-fluid">
             </a>
         </h1>
         <div class="search">

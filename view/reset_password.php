@@ -52,21 +52,21 @@
                         $email = $_GET['email'];
                     
                         $get_details = $connectdb->prepare("SELECT * FROM shoppers WHERE email = :email");
-                        $get_details->bindValue("email", $email);
+                        $get_details->bindvalue("email", $email);
                         $get_details->execute();
-                        $results = $get_email->fetchAll();
+                        $results = $get_details->fetchAll();
                         foreach($results as $result){
                 ?>
-                <form action="controller/login.php" method="POST">
+                <form action="../controller/reset_password.php" method="POST">
                     <div class="data">
                         <!-- <label for="username">Enter email address</label> -->
-                        <input type="hidden" name="email" id="email" required value="<?php echo $email?>">
-                        <input type="hidden" name="current_password" id="current_password" required value="<?php echo $results->user_password?>">
+                        <input type="hidden" name="user_email" id="user_email" required value="<?php echo $email?>">
+                        <input type="hidden" name="current_password" id="current_password" required value="<?php echo $result->user_password?>">
                         
                     </div>
                     <div class="data">
                         <label for="new_password">Enter new Password</label>
-                        <input type="password" name="new_password" id="new_password" placeholder="*******" required>
+                        <input type="password" name="new_password" id="password" placeholder="*******" required>
                         <div class="show_password">
                             <a href="javascript:void(0)" onclick="togglePassword()"><i class="fas fa-eye"></i> Show password</a>
                         </div>

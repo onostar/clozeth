@@ -58,7 +58,7 @@
                 }
             }
             
-            $to   = $email;
+            $to = $email;
             $from = 'admin@clozeth.com.ng';
             $from_name = "Clozeth";
             $name = 'Clozeth Password recovery';

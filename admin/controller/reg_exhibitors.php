@@ -136,7 +136,7 @@
                                 $name = 'Clozeth Store Registration!';
                                 $subj = 'Clozeth successful seller registration';
                                 $msg = "<p>Congratulations $name on your successful registration as a seller on clozeth.<br>Kindly update your store banner, upload your favourite items with their prices and start selling!<br></p>
-                                <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com/admin/index.php'>Start selling</a>";
+                                <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com.ng/admin/index.php'>Start selling</a>";
                                 
                                 $error=smtpmailer($to, $from, $name ,$subj, $msg);
                                 /* update payment status */

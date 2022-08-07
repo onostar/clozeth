@@ -22,20 +22,21 @@
                     $update_password->execute();
 
                     if($update_password){
-                        session_unset();
-                        session_destroy();
-                        echo "<p>Password Changed Successfully!</p>";
+                        $_SESSION['success'] = "Password Changed successfully, please login";
                         header("Location:../index.php");
                     }else{
-                        echo "<p class='exist'>Failed to change password</p>";
+                        $_SESSION['error'] = "Failed to change password";
+                        header("Location: ../views/change_password.php");
                     }
                 }else{
-                    echo "<p class='exist'>Password does not match!</p>";
+                    $_SESSION['error'] = "Password does not match";
+                        header("Location: ../views/change_password.php");
                     /* echo "<script>Alert('Passwords doesn't Match');
                     window.open('account.php', '_parent')</script>"; */
                 }
             }else{
-                echo "<p class='exist'>Password too short!</p>";
+                $_SESSION['error'] = "Password too short!";
+                header("Location: ../views/change_password.php");
             }
         }else{
             echo "<p class='exist'>Current password is incorrect!</p>";

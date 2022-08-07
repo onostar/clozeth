@@ -1355,6 +1355,22 @@ function disableItem(item){
         return
     }
 }
+/* activate user */
+function activateUser(user){
+    let activate = confirm("Do you want to activate this user?");
+    if(activate){
+        window.open("../controller/activate_user.php?user="+user, "_parent");
+        return
+    }
+}
+/* deactivate user */
+function disableUser(user){
+    let disable = confirm("Do you want to disable this user?");
+    if(disable){
+        window.open("../controller/disable_user.php?user="+user, "_parent");
+        return
+    }
+}
 //search highest selling items with date for admin
 $(document).ready(function(){
     $("#search_highest").click(function(){

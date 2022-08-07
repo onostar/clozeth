@@ -621,7 +621,7 @@
                 <figure>
                     <form action="view/categories.php" method="POST">
                         <input type="hidden" name="item_cat" id="item_cat" value="21">
-                        <img src="images/jewelry3.jpg" alt="Jewelries">
+                        <img src="images/jewelry3.png" alt="Jewelries">
                         <figcaption>
                             <input type="submit" name="check_category"value="Jewelries">
                         </figcaption>

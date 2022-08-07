@@ -1,5 +1,5 @@
 <?php
-    include "server.php";
+    include "connections.php";
     session_start();
     require "../../PHPMailer/PHPMailerAutoload.php";
     require "../../PHPMailer/class.phpmailer.php";
@@ -15,7 +15,7 @@
 
         if(!$check_email->rowCount() > 0){
             $_SESSION['error'] = "This email doesn't exist in our servers!";
-            header("Location: ../forgot_password.php");
+            header("Location: ../views/forgot_password.php");
             
         }else{
             function smtpmailer($to, $from, $from_name, $subject, $body)

@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="cart">
-                <a href="javascript:void(0);" title="Registered members" data-page="allMembers" class="page_navs"><i class="fas fa-users"></i> <span id="reg_text">Registered </span>
+                <a href="javascript:void(0);" title="Registered members" data-page="exhibitors" class="page_navs"><i class="fas fa-users"></i> <span id="reg_text">Registered </span>
                     <span id="cart_value"><?php
                     $get_members = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email != 'Admin@clozeth.com'");
                     $get_members->execute();
@@ -304,8 +304,10 @@
                                 <td>Company</td>
                                 <td>Contact Person</td>
                                 <td>Contact Number</td>
+                                <td>Password</td>
                                 <td>Package</td>
                                 <td>Expiration</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -323,7 +325,9 @@
                                     <td><?php echo $all->company_name?></td>
                                     <td><?php echo $all->contact_person;?></td>
                                     <td><?php echo $all->contact_phone;?></td>
+                                    <td><?php echo $all->company_password;?></td>
                                     <td>
+                                    
                                         <?php 
                                             if($all->payment_status == 2){
                                                 $get_booth = $connectdb->prepare("SELECT plan, package FROM  plan_package WHERE package_id = :package_id");
@@ -363,6 +367,17 @@
                                                 echo "No package";
                                             }
                                         ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            if($all->payment_status == 2){
+                                        ?>
+                                        <a href="javascript:void(0)" onclick="disableUser('<?php echo $all->exhibitor_id?>')" title="Disable user" style="color:red"><i class="fas fa-power-off"></i> Disable user</a>
+                                        <?php
+                                            }else{
+                                        ?>
+                                        <a href="javascript:void(0)" onclick="activateUser('<?php echo $all->exhibitor_id?>')" title="Activate user" style="color:green"><i class="fas fa-toggle-on"></i> Activate user</a>
+                                        <?php }?>
                                     </td>
                                 
                             </tr>
