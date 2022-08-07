@@ -612,7 +612,7 @@ header{
     padding:5px 10px;
 }
 .logo{
-    width:6vw;
+    width:15vw;
     height:10vh;
 }
 .logo img{
@@ -916,7 +916,7 @@ main hr{
     padding:10px;
 }
 .login_page h1{
-    width:20%;
+    width:50%;
     margin:20px auto;
 }
 .login_page h1 a{
@@ -2999,8 +2999,8 @@ main hr{
         left:0;
     } */
     .logo{
-        width:20vw;
-        height:8vh;
+        width:30vw;
+        height:6vh;
     }
     .rms{
          margin-left:0;
@@ -3303,7 +3303,8 @@ main hr{
         width:40%;
     }
     .user_passport{
-        width:140px;
+        width:100px;
+        height:100px;
     }
     #helpCenter ul{
         width:95%;

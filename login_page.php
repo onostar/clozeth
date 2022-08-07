@@ -25,7 +25,7 @@
             <div class="login_page">
                 <h1>
                     <a href="index.php">
-                        <img src="../images/logo.png" alt="logo">
+                        <img src="images/logo.png" alt="logo">
                     </a>
                 </h1>
                 

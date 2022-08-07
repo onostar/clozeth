@@ -166,11 +166,11 @@
                         <p>Sales report</p>
                     </div>
                     <div class="links page_navs" data-page="cancelledOrders">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-plane-slash"></i>
                         <p>Cancelled orders</p>
                     </div>
                     <div class="links page_navs" data-page="highestSelling">
-                        <i class="fas fa-plane-slash"></i>
+                        <i class="fas fa-chart-line"></i>
                         <p>Highest Selling items</p>
                     </div>
                     <div class="links page_navs" data-page="profile">

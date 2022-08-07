@@ -20,9 +20,9 @@
                 $user_info->bindvalue('email', $user);
                 $user_info->execute();
                 $view = $user_info->fetch();
-                echo $view->first_name . " " . $view->last_name. " - Clozeth - Home of Fashion";
+                echo $view->first_name . " " . $view->last_name. " - Clozeth - Great stores, Great prices";
             }else{
-                echo "Clozeth - Home of Fashion";
+                echo "Clozeth - Great stores, Great prices";
             }
          ?>
 
@@ -156,7 +156,7 @@
                     <!-- <h2>All the best deals</h2> -->
                         <!-- <p>Best deals all day</p> -->
                         <div class="links">
-                            <a href="view/top_deals.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                            <a href="view/all_items.php"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                             <!-- <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a> -->
                         </div>
                         
