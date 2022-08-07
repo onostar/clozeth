@@ -127,7 +127,6 @@ function showPage(page){
     document.querySelectorAll('.displays').forEach(div =>{
         div.style.display = "none";
     });
-    document.getElementById("quickLinks").style.display = "none";
 
     // $(`#${page}`).load(`admin.php #${page}`);
     // refreshDiv(page);
@@ -142,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function(){
             $("#paid_receipt").hide();
             document.querySelector(".expiration_date").style.display = "none";
             document.querySelector(".user_store").style.display = "none";
-
+            document.getElementById("quickLinks").style.display = "none";
         }
     })
 })

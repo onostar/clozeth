@@ -355,3 +355,5 @@ function cancelOrder(order_id){
 setTimeout(function(){
     $(".success_box").hide();
 },3000);
+
+//click to view item fotos

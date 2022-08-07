@@ -71,7 +71,7 @@
             <?php include "side_menu.php"?>
             
             <section id="contents">
-                <div class="success_message">
+                <div class="success_message success_failure">
                     <p>
                         <?php
                             if(isset($_SESSION['success'])){
@@ -81,7 +81,7 @@
                         ?>
                     </p>
                 </div>
-                <div class="error_message">
+                <div class="error_message success_failure">
                     <p>
                         <?php
                             if(isset($_SESSION['error'])){
@@ -94,13 +94,13 @@
                 
                 <?php
                     if(isset($_SESSION['reg_success'])){
-                        echo "<p class='reg_success'>" . $_SESSION['reg_success'] . "</p>";
+                        echo "<p class='reg_success success_failure'>" . $_SESSION['reg_success'] . "</p>";
                         unset($_SESSION['reg_success']);
                     }
                 ?>
                 <?php
                     if(isset($_SESSION['package_status'])){
-                        echo "<p class='reg_success'>" . $_SESSION['package_status'] . "</p>";
+                        echo "<p class='reg_success success_failure'>" . $_SESSION['package_status'] . "</p>";
                         unset($_SESSION['package_status']);
                     }
                 ?>
@@ -364,7 +364,10 @@
             let d = $(".all_chat");
             d.scrollTop(d.prop("scrollHeight"));
         }, 3000);
-        
+        /* close success/failuer notifications */
+        setTimeout(function(){
+            $(".success_failure").hide();
+        },10000);
     </script>
 </body>
 </html>

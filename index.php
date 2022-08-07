@@ -359,7 +359,7 @@
             </div>
             <div class="featured">
                 <?php
-                    $select_featured = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 AND menu.item_prize < menu.previous_price ORDER BY menu.time_created DESC LIMIT 6");
+                    $select_featured = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 ORDER BY menu.time_created DESC LIMIT 6");
                     $select_featured->execute();
                     $rows = $select_featured->fetchAll();
                     foreach($rows as $row):

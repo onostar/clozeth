@@ -48,7 +48,7 @@
                                 
                             </p>
                         </div>
-                        <p class="chats"><?php echo $chat->messages?><br><span style="color:rgb(238, 238, 238); font-size:.rem; float:right"><?php echo date("M jS, h:i", strtotime($chat->chat_time))?></span></p>
+                        <p class="chats"><?php echo $chat->messages?><br><span style="color:rgb(238, 238, 238); font-size:.rem; float:right"><?php echo date("M jS, h:ia", strtotime($chat->chat_time))?></span></p>
                     </div>
                     <?php endforeach;?>
                 </div>

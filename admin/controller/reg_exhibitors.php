@@ -95,20 +95,20 @@
                                     $mail->SMTPSecure = 'ssl'; 
                                     $mail->Host = 'www.ippssolar.com';
                                     $mail->Port = 465; 
-                                    $mail->Username = 'admin@ippssolar.com';
-                                    $mail->Password = 'admin@ippssolar';   
+                                    $mail->Username = 'admin@clozeth.com.ng';
+                                    $mail->Password = 'yMcmb@her0123!';   
                             
                             
                                     $mail->IsHTML(true);
-                                    $mail->From="admin@ippssolar.com";
+                                    $mail->From="admin@clozeth.com.ng";
                                     $mail->FromName=$from_name;
                                     $mail->Sender=$from;
                                     $mail->AddReplyTo($from, $from_name);
                                     $mail->Subject = $subject;
                                     $mail->Body = $body;
                                     $mail->AddAddress($to);
-                                    $mail->AddAddress('kellyikpefua@gmail.com');
-                                    // $mail->AddAddress('onostarmedia@gmail.com');
+                                    $mail->AddAddress('clozethinc@gmail.com');
+                                    $mail->AddAddress('onostarkelsa@gmail.com');
                                     
                                     if(!$mail->Send())
                                     {
@@ -131,9 +131,9 @@
                                 }
                                 
                                 $to = $email;
-                                $from = 'admin@ippssolar.com';
+                                $from = 'admin@clozeth.com.ng';
                                 $from_name = "Clozeth";
-                                $name = 'Store Registration Successful!';
+                                $name = 'Clozeth Store Registration!';
                                 $subj = 'Clozeth successful seller registration';
                                 $msg = "<p>Congratulations $name on your successful registration as a seller on clozeth.<br>Kindly update your store banner, upload your favourite items with their prices and start selling!<br></p>
                                 <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com/admin/index.php'>Start selling</a>";

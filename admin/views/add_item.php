@@ -72,11 +72,15 @@
                         </select>
                     </div>
                     <div class="data">
-                        <label for="item_foto">Item Image</label>
+                        <label for="item_foto">Item Image (Not more than 500kb)</label>
                         <input type="file" name="item_foto" id="item_foto" required>
                     </div>
                 </div>
                 <div class="inputs">
+                    <div class="data">
+                        <label for="item_foto">Second Image (Not more than 500kb)</label>
+                        <input type="file" name="other_foto" id="other_foto">
+                    </div>
                     <div class="data">
                         <label for="item_desc">Item description</label>
                         <textarea rows="4" type="text" name="item_desc" id="item_desc" required placeholder="Give proper description and features of the product"value="<?php
@@ -87,11 +91,11 @@
                             }
                         ?>"></textarea>
                     </div>
-                    <div class="data">
-                        <button type="submit" id="addItem" name="addItem">Add item <i class="fas fa-folder-plus"></i></button>
-                    </div>
-                </div>  
                     
+                </div>  
+                <div class="data">
+                    <button type="submit" id="addItem" name="addItem">Add item <i class="fas fa-folder-plus"></i></button>
+                </div>
             </div>
             
         </form>

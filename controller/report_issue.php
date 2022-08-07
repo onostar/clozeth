@@ -1,7 +1,9 @@
 <?php
     session_start();
     require "server.php";
-
+    require "../PHPMailer/PHPMailerAutoload.php";
+    require "../PHPMailer/class.phpmailer.php";
+    require "../PHPMailer/class.smtp.php";
     function validate($field){
         if(!isset($_POST[$field])){
             return false;
@@ -36,9 +38,58 @@
             $statement->bindvalue('item_name', $item);
             $statement->bindvalue('description', $description);
             $statement->execute();
-
-            $_SESSION['reported'] = "";
-            header("Location: ../view/report_product.php");
+            if($statement){
+                function smtpmailer($to, $from, $from_name, $subject, $body)
+            {
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true; 
+        
+                $mail->SMTPSecure = 'ssl'; 
+                $mail->Host = 'www.ippssolar.com';
+                $mail->Port = 465; 
+                $mail->Username = 'admi@clozeth.com.ng';
+                $mail->Password = 'yMcmb@her0123!';   
+        
+        
+                $mail->IsHTML(true);
+                $mail->From="admin@clozeth.com.ng";
+                $mail->FromName=$from_name;
+                $mail->Sender=$from;
+                $mail->AddReplyTo($from, $from_name);
+                $mail->Subject = $subject;
+                $mail->Body = $body;
+                $mail->AddAddress($to);
+                $mail->AddAddress('onostarkels@gmail.com');
+                $mail->AddAddress('clozethinc@gmail.com');
+                if(!$mail->Send())
+                {
+                    $error ="Please try Later, Error Occured while Processing...";
+                    return $error; 
+                }
+                else 
+                {
+                    
+                    $_SESSION['reported'] = "";
+                    header("Location: ../view/report_product.php");
+                    $error = $_SESSION['reported'];
+                    /* unlink($ssn_folder);
+                    unlink($dlf_folder);
+                    unlink($dlb_folder); */
+                    header("Location: ../view/forgot_password.php");
+                    return $error;
+                }
+            }
+            
+            $to   = $email;
+            $from = 'admin@clozeth.com.ng';
+            $from_name = "Clozeth";
+            $name = 'Clozeth customer report';
+            $subj = "Clozeth report from $full_name";
+            $msg = "<p>COmpany: $company<br>Reason: $reason<br>Product: $item<br>Details: $description</p>";          
+            $error=smtpmailer($to, $from, $name ,$subj, $msg);
+            }
+            
         }
     }
 

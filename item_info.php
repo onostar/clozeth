@@ -2,27 +2,40 @@
     require "controller/server.php";
     session_start();
     $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-    
+    /* get item details */
+    if(isset($_GET['item'])){
+        $item_id = $_GET['item'];
+        $get_name = $connectdb->prepare("SELECT * FROM menu WHERE item_id = :item_id");
+        $get_name->bindvalue("item_id", $item_id);
+        $get_name->execute();
+        $namess = $get_name->fetchAll();
+        foreach($namess as $names){
+            $item = $names->item_name;
+            $item_desc = $names->item_description;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clozeth is an online platform made for the purpose of ordering fashion wears, men and women clothing, bed sheets, jewellries, etc from all kinds of retailers and wholesalers in Nigeria and Abroad from whereever you are through your mobile phone, tablet or pc">
+    <meta name="description" content="Clozeth | <?php echo $item. ' - ' .$item_desc?>">
     <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
     <title>
         <?php
+            
             if(isset($_SESSION['user'])){
                 $user = $_SESSION['user'];
                 $user_info = $connectdb->prepare("SELECT * FROM shoppers WHERE email = :email");
                 $user_info->bindvalue('email', $user);
                 $user_info->execute();
                 $view = $user_info->fetch();
-                echo $view->first_name . " " . $view->last_name. " - Item info";
+                echo $view->first_name . " " . $view->last_name. " - ".$item;
             }else{
-                echo "Clozeth | Item Info";
+                echo "Clozeth | ". $item;
             }
+            
          ?>
 
     </title>
@@ -49,7 +62,7 @@
                         $item_id = $_GET['item'];
                     
 
-                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.item_description, menu.company, menu.payment_option, menu.delivery_time, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
+                        $view_item = $connectdb->prepare("SELECT menu.item_name, menu.item_prize, menu.item_id, menu.item_category, menu.item_foto, menu.other_foto, menu.item_description, menu.company, menu.payment_option, menu.delivery_time, exhibitors.exhibitor_id, exhibitors.company_name, exhibitors.company_address, exhibitors.company_logo, exhibitors.reg_number, exhibitors.contact_phone FROM menu, exhibitors WHERE menu.company = exhibitors.exhibitor_id AND item_id = :item_id");
                         $view_item->bindvalue('item_id', $item_id);
                         $view_item->execute();
 
@@ -66,8 +79,17 @@
                     $item_name = $item->item_name;
                 ?>
                 <figure class="item_details"> 
-                    
-                    <img src="<?php echo 'items/'.$item->item_foto?>" alt="Item">
+                    <div class="item_pics">
+                        <div class="slide_foto">
+                            <img src="<?php echo 'items/'.$item->item_foto?>" alt="Item">
+                            <img src="<?php echo 'items/'.$item->other_foto?>" alt="Item">
+
+                        </div>
+                        <div class="arrows">
+                            <a class="left_arrow" href="javascript:void(0)"><i class="fas fa-chevron-left"></i></a>
+                            <a class="right_arrow" href="javascript:void(0)"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
                     <form action="controller/cart.php" method="POST">
                         <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $item->item_name?>">
                         <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $item->item_id?>">
@@ -176,6 +198,19 @@
     <!-- <script src="bootstrap.min.js"></script> -->
     <script src="controller/jquery.js"></script>
     <script src="controller/script.js"></script>
-    
+    <script>
+        /* show next foto */
+        $(document).ready(function(){
+            $(".right_arrow").click(function(){
+                document.querySelector(".slide_foto").style.left = "-100%";
+            })
+        })
+        /* show previous page */
+        $(document).ready(function(){
+            $(".left_arrow").click(function(){
+                document.querySelector(".slide_foto").style.left = "0%";
+            })
+        })
+    </script>
 </body>
 </html>

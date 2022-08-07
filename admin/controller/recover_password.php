@@ -27,12 +27,12 @@
                 $mail->SMTPSecure = 'ssl'; 
                 $mail->Host = 'www.ippssolar.com';
                 $mail->Port = 465; 
-                $mail->Username = 'admin@ippssolar.com';
-                $mail->Password = 'admin@ippssolar';   
+                $mail->Username = 'admin@clozeth.com.ng';
+                $mail->Password = 'yMcmb@her0123!';   
         
         
                 $mail->IsHTML(true);
-                $mail->From="admin@ippssolar.com";
+                $mail->From="admin@clozeth.com.ng";
                 $mail->FromName=$from_name;
                 $mail->Sender=$from;
                 $mail->AddReplyTo($from, $from_name);
@@ -40,7 +40,7 @@
                 $mail->Body = $body;
                 $mail->AddAddress($to);
                 $mail->AddAddress('onostarkels@gmail.com');
-                $mail->AddAddress('onostarmedia@gmail.com');
+                $mail->AddAddress('clozethinc@gmail.com');
                 if(!$mail->Send())
                 {
                     $error ="Please try Later, Error Occured while Processing...";
@@ -59,7 +59,7 @@
             }
             
             $to   = $email;
-            $from = 'admin@ippssolar.com';
+            $from = 'admin@clozeth.com.ng';
             $from_name = "Clozeth";
             $name = 'Clozeth Password recovery';
             $subj = 'Clozeth Password recovery';

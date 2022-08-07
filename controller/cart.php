@@ -51,7 +51,7 @@
                 $_SESSION['cart_added'] = "";
                 // update cart number
                 $cart_code = $connectdb->lastInsertId();
-                $ran_num = rand(1, 10000);
+                $ran_num = rand(1, 100000);
                 // generate random numbers each time
                 // $cart_num = $ran_num;
                 // $cart_date = date("Y");
