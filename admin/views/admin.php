@@ -307,6 +307,7 @@
                                 <td>Password</td>
                                 <td>Package</td>
                                 <td>Expiration</td>
+                                <td>verify</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -368,6 +369,7 @@
                                             }
                                         ?>
                                     </td>
+                                    <td><?php echo $all->verification_code?></td>
                                     <td>
                                         <?php
                                             if($all->payment_status == 2){

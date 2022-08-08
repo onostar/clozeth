@@ -350,7 +350,7 @@ header i{
 }
 #asideLeft li input{
     /* color:rgba(13, 54, 44, .7); */
-    color: var(--primaryColor);
+    color: #2e2d2d;
     font-family: "Poppins";
     font-size:.9rem;
     border:none;
@@ -453,12 +453,15 @@ header i{
     width:50%;
     display:flex;
     flex-direction: column;
-    
     color:#fff;
 }
 .description h2{
-    text-transform: uppercase;
-    font-size:1.6rem;
+    text-transform: capitalize;
+    font-size:2rem;
+    border-radius:10px;
+    /* padding:10px 0 10px 10px; */
+    /* width:70%; */
+    font-family: "Poppins";
 }
 .description p{
     font-size:1.1rem;
@@ -592,6 +595,7 @@ header i{
     padding:10px;
     color:#fff;
     text-transform: capitalize;
+    font-family:"Pacifico";
 }
 .link_tags a i{
     margin-right:5px;
@@ -668,10 +672,10 @@ main{
 
 
 }
-#general_cat figure figcaption input:hover, #general_cat figure figcaption input:focus, #general_cat figure a figcaption button:hover, #general_cat figure a figcaption button:focus{
+/* #general_cat figure figcaption input:hover, #general_cat figure figcaption input:focus, #general_cat figure a figcaption button:hover, #general_cat figure a figcaption button:focus{
     background:var(--secondaryColor);
     color:#fff;
-}
+} */
 #featured{
     display:none;
     margin:20px 0;
@@ -813,11 +817,15 @@ main{
 .all_items figcaption input{
     border:none;
     background:transparent;
-    text-decoration: underline;
-    color:var(--primaryColor);
-    font-family: "Pacifico";
-    font-size:1.1rem;
+    color:#2e2d2d;
+    font-family: "Poppins";
+    font-size:1rem;
     cursor: pointer;
+}
+.all_items figcaption input:hover, .all_items figcaption input:focus{
+    color:var(--primaryColor);
+    text-decoration: underline;
+
 }
 .all_items figure p:first-child{
     font-weight: bold;
@@ -2718,7 +2726,7 @@ color: rgb(231, 226, 226);
     .cart_not{
         display:block;
         position:fixed;
-        right:3%;
+        right:4%;
         top:30%;
         z-index:3;
     }
@@ -2731,7 +2739,7 @@ color: rgb(231, 226, 226);
     }
     .mobile_cart i{
         color:var(--secondaryColor);
-        font-size:1.2rem;
+        font-size:1.5rem;
     }
     .mobile_cart #cart_value{
         padding:2px 5px;
@@ -2809,14 +2817,14 @@ color: rgb(231, 226, 226);
     }
     .link_tags a i{
         margin-right:4px;
-        font-size:1rem;
+        font-size:.9rem;
     }
     main{
         width:100%;    
     }
     #general_cat figure{
         width:25%;
-        margin:0 10px 0 0;
+        margin:0 3px 0 0;
     }
     #general_cat figure:first-child{
         margin-left:100px;
@@ -2832,6 +2840,7 @@ color: rgb(231, 226, 226);
         border-radius: 5px;
         padding:3px;
         text-align:center;
+        font-size: .9rem;
     }
     #featured{
         padding:10px;

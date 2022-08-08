@@ -107,7 +107,7 @@
         $from_name = "Clozeth";
         $name = 'Clozeth order';
         $subj = 'Clozeth New order from '.$customer_name;
-        $msg = "<p>You have a new order from $customer_name </p><br> <a href='clozeth.com/admin'>Click</a> to review and deliver order";
+        $msg = "<p>You have a new order from $customer_name </p><br> <a href='https://clozeth.ng.com/admin'>Click</a> to review and deliver order";
         
         $error=smtpmailer($to, $from, $name ,$subj, $msg);
             

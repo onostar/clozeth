@@ -10,7 +10,7 @@
     // $_SESSION['reg_success'] = "";
 
     if(isset($_POST['register_exhibitor'])){
-        $name = ucwords(htmlspecialchars(stripslashes($_POST['company_name'])));
+        $com_name = ucwords(htmlspecialchars(stripslashes($_POST['company_name'])));
         $address = ucwords(htmlspecialchars(stripslashes($_POST['company_address'])));
         $com_phone = ucwords(htmlspecialchars(stripslashes($_POST['company_phone'])));
         $contact_person = ucwords(htmlspecialchars(stripslashes($_POST['contact_person'])));
@@ -21,6 +21,7 @@
         $logo_folder = "../logos/".$logo;
         $logo_size = $_FILES['company_logo']['size'];
         $description = "This is an online store, you can purchase as much as you want";
+        $verification = rand (1, 1000000);
         $allowed_ext = array('png', 'jpg', 'jpeg');
         /* get current file extention */
         $file_ext = explode('.', $logo);
@@ -55,13 +56,14 @@
                     if($logo_size <= 500000){
                         if(move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_folder)){
                             $insert_user = $connectdb->prepare("INSERT INTO exhibitors (company_name, company_address, company_phone, contact_person, contact_phone, company_email, company_password, company_logo, reg_number) VALUES (:company_name, :company_address, :company_phone, :contact_person, :contact_phone, :company_email, :company_password, :company_logo, :reg_number)");
-                            $insert_user->bindvalue("company_name", $name);
+                            $insert_user->bindvalue("company_name", $com_name);
                             $insert_user->bindvalue("company_address", $address);
                             $insert_user->bindvalue("company_phone", $com_phone);
                             $insert_user->bindvalue("contact_person", $contact_person);
                             $insert_user->bindvalue("company_password", $password);
                             $insert_user->bindvalue("company_email", $email);
                             $insert_user->bindvalue("contact_phone", $contact_phone);
+                            // $insert_user->bindvalue("verification_code", $verification);
                             $insert_user->bindvalue("company_logo", $logo);
                             // $insert_user->bindvalue("booth", $booth);
                             $insert_user->bindvalue("reg_number", $reg_number);
@@ -72,15 +74,17 @@
                                 // $get_id = PDO::lastInsertId();
                                 $mem_id = $connectdb->lastInsertId();
                                 $new_reg = $reg_number.$mem_id;
-                                /* get reg date to create plan expiration date */
+                                $verify_code = $verification.$mem_id;
+                                // get reg date to create plan expiration date
                                 $get_reg = $connectdb->prepare("SELECT reg_date FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
                                 $get_reg->bindvalue("exhibitor_id", $mem_id);
                                 $get_reg->execute();
                                 $reg_date = $get_reg->fetch();
                                 $expiration = date("Y-m-d", strtotime($reg_date->reg_date . ' + 30 days'));
-                                /* update reg_num, expiration, package and payment status*/
-                                $update_reg = $connectdb->prepare("UPDATE exhibitors SET reg_number = :reg_number, payment_status = 2, banner1 = 'banner1.jpg', banner2 = 'banner2.jpg', banner3 = 'banner3.jpg', banner_description = :banner_description, plan_package = 16, expiration = :expiration WHERE company_email = :company_email");
+                                // update reg_num, expiration, package and verification code
+                                $update_reg = $connectdb->prepare("UPDATE exhibitors SET reg_number = :reg_number, verification_code = :verification_code, banner1 = 'banner1.jpg', banner2 = 'banner2.jpg', banner3 = 'banner3.jpg', banner_description = :banner_description, plan_package = 16, expiration = :expiration WHERE company_email = :company_email");
                                 $update_reg->bindvalue("reg_number", $new_reg);
+                                $update_reg->bindvalue("verification_code", $verify_code);
                                 $update_reg->bindvalue("expiration", $expiration);
                                 $update_reg->bindvalue("company_email", $email);
                                 $update_reg->bindvalue("banner_description", $description);
@@ -107,14 +111,14 @@
                                     $mail->Subject = $subject;
                                     $mail->Body = $body;
                                     $mail->AddAddress($to);
-                                    $mail->AddAddress('clozethinc@gmail.com');
-                                    $mail->AddAddress('onostarkelsa@gmail.com');
+                                    // $mail->AddAddress('clozethinc@gmail.com');
+                                    $mail->AddAddress('onostarkels@gmail.com');
                                     
                                     if(!$mail->Send())
                                     {
                                         $_SESSION['error'] = "Failed to send mail";
                                         $error = $_SESSION['error'];
-                                        header("Location: ../views/exhibitors.php");
+                                        header("Location: ../views/verification.php");
                                         
                                         return $error; 
                                     }
@@ -122,9 +126,9 @@
                                     {
                                         
                                         /* success message */
-                                        $_SESSION['reg_success'] = "Woo Hoo!!!. Your registration was successful, Set up your store by updating your store banners and start adding items to sell on Clozeth!";
+                                        $_SESSION['success'] = "Congratulations!!!. Your registration was successful, kindly verify your account!";
                                         $error = $_SESSION['reg_success'];
-                                        header("Location: ../views/exhibitors.php");
+                                        header("Location: ../views/verification.php");
                                         // header("Location: index.html");
                                         return $error;
                                     }
@@ -133,10 +137,11 @@
                                 $to = $email;
                                 $from = 'admin@clozeth.com.ng';
                                 $from_name = "Clozeth";
-                                $name = 'Clozeth Store Registration!';
-                                $subj = 'Clozeth successful seller registration';
-                                $msg = "<p>Congratulations $name on your successful registration as a seller on clozeth.<br>Kindly update your store banner, upload your favourite items with their prices and start selling!<br></p>
-                                <a style='padding:10px 15px; background:rgb(3, 69, 75); color:#fff;' href='clozeth.com.ng/admin/index.php'>Start selling</a>";
+                                $name = 'Clozeth';
+                                $subj = 'Clozeth store verification';
+                                $msg = "<p>Congratulations $com_name on registering on clozeth. To complete your registration, kindly enter <h2>$verify_code</h2> to  verify your account and start selling on clozeth<br>
+                                Or click on the link below to verify your account<br><br>
+                                <a style='color:#fff; background:green; padding:20px;' href='https://www.clozeth.com.ng/admin/views/verification.php?code=$verify_code'>Verify Account</a></p>";
                                 
                                 $error=smtpmailer($to, $from, $name ,$subj, $msg);
                                 /* update payment status */

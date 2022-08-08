@@ -41,7 +41,7 @@
                     $_SESSION['error'] = "$item already exists!";
                     header("Location: ../views/exhibitors.php");
                 }else{
-                    if(move_uploaded_file($_FILES['item_foto']['tmp_name'], $item_folder) || move_uploaded_file($_FILES['other_foto']['tmp_name'], $other_folder)){
+                    if(move_uploaded_file($_FILES['item_foto']['tmp_name'], $item_folder) && move_uploaded_file($_FILES['other_foto']['tmp_name'], $other_folder)){
                         $add_item = $connectdb->prepare("INSERT INTO menu (item_name, item_category, item_prize, company, item_foto, other_foto, item_description, payment_option, delivery_time) VALUES (:item_name, :item_category, :item_prize, :company, :item_foto, :other_foto, :item_description, :payment_option, :delivery_time)");
                         $add_item->bindvalue("item_name", $item);
                         $add_item->bindvalue("item_category", $category);
@@ -61,7 +61,7 @@
                             header("Location: ../views/exhibitors.php");
                         }
                     }else{
-                        $_SESSION['error'] = "Error! File upload failed";
+                        $_SESSION['error'] = "Error! Please upload 2 images of the item";
                         header("Location: ../views/exhibitors.php");
                     }
                 }
