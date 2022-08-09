@@ -2366,7 +2366,7 @@ main hr{
     cursor:pointer;
     width:auto;
 }
-.chat_icon{
+.chat_close{
     display:none;
     
 }
@@ -2458,6 +2458,20 @@ main hr{
 }
 .sender i{
     text-align:center;
+}
+#go_back{
+    padding:10px;
+    background:var(--secondaryColor);
+    color:#fff;
+    float:right;
+    margin:10px;
+}
+#go_back i{
+    font-size:.9rem;
+}
+.submit_chat{
+    background:var(--primaryColor)!important;
+    padding:10px!important;
 }
 .chats{
     background:green;

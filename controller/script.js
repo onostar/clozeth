@@ -1,6 +1,7 @@
 //animations on scroll
 window.onscroll = function(){
-    displayFeatured(), displayAllItems(), displayTotop(), displayPopular();
+    displayTotop();
+    // displayFeatured(), displayAllItems(), , displayPopular();
 }
 
 /* show order details */

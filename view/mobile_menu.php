@@ -48,7 +48,7 @@
                         <form action="categories.php" method="POST">
                             <input type="hidden" name="item_cat" value="<?php echo $cat->category_id?>">
                             <?php 
-                                if($cat->category == "Bag"){
+                                if($cat->category == "Bags"){
                                     echo "<i class='fas fa-shopping-bag'></i>";
                                 }elseif($cat->category == "Glasses"){
                                     echo "<i class='fas fa-glasses'></i>";
@@ -62,13 +62,13 @@
                                     echo "<img src='../images/wrist-watch.png'>";
                                 }elseif($cat->category == "Shoes"){
                                     echo "<img src='../images/sport-shoe.png'>";
-                                }elseif($cat->category == "Mens Fashion"){
+                                }elseif($cat->category == "Men's Fashion"){
                                     echo "<img src='../images/hawaiian-shirt.png'>";
-                                }elseif($cat->category == "Womens Fashion"){
+                                }elseif($cat->category == "Women's Fashion"){
                                     echo "<img src='../images/woman-clothes.png'>";
                                 }elseif($cat->category == "Kids Fashion"){
                                     echo "<img src='../images/baby-clothes.png'>";
-                                }elseif($cat->category == "Deodorant"){
+                                }elseif($cat->category == "Deodorants"){
                                     echo "<i class='fas fa-spray-can'></i>";
                                 }else{
                             ?>

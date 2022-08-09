@@ -1199,6 +1199,7 @@ $(document).ready(function(){
 /* show chat icon after 5 seconds */
 setTimeout(function(){
     $("#chat").show();
+    $(".chat_message").hide();
     playBeep();
 }, 4000);
 
@@ -1233,7 +1234,10 @@ setTimeout(function(){
     playBeep();
 
 }, 30000);
-
+/* send dm */
+function sendDm(user){
+    window.open("send_message.php?recipient="+user, "_blank");
+}
 /* submit chat */
 $(document).ready(function(){
     $("#submit_chat").click(function(){
