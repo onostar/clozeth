@@ -25,7 +25,7 @@
             <li><a href="javascript:void(0);" class="addMenu" title="set up your store"><i class="fas fa-store"></i> Manage store <i class="fas fa-chevron-down more_option"></i></a>
                 <ul class="nav1Menu">
                     <li><a href="javascript:void(0);" id="addHot" title="Add items" class="page_navs" data-page="add_items"><i class="fas fa-folder-plus"></i>Add Items </a></li>
-                    <li><a href="javascript:void(0);" id="addBan" title="Store bnners" class="page_navs" data-page="addBanner"><i class="fas fa-images"></i>Update Banners </a></li>
+                    <li><a href="javascript:void(0);" id="addBan" title="Store bnners" class="page_navs" data-page="addBanner"><i class="fas fa-images"></i>Update cover photo </a></li>
                     <li><a href="javascript:void(0);" id="addpri" title="Manage item prices" class="page_navs" data-page="managePrice"><i class="fas fa-tags"></i>Item prices </a></li>
                     <!-- <li><a href="javascript:void(0);" id="delItem" title="Delete item from store" class="page_navs" data-page="deleteItems"><i class="fas fa-trash"></i>Delete Item </a></li> -->
                     <li><a href="javascript:void(0);" id="itemsBtn" class="page_navs" data-page="itemList"><i class="fas fa-list"></i> Item list</a></li>
@@ -80,7 +80,7 @@
             <li><a href="javascript:void(0);" class="addMenu" title="set up your store"><i class="fas fa-store"></i> Manage store <i class="fas fa-chevron-down more_option"></i></a>
                 <ul class="nav1Menu">
                     <li><a href="javascript:void(0);" id="addHot" title="Add items" class="page_navs" data-page="add_items"><i class="fas fa-folder-plus"></i>Add Items </a></li>
-                    <li><a href="javascript:void(0);" id="addBan" title="Store bnners" class="page_navs" data-page="addBanner"><i class="fas fa-images"></i>Update Banners </a></li>
+                    <li><a href="javascript:void(0);" id="addBan" title="Store bnners" class="page_navs" data-page="addBanner"><i class="fas fa-images"></i>Update cover photo </a></li>
                     <li><a href="javascript:void(0);" id="addpri" title="Manage item prices" class="page_navs" data-page="managePrice"><i class="fas fa-tags"></i>Item prices </a></li>
                     <!-- <li><a href="javascript:void(0);" id="delItem" title="Delete item from store" class="page_navs" data-page="deleteItems"><i class="fas fa-trash"></i>Delete Item </a></li> -->
                     <li><a href="javascript:void(0);" id="itemsBtn" class="page_navs" data-page="itemList"><i class="fas fa-list"></i> Item list</a></li>

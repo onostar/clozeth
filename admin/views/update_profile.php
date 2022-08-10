@@ -13,7 +13,9 @@
                 </div>
                 <div class="data">
                     <label for="contact_person">Store address:</label>
-                    <p style=" color:red; display:block; margin-right:10px"><?php echo "<a href='https://www.clozeth.com.ng/view/exhibitor_menu.php?company=".$user->reg_number."' title='share store link'>Copy and share store link</a>"?></p>
+                    <p style=" color:red; display:block; margin-right:10px"><?php echo "<a href='https://www.clozeth.com.ng/view/exhibitor_menu.php?company=".$user->reg_number."' title='share store link'>Copy and share store link</a>"?></p><br>
+                    <label>About us</label>
+                    <textarea name="about_com" id="about_com" rows="5" style="width:100%" placeholder="Give a short description of your business" ><?php echo $user->about?></textarea>
                 </div>
             </div>
             <div class="inputs">

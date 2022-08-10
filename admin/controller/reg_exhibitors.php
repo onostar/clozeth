@@ -29,7 +29,7 @@
         /* merge company name together so we can add to registration number */
         
         // $cur_time = Date("Y");
-        $reg_number = "exh/".substr(trim($name, " "), 0, 7);
+        $reg_number = "exh/".substr(trim($com_name, " "), 0, 7);
 
         /* create sessions for all parameters so user dont enter data again shuld incase script failed */
         $_SESSION['company'] = $name;

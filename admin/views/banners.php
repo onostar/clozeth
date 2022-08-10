@@ -1,10 +1,10 @@
 <div id="addBanner" class="sections displays">
-    <h2>Manage Store Banners</h2>
+    <h2>Manage Store Cover Photos</h2>
     <hr>
     <div class="bannerBtns">
-        <button id="banner1btn" class="banbtns" data-page="uploadBanner1"><i class="fas fa-photo-video"></i> Banner 1</button>
-        <button id="banner2btn" class="banbtns" data-page="uploadBanner2"><i class="fas fa-photo-video"></i> Banner 2</button>
-        <button id="banner3btn" class="banbtns" data-page="uploadBanner3"><i class="fas fa-photo-video"></i> Banner 3</button>
+        <button id="banner1btn" class="banbtns" data-page="uploadBanner1"><i class="fas fa-photo-video"></i> Cover 1</button>
+        <button id="banner2btn" class="banbtns" data-page="uploadBanner2"><i class="fas fa-photo-video"></i> Cover 2</button>
+        <button id="banner3btn" class="banbtns" data-page="uploadBanner3"><i class="fas fa-photo-video"></i> Cover 3</button>
         <!-- <button id="banner4btn" class="banbtns" data-page="uploadBanner1"><i class="fas fa-photo-video"></i> Upload Banner 4</button>
         <button id="adBtn" class="banbtns"><i class="fas fa-photo-video"></i> Upload Adverts</button> -->
     </div>

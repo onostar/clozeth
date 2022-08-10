@@ -12,7 +12,13 @@
         foreach($namess as $names){
             $item = $names->item_name;
             $item_desc = $names->item_description;
+            $item_img = $names->item_foto;
+            $item_com = $names->company;
         }
+        $get_company = $connectdb->prepare("SELECT company_name FROM exhibitors WHERE exhibitor_id = :exhibitor_id");
+        $get_company->bindvalue("exhibitor_id", $item_com);
+        $get_company->execute();
+        $seller = $get_company->fetch();
     }
 ?>
 <!DOCTYPE html>
@@ -20,7 +26,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clozeth | <?php echo $item. ' - ' .$item_desc?>">
+    <meta name="description" content="<?php
+     echo $seller->company_name. ' | '.$item. ' - ' .$item_desc?>">
     <meta name="keywords" content="Fashion, fashion store, clothings, men, women, men wears, women wears, jewellry, jewellries, rings, earings, wrist watch, eye glass, glass, shoes, order, ordering">
     <title>
         <?php
@@ -33,7 +40,7 @@
                 $view = $user_info->fetch();
                 echo $view->first_name . " " . $view->last_name. " - ".$item;
             }else{
-                echo "Clozeth | ". $item;
+                echo $seller->company_name." | ". $item;
             }
             
          ?>
@@ -43,7 +50,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
     <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/all.css">
-    <link rel="icon" type="image/png" href="images/logo.png" size="32X32">
+    <link rel="icon" type="image/png" href="<?php echo 'items/'.$item_img?>" size="32X32">
     <link rel="stylesheet" href="controller/style.css">
     
 </head>

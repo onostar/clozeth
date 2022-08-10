@@ -139,7 +139,7 @@
                     </div>
                     <div class="links page_navs" data-page="addBanner">
                         <i class="fas fa-images"></i>
-                        <p>Update store banner</p>
+                        <p>Update Cover photos</p>
                     </div>
                     <div class="links page_navs" data-page="itemList">
                         <i class="fas fa-list"></i>

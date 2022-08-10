@@ -3013,7 +3013,7 @@ main hr{
         left:0;
     } */
     .logo{
-        width:35vw;
+        width:38vw;
         height:6vh;
     }
     .rms{
@@ -3178,7 +3178,7 @@ main hr{
         align-items:center;
     }
     #dashboard .cards{
-        min-width:46%;
+        min-width:140px;
         /* margin:10px; */
         margin:0;
         min-height:auto;

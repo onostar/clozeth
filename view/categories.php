@@ -54,12 +54,12 @@
                 }
 
             ?>
-            <h2>Showing results for "<strong><?php $get_category = $connectdb->prepare("SELECT category FROM categories WHERE category_id = :category_id");
+            <h2>Collections for <strong><?php $get_category = $connectdb->prepare("SELECT category FROM categories WHERE category_id = :category_id");
             $get_category->bindvalue("category_id", $item_search);
             $get_category->execute();
             $cat = $get_category->fetch();
             echo $cat->category;
-            ?></strong>"</h2>
+            ?></strong></h2>
             <hr>
             <div class="results">
                 

@@ -6,6 +6,7 @@
     $_SESSION['error'] = "";
     if(isset($_POST['update'])){
         $company_name = ucwords(htmlspecialchars(stripslashes($_POST['company_name'])));
+        $about = ucwords(htmlspecialchars(stripslashes($_POST['about_com'])));
         $address = ucwords(htmlspecialchars(stripslashes($_POST['company_address'])));
         $company_phone = htmlspecialchars(stripslashes($_POST['company_phone']));
         $company_email = htmlspecialchars(stripslashes($_POST['company_email']));
@@ -18,8 +19,9 @@
         /* update profile */
         // if(move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_folder)){
 
-            $update_profile = $connectdb->prepare("UPDATE exhibitors SET company_name = :company_name, company_address = :company_address, company_phone = :company_phone, company_email = :company_email, contact_person = :contact_person, contact_phone = :contact_phone WHERE exhibitor_id = :exhibitor_id");
+            $update_profile = $connectdb->prepare("UPDATE exhibitors SET company_name = :company_name, about = :about, company_address = :company_address, company_phone = :company_phone, company_email = :company_email, contact_person = :contact_person, contact_phone = :contact_phone WHERE exhibitor_id = :exhibitor_id");
             $update_profile->bindvalue("company_name", $company_name);
+            $update_profile->bindvalue("about", $about);
             $update_profile->bindvalue("company_address", $address);
             $update_profile->bindvalue("company_phone", $company_phone);
             $update_profile->bindvalue("company_email", $company_email);

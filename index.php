@@ -252,6 +252,14 @@
                 </form>
              </figure>
              <figure>
+                <a href="view/exhibitors.php">
+                    <img src="images/stores.webp" alt="Verified stores">
+                    <figcaption>
+                        <button>Official stores</button>
+                    </figcaption>
+                </a>
+             </figure>
+             <figure>
                 <a href="view/top_deals.php">
                     <img src="images/top_deals.jpg" alt="Top deals">
                     <figcaption>
@@ -267,14 +275,7 @@
                     </figcaption>
                 </a>
              </figure>
-             <figure>
-                <a href="view/exhibitors.php">
-                    <img src="images/stores.webp" alt="Verified stores">
-                    <figcaption>
-                        <button>Official stores</button>
-                    </figcaption>
-                </a>
-             </figure>
+             
              <!-- <figure>
                 <form action="categories.php" method="POST">
                     <input type="hidden" name="item_cat" id="item_cat" value="5">
