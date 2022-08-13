@@ -2370,6 +2370,19 @@ main hr{
     display:none;
     
 }
+.chat_number{
+    position:absolute;
+    top:-50%;
+    right:0;
+    background-color: green;
+    padding:5px 10px;
+    border-radius: 50%;
+}
+.chat_number p{
+    color:#fff;
+    font-size: 1rem;
+}
+
 .pay_info{
     background:#fff;
     box-shadow: 2px 2px 2px 2px var(--primaryColor);

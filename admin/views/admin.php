@@ -952,6 +952,13 @@
         <div id="chat">
         <div class="chat_icon" title="Live chat">
             <p class="live_box">Start Live Chat <i class="fas fa-comments"></i></p> 
+            <div class="chat_number">
+                <p><?php 
+                    $get_chat_num = $connectdb->prepare("SELECT * FROM chats WHERE recipient = 0");
+                    $get_chat_num->execute();
+                    echo $get_chat_num->rowCount();
+                ?></p>
+            </div>
         </div>
         <div class="chat_close" title="Close chat">
             <p class="live_box">Close Live Chat <i class="fas fa-comment-slash"></i></p> 
