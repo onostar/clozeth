@@ -17,6 +17,7 @@
         $first_name = ucwords(validate('first_name'));
         $last_name = ucwords(validate('last_name'));
         $address = ucwords(validate('address'));
+        $city = ucwords(validate('city'));
         $email = strtolower(validate('email'));
         $phone_number = validate('phone_number');
         $user_password = validate('user_password');
@@ -44,13 +45,14 @@
             $_SESSION['confirmPwErr'] = "Error: Password does not match!";
             header("Location: ../registration.php");
         }else{
-            $statement = $connectdb->prepare("INSERT INTO shoppers (first_name, last_name, email, phone_number, address, user_password) VALUES (:first_name, :last_name, :email, :phone_number, :address,:user_password)");
+            $statement = $connectdb->prepare("INSERT INTO shoppers (first_name, last_name, email, phone_number, address, city, user_password) VALUES (:first_name, :last_name, :email, :phone_number, :address, :city, :user_password)");
 
             $statement->bindvalue('first_name', $first_name);
             $statement->bindvalue('last_name', $last_name);
             $statement->bindvalue('email', $email);
             $statement->bindvalue('phone_number', $phone_number);
             $statement->bindvalue('address', $address);
+            $statement->bindvalue('city', $city);
             $statement->bindvalue('user_password', $user_password);
             $statement->execute();
 

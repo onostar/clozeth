@@ -595,7 +595,7 @@
                 <figure>
                     <form action="view/categories.php" method="POST">
                         <input type="hidden" name="item_cat" id="item_cat" value="16">
-                        <img src="images/wrist_watch.webp" alt="Wrist watches">
+                        <img src="images/wrist_wateches.jpg" alt="Wrist watches">
                         <figcaption>
                             <input type="submit" name="check_category"value="Wrist watches">
                         </figcaption>
@@ -622,7 +622,7 @@
                 <figure>
                     <form action="view/categories.php" method="POST">
                         <input type="hidden" name="item_cat" id="item_cat" value="21">
-                        <img src="images/jewelry3.png" alt="Jewelries">
+                        <img src="images/jewelries.webp" alt="Jewelries">
                         <figcaption>
                             <input type="submit" name="check_category"value="Jewelries">
                         </figcaption>
@@ -640,7 +640,7 @@
                 <figure>
                     <form action="view/categories.php" method="POST">
                         <input type="hidden" name="item_cat" id="item_cat" value="15">
-                        <img src="images/bags2.webp" alt="Bags">
+                        <img src="images/bagsss.png" alt="Bags">
                         <figcaption>
                             <input type="submit" name="check_category"value="Bags">
                         </figcaption>

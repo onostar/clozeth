@@ -15,7 +15,8 @@
         $com_phone = ucwords(htmlspecialchars(stripslashes($_POST['company_phone'])));
         $contact_person = ucwords(htmlspecialchars(stripslashes($_POST['contact_person'])));
         $contact_phone = ucwords(htmlspecialchars(stripslashes($_POST['contact_phone'])));
-        $email = ucwords(htmlspecialchars(stripslashes($_POST['company_email'])));
+        // $email = ucwords(htmlspecialchars(stripslashes($_POST['company_email'])));
+        $email = filter_var($_POST['company_email'], FILTER_VALIDATE_EMAIL);
         $password = htmlspecialchars(stripslashes($_POST['company_password']));
         $logo = $_FILES['company_logo']['name'];
         $logo_folder = "../logos/".$logo;

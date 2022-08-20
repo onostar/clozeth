@@ -1020,6 +1020,16 @@
     <script src="../jquery.js"></script>
     <script src="../jquery.table2excel.js"></script>
     <script src="../script.js"></script>
+    <script>
+        /* refres divs */
+        
+            /* $(".page_navs").click(function(){
+                $("#add_items").load("admin.php #add_items");
+
+            }) */
+        
+        
+    </script>
 </body>
 </html>
 

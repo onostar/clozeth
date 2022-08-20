@@ -126,11 +126,13 @@ function showPage(page){
     // page.preventDefault();
     document.querySelectorAll('.displays').forEach(div =>{
         div.style.display = "none";
-    });
-
-    // $(`#${page}`).load(`admin.php #${page}`);
+        // $(div).load(`admin.php ${div}`);
+    }); 
+    
     // refreshDiv(page);
     document.querySelector(`#${page}`).style.display = "block";
+    // $(`#${page}`).load(`#${page}`);
+
 
 }
 //make links clickable to get to its respective page
@@ -142,6 +144,8 @@ document.addEventListener("DOMContentLoaded", function(){
             document.querySelector(".expiration_date").style.display = "none";
             document.querySelector(".user_store").style.display = "none";
             document.getElementById("quickLinks").style.display = "none";
+            /* refresh all pages */
+
         }
     })
 })
@@ -1417,3 +1421,48 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     })
 })
+
+/* refresh page regularly for new data on the background*/
+/* window.addEventListener('load', function()
+{
+    var xhr = null;
+
+    getXmlHttpRequestObject = function()
+    {
+        if(!xhr)
+        {               
+            // Create a new XMLHttpRequest object 
+            xhr = new XMLHttpRequest();
+        }
+        return xhr;
+    };
+
+    updateLiveData = function()
+    {
+        var now = new Date();
+        // Date string is appended as a query with live data 
+        // for not to use the cached version 
+        var url = 'livefeed.txt?' + now.getTime();
+        xhr = getXmlHttpRequestObject();
+        xhr.onreadystatechange = evenHandler;
+        // asynchronous requests
+        xhr.open("GET", url, true);
+        // Send the request over the network
+        xhr.send(null);
+    };
+
+    updateLiveData();
+
+    function evenHandler()
+    {
+        // Check response is ready or not
+        if(xhr.readyState == 4 && xhr.status == 200)
+        {
+            dataDiv = document.getElementById('contents');
+            // Set current data text
+            dataDiv.innerHTML = xhr.responseText;
+            // Update the live data every 1 sec
+            setTimeout(updateLiveData(), 1000);
+        }
+    }
+}); */

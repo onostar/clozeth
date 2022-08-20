@@ -58,7 +58,7 @@
             <?php
                 }else{
             ?>
-            <button id="loginDiv"><i class="far fa-user"></i> Your Account <i class="fas fa-chevron-down"></i></button>
+            <button id="loginDiv"><i class="far fa-user"></i> Sign in <i class="fas fa-chevron-down"></i></button>
             <div class="login_option">
                 <div>
                     <button id="loginBtn"><a href="view/user_type.php">Login<i class="fas fa-sign-in-alt"></i></a></button>

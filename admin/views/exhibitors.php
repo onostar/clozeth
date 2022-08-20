@@ -336,7 +336,7 @@
                 <!-- customer list -->
                 <?php include "customer_list.php"?>
 
-            <!-- Highest/Lowest Selling items list -->
+                <!-- Highest/Lowest Selling items list -->
                 <?php include "highest_selling.php"?>
 
                 <!-- update profile -->
@@ -360,14 +360,24 @@
     <script src="../script.js"></script>
     <script>
         setInterval(function() {
-            $("#chat2").load("users.php #chat2");
+            $("#chat2").load("exhibitors.php #chat2");
             let d = $(".all_chat");
             d.scrollTop(d.prop("scrollHeight"));
+
         }, 3000);
         /* close success/failuer notifications */
         setTimeout(function(){
             $(".success_failure").hide();
         },10000);
+
+        /* refres divs */
+        /* setInterval(function(){
+            $(".page_navs").click(function(){
+                $(".displays").load("exhibitors.php .displays");
+
+            })
+        }, 100); */
+
     </script>
 </body>
 </html>

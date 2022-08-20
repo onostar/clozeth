@@ -31,7 +31,7 @@
 
         /* check extension */
         if(in_array($file_ext, $allowed_ext)){
-            if($item_size <= 500000 && $other_size <= 500000){
+            if($item_size <= 200000 && $other_size <= 200000){
                 /* check if item exists exsits */
                 $check_item = $connectdb->prepare("SELECT * FROM menu WHERE company = :company AND item_name = :item_name");
                 $check_item->bindvalue("company", $company);
@@ -66,7 +66,7 @@
                     }
                 }
             }else{
-                $_SESSION['error'] = "Error! File should not be larger than 500kb";
+                $_SESSION['error'] = "Error! File should not be larger than 200kb";
                 header("Location: ../views/exhibitors.php");
             }
         }else{
