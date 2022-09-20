@@ -33,7 +33,7 @@
         $reg_number = "exh/".substr(trim($com_name, " "), 0, 7);
 
         /* create sessions for all parameters so user dont enter data again shuld incase script failed */
-        $_SESSION['company'] = $name;
+        $_SESSION['company'] = $com_name;
         $_SESSION['address'] = $address;
         $_SESSION['com_phone'] = $com_phone;
         $_SESSION['contact_person'] = $contact_person;
@@ -54,7 +54,7 @@
                 header("Location: ../views/company_registration.php");
             }else{
                 if(in_array($file_ext, $allowed_ext)){
-                    if($logo_size <= 500000){
+                    if($logo_size <= 200000){
                         if(move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_folder)){
                             $insert_user = $connectdb->prepare("INSERT INTO exhibitors (company_name, company_address, company_phone, contact_person, contact_phone, company_email, company_password, company_logo, reg_number) VALUES (:company_name, :company_address, :company_phone, :contact_person, :contact_phone, :company_email, :company_password, :company_logo, :reg_number)");
                             $insert_user->bindvalue("company_name", $com_name);
@@ -81,7 +81,7 @@
                                 $get_reg->bindvalue("exhibitor_id", $mem_id);
                                 $get_reg->execute();
                                 $reg_date = $get_reg->fetch();
-                                $expiration = date("Y-m-d", strtotime($reg_date->reg_date . ' + 30 days'));
+                                $expiration = date("Y-m-d", strtotime($reg_date->reg_date . ' + 180 days'));
                                 // update reg_num, expiration, package and verification code
                                 $update_reg = $connectdb->prepare("UPDATE exhibitors SET reg_number = :reg_number, verification_code = :verification_code, banner1 = 'banner1.jpg', banner2 = 'banner2.jpg', banner3 = 'banner3.jpg', banner_description = :banner_description, plan_package = 16, expiration = :expiration WHERE company_email = :company_email");
                                 $update_reg->bindvalue("reg_number", $new_reg);
@@ -160,7 +160,8 @@
         
                         }
                     }else{
-                        $_SESSION['logoErr'] = "Error! FIle too large";
+                        $_SESSION['logoErr'] = "Error! File too large";
+                        $_SESSION['error'] = "Error! File too large";
                         header("Location: ../views/company_registration.php");
                     }
                 }else{

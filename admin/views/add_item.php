@@ -72,13 +72,13 @@
                         </select>
                     </div>
                     <div class="data">
-                        <label for="item_foto">Item Image (Not more than 500kb)</label>
+                        <label for="item_foto">Item Image (Not more than 200kb)</label>
                         <input type="file" name="item_foto" id="item_foto" required>
                     </div>
                 </div>
                 <div class="inputs">
                     <div class="data">
-                        <label for="item_foto">Second Image (Not more than 500kb)</label>
+                        <label for="item_foto">Second Image (Not more than 200kb)</label>
                         <input type="file" name="other_foto" id="other_foto">
                     </div>
                     <div class="data">

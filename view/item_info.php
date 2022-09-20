@@ -143,8 +143,8 @@
             <div class="all_items">
 
                 <?php
-                    $select_featured = $connectdb->prepare("SELECT * FROM menu WHERE /* item_name != :item_name AND  */item_category LIKE '%$item->item_category%' OR company LIKE '%$item->company%' ORDER BY time_created LIMIT 6");
-                    // $select_featured->bindvalue("item_name", $item_name);
+                    $select_featured = $connectdb->prepare("SELECT * FROM menu WHERE item_name != :item_name AND /* item_category LIKE '%$item->item_category%' OR */ company LIKE '%$item->company%' ORDER BY time_created LIMIT 6");
+                    $select_featured->bindvalue("item_name", $item_name);
                     $select_featured->execute();
                     $shows = $select_featured->fetchAll();
                     foreach($shows as $show):

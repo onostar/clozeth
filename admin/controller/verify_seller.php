@@ -32,6 +32,11 @@
                     
                     $update_reg->execute();
                     if($update_reg){
+                        //delete verification code
+                        $delete_Code = $connectdb->prepare("UPDATE exhibitors SET verification_code = 0 WHERE verification_code = :verification_code");
+                        $delete_Code->bindValue("verification_code", $code);
+                        $delete_Code->execute();
+
                         /* send mails to seller */
                         function smtpmailer($to, $from, $from_name, $subject, $body){
                             $mail = new PHPMailer();

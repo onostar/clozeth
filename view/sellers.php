@@ -80,7 +80,7 @@
                         <div class="steps">
                             <img src="../images/online_store.jpg" alt="seller">
                             <h4>Step 1: Register a free account</h4>
-                            <p>Fill in the registration form with your details (company name, phone number) to get a free 1 month access to sell on clozeth.</p>
+                            <p>Fill in the registration form with your details (company name, phone number, etc) to get free access to sell on clozeth.</p>
                         </div>
                         <div class="steps">
                             <img src="../images/sell_online.jpg" alt="seller">

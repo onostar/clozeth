@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="cart">
-                <a href="javascript:void(0);" title="Registered members" data-page="exhibitors" class="page_navs"><i class="fas fa-users"></i> <span id="reg_text">Registered </span>
+                <a href="javascript:void(0);" title="Registered members" data-page="exhibitors" class="page_navs"><i class="fas fa-users"></i> <span id="reg_text">Sellers </span>
                     <span id="cart_value"><?php
                     $get_members = $connectdb->prepare("SELECT * FROM exhibitors WHERE company_email != 'Admin@clozeth.com'");
                     $get_members->execute();
@@ -105,18 +105,7 @@
                     <h3><a href="admin.php" title="Home"><i class="fas fa-home"></i> Dashboard</a></h3>
                     <ul>        
                         <li><a href="javascript:void(0);" id="addCat" title="Upload payment" class="page_navs" data-page="addCategories"><i class="fas fa-money-check"></i> Add categories</a></li>
-                        <li><a href="javascript:void(0);" id="addStore" class="page_navs" data-page="addRestaurant"><i class="fas fa-user-tie"></i> Approved members</a></li>
-                        <li><a href="attendance.php" target="_blank" title="Check attendance"><i class="fas fa-users"></i> Check attendance</a></li>
-                        <li><a href="javascript:void(0)" title="Conference attendance list" class="page_navs" data-page="attendance_list"><i class="fas fa-user-graduate"></i> Attendance List</a></li>
-                        <li><a href="javascript:void(0);" class="addMenu" title="manage accomodations"><i class="fas fa-hotel"></i> Accomodation</a>
-                            <ul class="nav1Menu">
-                                <li><a href="javascript:void(0);" id="addMenu" title="View accomodation requests" class="page_navs" data-page="hotel_request"><i class="fas fa-paper-plane"></i> Accomodation requests</a></li>
-                                <li><a href="javascript:void(0);" id="addMenu" title="Approve bulk requests" class="page_navs" data-page="bulk_request"><i class="fas fa-users"></i> Confirm Bulk requests</a></li>
-                                <li><a href="javascript:void(0);" id="addHot" title="Add hotels" class="page_navs" data-page="add_hotel"><i class="fas fa-hotel"></i> Add Hotels</a></li>
-                                <li><a href="javascript:void(0);" id="addrm" title="Add rooms to hotel" class="page_navs" data-page="add_rooms"><i class="fas fa-hotel"></i> Add Rooms & prices</a></li>
-                                <li><a href="javascript:void(0);" id="acomls" title="Add rooms to hotel" class="page_navs" data-page="accom_list"><i class="fas fa-book"></i> Accomodation list</a></li>
-                            </ul>
-                        </li>
+                        
                         <li><a href="javascript:void(0);" class="addExh" title="manage accomodations"><i class="fas fa-cart-arrow-down"></i> Exhibition</a>
                             <ul class="nav2Menu">
                                 <li><a href="javascript:void(0);" id="addexhi" title="View Exhibitors" class="page_navs" data-page="exhibitors"><i class="fas fa-users"></i> Exhibitors list</a></li>
@@ -151,17 +140,7 @@
                     <h3><a href="admin.php" title="Home"><i class="fas fa-home"></i> Dashboard</a></h3>
                     <ul>        
                         <li><a href="javascript:void(0);" id="addCat" title="Upload payment" class="page_navs" data-page="addCategories"><i class="fas fa-money-check"></i> Add Categories</a></li>
-                        <li><a href="javascript:void(0);" id="addStore" class="page_navs" data-page="addRestaurant"><i class="fas fa-user-tie"></i> Approved members</a></li>
-                        <li><a href="attendance.php" target="_blank" title="Check attendance"><i class="fas fa-users"></i> Check attendance</a></li>
-                        <li><a href="javascript:void(0)" title="Conference attendance list" class="page_navs" data-page="attendance_list"><i class="fas fa-user-graduate"></i> Attendance List</a></li>
-                        <li><a href="javascript:void(0);" class="addMenu" title="manage accomodations"><i class="fas fa-hotel"></i> Accomodation</a>
-                            <ul class="nav1Menu">
-                                <li><a href="javascript:void(0);" id="addMenu" title="View accomodation requests" class="page_navs" data-page="hotel_request"><i class="fas fa-paper-plane"></i> Accomodation requests</a></li>
-                                <li><a href="javascript:void(0);" id="addHot" title="Add hotels" class="page_navs" data-page="add_hotel"><i class="fas fa-hotel"></i> Add Hotels</a></li>
-                                <li><a href="javascript:void(0);" id="addrm" title="Add rooms to hotel" class="page_navs" data-page="add_rooms"><i class="fas fa-hotel"></i> Add Rooms & prices</a></li>
-                                <li><a href="javascript:void(0);" id="acomls" title="Add rooms to hotel" class="page_navs" data-page="accom_list"><i class="fas fa-book"></i> Accomodation list</a></li>
-                            </ul>
-                        </li>
+                        
                         <li><a href="javascript:void(0);" class="addExh" title="manage accomodations"><i class="fas fa-cart-arrow-down"></i> Exhibition</a>
                             <ul class="nav2Menu">
                                 <li><a href="javascript:void(0);" id="addexhi" title="View Exhibitors" class="page_navs" data-page="exhibitors"><i class="fas fa-users"></i> Exhibitors list</a></li>
