@@ -147,9 +147,14 @@ function showItems(item_id){
     return;
 }
 
-//show restaurant menus (not login)
-function showMenus(restaurant_id){
-    window.open("exhibitor_menu.php?company="+restaurant_id, "_parent");
+//show store items 
+function showMenus(store_id){
+    window.open("exhibitor_menu.php?company="+store_id, "_parent");
+    return;
+}
+//show store items from front page
+function showStore(store_id){
+    window.open("view/exhibitor_menu.php?company="+store_id, "_parent");
     return;
 }
 

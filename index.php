@@ -233,6 +233,15 @@
     <main>
         <!-- general categories -->
         <section id="general_cat">
+        <figure>
+                <form action="view/categories.php" method="POST">
+                    <input type="hidden" name="item_cat" id="item_cat" value="21">
+                    <img src="images/jewelries2.webp" alt="Jewellries">
+                    <figcaption>
+                        <input type="submit" name="check_category"value="Jewelries">
+                    </figcaption>
+                </form>
+             </figure>
              <figure>
                 <form action="view/categories.php" method="POST">
                     <input type="hidden" name="item_cat" id="item_cat" value="12">
@@ -276,15 +285,7 @@
                 </a>
              </figure>
              
-             <!-- <figure>
-                <form action="categories.php" method="POST">
-                    <input type="hidden" name="item_cat" id="item_cat" value="5">
-                    <img src="images/jewelries.webp" alt="Jewellries">
-                    <figcaption>
-                        <input type="submit" name="check_category"value="Jewelries">
-                    </figcaption>
-                </form>
-             </figure> -->
+             
         </section>
         <!-- featured items -->
         <section id="featured">
@@ -412,77 +413,15 @@
             </form> -->
         
         </section>
-        <!-- show top deals -->
-        <?php
-            $search_deals = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 AND menu.item_prize < menu.previous_price ORDER BY menu.time_created DESC LIMIT 6");
-            $search_deals->execute();
-            if($search_deals->rowCount() > 0){
-                
-        ?>
-        <section id="top_deals">
-            <div class="featured_float">
-                <h2>Top Deals</h2>
-                <a href="view/top_deals.php">View all</a>
-            </div>
-            <div class="featured">
-                <?php
-                    
-                    $rows = $search_deals->fetchAll();
-                    foreach($rows as $row):
-                ?>
-                
-                <figure>
-                
-                        <img src="<?php echo 'items/'.$row->item_foto?>" alt="Top deals">
-                        
-                        <figcaption>
-                        
-                            <div class="todo">
-                                <p><?php echo $row->item_name?></p>
-                                <!-- <p><i class="fas fa-layer-group"></i> <?php
-                                $get_category = $connectdb->prepare("SELECT category FROM categories WHERE category_id = :category_id");
-                                $get_category->bindvalue("category_id",$row->item_category);
-                                $get_category->execute();
-                                $cat = $get_category->fetch(); echo $cat->category;?></p> -->
-                                <span>₦ <?php echo number_format($row->item_prize)?></span>
-                                <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
-                            </div>
-                            
-                        </figcaption>
-                        <div class="percentage">
-                            <?php
-                                $percent = (($row->previous_price - $row->item_prize) / $row->previous_price) * 100;
-                            ?>
-                            <p>-<?php echo number_format($percent);?>%</p>
-                        </div>
-                        <div class="view_add">
-                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $row->item_id?>')">View item <i class="fas fa-eye"></i></a>
-                            <form action="controller/cart.php" method="POST">
-                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
-                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
-                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
-                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
-                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
-                            <input type="hidden" id="quantity" name="quantity" value="1">
-                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
-                            </form>
-                </figure>
-                
-                <?php endforeach ?>
-                
-            </div>
-            
-        </section>
-        <?php }?>
         <!-- Popular items -->
         <?php
-            $select_all = $connectdb->prepare("SELECT * FROM menu RIGHT JOIN orders USING (item_name) WHERE menu.item_status = 0 GROUP BY item_name HAVING SUM(orders.quantity) >= 4  ORDER BY orders.delivery_date LIMIT 6");
+            $select_all = $connectdb->prepare("SELECT * FROM menu RIGHT JOIN orders USING (item_name) WHERE menu.item_status = 0 GROUP BY item_name HAVING SUM(orders.quantity) >= 2  ORDER BY orders.delivery_date LIMIT 6");
             $select_all->execute();
             if($select_all->rowCount() > 0){
         ?>
         <section id="popular">
             <div class="featured_float">
-                <h2>Popular Items <i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
+                <h2>Top selling Items <i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
             </div>
             <div class="all_items popular_items">
                 <?php
@@ -549,6 +488,69 @@
             <button id="less_popular">Show less</button> -->
         </section>
         <?php }?>
+        <!-- show top deals -->
+        <?php
+            $search_deals = $connectdb->prepare("SELECT menu.item_name, menu.item_id, menu.item_foto, menu.item_prize, menu.previous_price, menu.company, menu.item_category, exhibitors.payment_status FROM menu, exhibitors WHERE exhibitors.exhibitor_id = menu.company AND exhibitors.payment_status = 2 AND menu.item_status = 0 AND menu.item_prize < menu.previous_price ORDER BY menu.time_created DESC LIMIT 6");
+            $search_deals->execute();
+            if($search_deals->rowCount() > 0){
+                
+        ?>
+        <section id="top_deals">
+            <div class="featured_float">
+                <h2>Top Deals</h2>
+                <a href="view/top_deals.php">View all</a>
+            </div>
+            <div class="featured">
+                <?php
+                    
+                    $rows = $search_deals->fetchAll();
+                    foreach($rows as $row):
+                ?>
+                
+                <figure>
+                
+                        <img src="<?php echo 'items/'.$row->item_foto?>" alt="Top deals">
+                        
+                        <figcaption>
+                        
+                            <div class="todo">
+                                <p><?php echo $row->item_name?></p>
+                                <!-- <p><i class="fas fa-layer-group"></i> <?php
+                                $get_category = $connectdb->prepare("SELECT category FROM categories WHERE category_id = :category_id");
+                                $get_category->bindvalue("category_id",$row->item_category);
+                                $get_category->execute();
+                                $cat = $get_category->fetch(); echo $cat->category;?></p> -->
+                                <span>₦ <?php echo number_format($row->item_prize)?></span>
+                                <span class="previous_price">₦ <?php echo number_format($row->previous_price)?></span>
+                            </div>
+                            
+                        </figcaption>
+                        <div class="percentage">
+                            <?php
+                                $percent = (($row->previous_price - $row->item_prize) / $row->previous_price) * 100;
+                            ?>
+                            <p>-<?php echo number_format($percent);?>%</p>
+                        </div>
+                        <div class="view_add">
+                            <a class="view_item" href="javascript:void(0)" title="show item details" onclick="showItems('<?php echo $row->item_id?>')">View item <i class="fas fa-eye"></i></a>
+                            <form action="controller/cart.php" method="POST">
+                            <input type="hidden" name="cart_item_id" id="cart_item_id" value="<?php echo $row->item_id?>">
+                            <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $row->item_name?>">
+                            <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $row->item_prize?>">
+                            <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $row->company?>">
+                            <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <button title="add to cart" class="send_cart"><i class="fas fa-cart-plus"></i></button>
+                            </form>
+                </figure>
+                
+                <?php endforeach ?>
+                
+            </div>
+            
+        </section>
+        <?php }?>
+        
         <!-- All categories -->
         <section id="all_items">
             <div class="featured_float">
@@ -668,6 +670,7 @@
             </div>
             
         </section>
+        
         <!-- recommended for you -->
         <?php
             if(isset($_SESSION['user'])){
@@ -726,6 +729,42 @@
             </div>
         </section>
         <?php }?>
+        <!-- official stores -->
+        <?php
+            
+            $get_company = $connectdb->prepare("SELECT * FROM exhibitors WHERE payment_status = 2 AND company_name != 'admin'");
+            $get_company->execute();
+        
+        ?>
+        <section class="official_stores">
+            <h3>Official Stores</h3>
+            <div class="paid_stores">
+                <?php 
+                    if($get_company->rowCount() > 0){
+                    $companies = $get_company->fetchAll();
+                    foreach($companies as $companys){
+                ?>
+                    <a href="javascript:void(0)" onclick="showStore('<?php echo $companys->reg_number?>')" title="View Store">
+
+                    <figure>
+                        <div class="com_img">
+                            <img src="<?php echo 'admin/logos/'.$companys->company_logo?>" alt="<?php echo $companys->company_name?>">
+                        </div>
+                        <figcaption>
+                            <p><?php echo $companys->company_name?></p>
+                        </figcaption>
+                    </figure>
+                </a>
+                <?php 
+                        } 
+                
+                    }else {
+                        echo "<p class='no_result'>No store</p>";
+                    }
+                
+                ?>
+            </div>
+        </section>
     </main>
     <footer>
         <?php include "footer.php"; ?>

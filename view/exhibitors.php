@@ -57,7 +57,7 @@
                     foreach($shows as $show):
                 ?>
                 <figure>
-                    <a href="javascript:void(0);" title="View menu" onclick="showMenus('<?php echo $show->reg_number?>')">
+                    <a href="javascript:void(0);" title="View store" onclick="showMenus('<?php echo $show->reg_number?>')">
                         <img class="stores" src="<?php echo '../admin/logos/'.$show->company_logo;?>" alt="stores">
                     </a>
                     <form>
