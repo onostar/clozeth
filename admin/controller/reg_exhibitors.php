@@ -54,7 +54,7 @@
                 header("Location: ../views/company_registration.php");
             }else{
                 if(in_array($file_ext, $allowed_ext)){
-                    if($logo_size <= 200000){
+                    if($logo_size <= 100000){
                         if(move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_folder)){
                             $insert_user = $connectdb->prepare("INSERT INTO exhibitors (company_name, company_address, company_phone, contact_person, contact_phone, company_email, company_password, company_logo, reg_number) VALUES (:company_name, :company_address, :company_phone, :contact_person, :contact_phone, :company_email, :company_password, :company_logo, :reg_number)");
                             $insert_user->bindvalue("company_name", $com_name);

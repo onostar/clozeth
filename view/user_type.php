@@ -34,7 +34,7 @@
                 <p>I want to</p>
                 <div class="user_type">
                     <a title="i want to shop for item" href="../login_page.php">
-                        <img src="../images/shopper.webp" alt="buyer">
+                        <img src="../images/shopper.jpg" alt="buyer">
                         <p>Shop for items <i class="fas fa-shopping-bag"></i></p>
                     </a>
                     <a href="../admin/index.php">
