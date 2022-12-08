@@ -1400,7 +1400,8 @@ $(document).ready(function(){
     })
 
 })
-/* show frequenty asked questions */
+/* 
+ frequenty asked questions */
 function showFaq(faq){
     //hide all pages when one displays
     // page.preventDefault();

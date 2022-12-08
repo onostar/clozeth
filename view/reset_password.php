@@ -66,7 +66,7 @@
                     </div>
                     <div class="data">
                         <label for="new_password">Enter new Password</label>
-                        <input type="password" name="new_password" id="password" placeholder="*******" required>
+                        <input type="password" name="new_password" id="user_password" placeholder="*******" required>
                         <div class="show_password">
                             <a href="javascript:void(0)" onclick="togglePassword()"><i class="fas fa-eye"></i> Show password</a>
                         </div>

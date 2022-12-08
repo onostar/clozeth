@@ -27,7 +27,7 @@
                 $mail->SMTPSecure = 'ssl'; 
                 $mail->Host = 'www.ippssolar.com';
                 $mail->Port = 465; 
-                $mail->Username = 'admi@clozeth.com.ng';
+                $mail->Username = 'admin@clozeth.com.ng';
                 $mail->Password = 'yMcmb@her0123!';   
         
         

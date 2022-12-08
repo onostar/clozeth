@@ -2,6 +2,7 @@
     include "connections.php";
     session_start();
 
+    
     if(isset($_POST['addItem'])){
         $item = ucwords(htmlspecialchars(stripslashes($_POST['item_name'])));
         $category = ucwords(htmlspecialchars(stripslashes($_POST['item_category'])));
@@ -41,6 +42,40 @@
                     $_SESSION['error'] = "$item already exists!";
                     header("Location: ../views/exhibitors.php");
                 }else{
+                    //compress image function
+                    function compressImage($source, $destination, $quality){
+                        $info = getimagesize($source);
+                        if($info['mime'] == 'image/png'){
+                            $image = imagecreatefrompng($source);
+                            //save image
+                            imagepng($image, $destination, $quality);
+                        }else if($info['mime'] == 'image/jpg'){
+                            $image = imagecreatefromjpeg($source);
+                            //save image
+                            imagejpeg($image, $destination, $quality);
+                        }else if($info['mime'] == 'image/jpeg'){
+                            $image = imagecreatefromjpeg($source);
+                            //save image
+                            imagejpeg($image, $destination, $quality);
+                        }else if($info['mime'] == 'image/webp'){
+                            $image = imagecreatefromwebp($source);
+                            //save image
+                            imagewebp($image, $destination, $quality);
+                        }else{
+                            $image = imagecreatefromjpeg($source);
+                            //save image
+                            imagejpeg($image, $destination, $quality);
+                        }
+                        
+                        
+                        //return compressed image
+                        return $destination;
+                    }
+                    //run comrpess image function on both files
+                    compressImage($_FILES['item_foto']['tmp_name'], $item_folder, 75);
+                    compressImage($_FILES['other_foto']['tmp_name'], $other_folder, 75);
+
+                    //move files
                     if(move_uploaded_file($_FILES['item_foto']['tmp_name'], $item_folder) && move_uploaded_file($_FILES['other_foto']['tmp_name'], $other_folder)){
                         $add_item = $connectdb->prepare("INSERT INTO menu (item_name, item_category, item_prize, company, item_foto, other_foto, item_description, payment_option, delivery_time) VALUES (:item_name, :item_category, :item_prize, :company, :item_foto, :other_foto, :item_description, :payment_option, :delivery_time)");
                         $add_item->bindvalue("item_name", $item);
